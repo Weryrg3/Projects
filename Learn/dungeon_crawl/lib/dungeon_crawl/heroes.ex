@@ -25,7 +25,7 @@ defmodule DungeonCrawl.Heroes do
         hit_points: 12,
         max_hit_points: 12,
         damage_range: 1..12,
-        attack_description: "uma adaga" # "a dagger"
+        attack_description: "uma adaga" # "a dagger" 
       }
     ]
     # Selo de entendimento de Module  ->  100%  ->  ----------------------------------------------------------------------------------------------------|
