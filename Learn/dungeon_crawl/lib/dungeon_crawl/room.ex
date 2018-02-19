@@ -46,7 +46,7 @@ defmodule DungeonCrawl.Room do
         %Room{
           description: "Você encontrou um lugar diferente. Talvez possa ter recursos ou poções.",
           actions: [forward(), search()],
-          trigger: Triggers.Different
+          trigger: Triggers.Different 
         }
       ]
     end

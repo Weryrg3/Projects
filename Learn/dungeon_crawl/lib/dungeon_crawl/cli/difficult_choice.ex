@@ -18,6 +18,6 @@ defmodule DungeonCrawl.CLI.DifficultChoice do
       "Médio" ->  10
       "Difícil" ->  15
     end
-      difficult
+      {difficult, chosen_difficult}
   end
 end

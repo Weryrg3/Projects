@@ -6,6 +6,7 @@ defmodule DungeonCrawl.Character do
             attack_description: nil,
             damage_range: nil,
             difficult: 0,
+            difficult_selected: nil,
             score: 0,
             handbag: []
 
@@ -17,14 +18,16 @@ defmodule DungeonCrawl.Character do
     attack_description: String.t,
     damage_range: Range.t,
     difficult: non_neg_integer,
-    score: non_neg_integer
+    difficult_selected: String.t,
+    score: non_neg_integer 
     # Selo de entendimento de Module  ->  100%  ->  ----------------------------------------------------------------------------------------------------|
   }
 
-  def take_damage(character, damage) do
+  def take_damage(character, damage, score) do
     new_hit_points = max(0, character.hit_points - damage)
-    new_score = character.score + new_hit_points
+    new_score = character.score + new_hit_points + score
     %{character | hit_points: new_hit_points, score: new_score}
+    # require IEx; IEx.pry
   end
 
   def heal(character, healing_value, score) do
@@ -34,6 +37,7 @@ defmodule DungeonCrawl.Character do
     )
     new_score = character.score + score
     %{character | hit_points: new_hit_points, score: new_score}
+    # require IEx; IEx.pry
   end
 
   def current_stats(character),

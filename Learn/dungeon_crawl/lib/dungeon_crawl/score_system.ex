@@ -7,6 +7,7 @@ defmodule DungeonCrawl.ScoreSystem do
       {:ok, file} = File.read("score_system.txt")
       name = String.trim(Shell.prompt("Digite seu nome:"))
       score = character.score
+      difficult = character.difficult_selected
 
       scores = String.split(file, "\n")
       # scores = ["Name: #{name}, Score: #{score}"] ++ scores
@@ -14,9 +15,9 @@ defmodule DungeonCrawl.ScoreSystem do
       new_scores =
         case file do
           "" ->
-            ["Name: #{name}, Score: #{score}"]
+            ["Name: #{name}, Difficul: #{difficult}, Score: #{score}"]
           _ ->
-            scores = ["Name: #{name}, Score: #{score}"] ++ scores
+            scores = ["Name: #{name},  Difficult: #{difficult}, Score: #{score}"] ++ scores
             scores
             |> Enum.sort_by(
               # fn a, b -> a >= b end

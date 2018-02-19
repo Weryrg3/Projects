@@ -21,7 +21,7 @@ defmodule DungeonCrawl.Battle do
 
   defp attack(character_a, character_b) do
     damage = Enum.random(character_a.damage_range)
-    character_b_after_damage = Character.take_damage(character_b, damage)
+    character_b_after_damage = Character.take_damage(character_b, damage, damage*2)
 
     character_a
     |> attack_message(damage)

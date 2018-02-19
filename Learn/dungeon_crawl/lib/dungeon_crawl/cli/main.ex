@@ -30,8 +30,9 @@ defmodule DungeonCrawl.CLI.Main do
   defp hero_choice do
     hero = DungeonCrawl.CLI.HeroChoice.start() 
     #%{hero | name: "You"}
-    difficult = difficult()
-    %{hero | name: "Você", difficult: difficult}
+    {difficult, difficult_selected} = difficult()
+
+    %{hero | name: "Você", difficult: difficult, difficult_selected: difficult_selected}
     # Selo de entendimento de Module  ->  100%  ->  ----------------------------------------------------------------------------------------------------|
   end
 
@@ -44,7 +45,7 @@ defmodule DungeonCrawl.CLI.Main do
     Shell.info("Você cai no chão sem forças para continuar.")
     Shell.info("Game over!")
     Shell.prompt("")
-    
+    # require IEx; IEx.pry
     # Selo de entendimento de Module  ->  100%  ->  ----------------------------------------------------------------------------------------------------|
   end
 
@@ -84,11 +85,6 @@ defmodule DungeonCrawl.CLI.Main do
   end
 end
 
-
-# • Implementar um sistema de pontuação. Quando o herói sobrevive a armadilhas, vença inimigos,
-# ou encontra tesouros, a pontuação do jogador aumentará. Quando o jogador bate
-# o jogo, a pontuação é salva em um arquivo. O arquivo deve conter apenas o topo
-# 10 melhores pontuações.
 
 # • Faça assim que o herói possa armazenar itens no bolso para usar mais tarde. Para
 # Por exemplo, eles podem pegar a poção de cura no tesouro e

@@ -4,13 +4,22 @@ defmodule DungeonCrawl.Objects do
   def all,
     do: [
       %Character{
+        name: "trap", 
+        description: "armadilha", 
+        hit_points: 5,
+        max_hit_points: 0,
+        damage_range: 0..0,
+        attack_description: "",
+        score: 10
+      },
+      %Character{
         name: "força", 
         description: "uma Pequena poção mágica de força.", 
         hit_points: 0,
         max_hit_points: 0,
         damage_range: 2..2,
         attack_description: "aumenta a força de ataque.",
-        score: 2
+        score: 8
       },
       %Character{
         name: "Nada", 
@@ -26,9 +35,9 @@ defmodule DungeonCrawl.Objects do
         description: "uma Poção magica média de força.", 
         hit_points: 0,
         max_hit_points: 0,
-        damage_range: 4..4,
+        damage_range: 3..3,
         attack_description: "aumenta a força de ataque.",
-        score: 4
+        score: 9
       },
       %Character{
         name: "Nada", 
@@ -46,7 +55,7 @@ defmodule DungeonCrawl.Objects do
         max_hit_points: 0,
         damage_range: 0..0,
         attack_description: "",
-        score: 4
+        score: 8
       },
       %Character{
         name: "Nada", 
@@ -64,7 +73,7 @@ defmodule DungeonCrawl.Objects do
         max_hit_points: 0,
         damage_range: 0..0,
         attack_description: "",
-        score: 8
+        score: 16
       },
       %Character{
         name: "Nada", 
@@ -83,6 +92,15 @@ defmodule DungeonCrawl.Objects do
         damage_range: 0..0,
         attack_description: "",
         score: 0
+      },
+      %Character{
+        name: "trap", 
+        description: "armadilha", 
+        hit_points: 10,
+        max_hit_points: 0,
+        damage_range: 0..0,
+        attack_description: "",
+        score: 20
       }
     ]
 end
