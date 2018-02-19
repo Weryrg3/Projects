@@ -1,0 +1,31 @@
+-> Modulos
+->_ funções
+
+start.ex
+  -> DungeonCrawl.CLI.Main.start_game()	/0
+
+main.ex
+
+  ->_ start_game()	/0
+    ->_- welcome_message() /0
+    ->_- crawl()	/2
+	-. ( ->_- hero_choice() /0, -> DungeonCrawl.Room.all() /0 )
+
+  ->_ welcome_message()	/0
+	messagens
+
+
+base_commands.ex
+hero_choice.ex
+room_actions_choice.ex
+enemy.ex
+exit.ex
+action.ex
+trigger.ex
+battle.ex
+character.ex
+display.ex
+enemies.ex
+heroes.ex
+room.ex
+
