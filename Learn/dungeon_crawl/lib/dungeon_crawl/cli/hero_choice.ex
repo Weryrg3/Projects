@@ -6,17 +6,11 @@ defmodule DungeonCrawl.CLI.HeroChoice do
     # Shell.cmd("clear")  # Não funciona
     #Shell.info("Start by choosing your hero:")
     Shell.info("Comece escolhendo seu herói:")
-    heroes = DungeonCrawl.Heroes.all()
-    find_hero_by_index = &Enum.at(heroes, &1)
-
-    heroes
-    |> display_options          # OK (50%)
-    |> generate_question        # OK (100%)
-    |> Shell.prompt()           # OK (100%)
-    |> parse_answer             # OK (100%)
-    |> find_hero_by_index.()    # OK (100%)
+    
+    DungeonCrawl.Heroes.all()
+    |> ask_for_option()
     |> confirm_hero             # OK (100%)
-    # Selo de entendimento de Module  ->  100%  ->  ----------------------------------------------------------------------------------------------------|
+    
   end
 
   defp confirm_hero(chosen_hero) do

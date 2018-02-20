@@ -95,3 +95,6 @@ end
 # • Melhorar o módulo de batalha, dando ao jogador a opção de fugir ou
 # ataque naquela rodada. Quando o herói estiver fugindo, o herói receberá um
 # ataque do inimigo antes de fugir
+
+
+# cli programas que rodam na linha de comando.

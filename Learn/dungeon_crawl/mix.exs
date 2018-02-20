@@ -31,6 +31,7 @@ defmodule DungeonCrawl.Mixfile do
   defp deps do
     [
       {:dialyxir, "~> 0.5.1", only: [:dev], runtime: false},
+      {:monadex, "~> 1.1"}
     ]
   end
 end
