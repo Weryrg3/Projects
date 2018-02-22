@@ -3,5 +3,5 @@ defmodule ImpureFunctionsTest do
 
   test "Teste de valores corretos" do
     assert Test.ImpureFunctions.Try.checkout() == 1
-    assert Test.B
+  end
 end
