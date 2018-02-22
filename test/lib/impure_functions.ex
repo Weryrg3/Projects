@@ -1,4 +1,5 @@
 defmodule Test.ImpureFunctions do
+  #import Monad.Result, only: [success: 1, success?: 1, error: 1, return: 1]
   alias Mix.Shell.IO, as: Shell
   use Monad.Operators 
   defmodule Try do
@@ -54,7 +55,7 @@ defmodule Test.ImpureFunctions do
       test1 = Shell.prompt("Try2 -> checkout0")
       case Integer.parse(test1) do
         :error ->
-          throw @invalid_option # Está funcionando?
+          throw @invalid_option # "Joga" uma função para catch pegar
         _ ->
           Shell.info("Deu certo")
       end
@@ -71,7 +72,7 @@ defmodule Test.ImpureFunctions do
         elem(Integer.parse(test3), 0)
         |> boolean()
       catch 
-        {:error, message} ->  # Está funcionando?
+        {:error, message} ->  #Só funciona se o catch pegar um throw
           IO.puts("test1")
           Shell.error(message)
       end
@@ -81,19 +82,18 @@ defmodule Test.ImpureFunctions do
       IO.puts(n)
       throw @invalid_option
     end
-
   end
 ##################################################################################################################################
   defmodule Monad do
-    # import Monad.Result, only: [success: 1, success?: 1, error: 1, return: 1]
-    def checkout0(), do: "test apenas test1"  # use Monad.Operators não está funcionando 
-    def checkout1(), do: "test apenas test2"  # use Monad.Operators não está funcionando 
-    def checkout2(), do: "test apenas test3"  # use Monad.Operators não está funcionando 
+    # Monad difícil estudar mais 
+    def checkout0(), do: Shell.info("Monad não está sendo usado ainda")
+    def checkout1(), do: Shell.info("Monad não está sendo usado ainda")
+    def checkout2(), do: Shell.info("Monad não está sendo usado ainda")
   end
 
   defmodule With do
-    def checkout0(), do: 1
-    def checkout1(), do: 2
-    def checkout2(), do: 3
+    def checkout0(), do: Shell.info("With não está sendo usado ainda")
+    def checkout1(), do: Shell.info("With não está sendo usado ainda")
+    def checkout2(), do: Shell.info("With não está sendo usado ainda")
   end
 end
