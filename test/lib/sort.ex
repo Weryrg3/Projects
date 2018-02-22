@@ -14,7 +14,7 @@ defmodule Test.Sort do
       :error -> 
         IO.puts("Digite um valor correto")
         parse(lista)
-      _ -> num - 1
+      _ -> num
     end
   end
 end

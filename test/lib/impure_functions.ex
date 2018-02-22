@@ -1,6 +1,6 @@
 defmodule Test.ImpureFunctions do
   alias Mix.Shell.IO, as: Shell
-  # use Monad.Operators não está funcionando 
+  use Monad.Operators 
   defmodule Try do
     def checkout0() do
       try do
