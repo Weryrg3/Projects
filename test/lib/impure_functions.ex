@@ -3,10 +3,11 @@ defmodule Test.ImpureFunctions do
   alias Mix.Shell.IO, as: Shell
   use Monad.Operators 
   defmodule Try do
-    def checkout0() do
+    def checkout0(arg) do
       try do
-        test = 
-          Shell.prompt("Try -> checkout0")
+        Shell.info("Try -> checkout0 #{arg}")
+        test =
+          arg
           |> String.trim()
           |> String.to_integer()
 
@@ -14,32 +15,33 @@ defmodule Test.ImpureFunctions do
         n1 = test1(n0)
         n2 = test2(n1)
         # n2 * n1
-        IO.puts(n2 + test)
+        n2 + test
       rescue
         # MatchError -> "No match"
         ArgumentError -> 
           Shell.info("Erro de argumento")
-          checkout0()
+          checkout0(Shell.prompt("Erro tent ..."))
         ArithmeticError -> 
           Shell.info("Erro de operação")
-          checkout0()
+          checkout0(Shell.prompt("Erro tent ..."))
       end
     end
 
-    def checkout1() do
-      test = Shell.prompt("Try -> checkout1")
-      case Integer.parse(test) do
+    def checkout1(arg) do
+      Shell.info("Try -> checkout1 #{arg}")
+      case Integer.parse(arg) do
         :error ->
           raise Try.Try1
 
         _ ->
-          Shell.info("messagem qualquer")
+          "messagem qualquer"
       end
     end
 
-    def checkout2() do
-      test = String.trim(Shell.prompt("Try -> checkout2"))
-      Shell.info("test1 no test #{test}")
+    def checkout2(arg) do
+      Shell.info("Try -> checkout2 #{arg}")
+      test = String.trim(arg)
+      "test1 no test #{test}"
     end
     
     defp test0(), do: 1.0
@@ -51,25 +53,25 @@ defmodule Test.ImpureFunctions do
   defmodule Try2 do
     @invalid_option {:error, "Opção inválida"}
     
-    def checkout0() do
-      test1 = Shell.prompt("Try2 -> checkout0")
-      case Integer.parse(test1) do
+    def checkout0(arg) do
+      Shell.info("Try2 -> checkout0 #{arg}")
+      case Integer.parse(arg) do
         :error ->
           throw @invalid_option # "Joga" uma função para catch pegar
         _ ->
-          Shell.info("Deu certo")
+          "Deu certo"
       end
     end
     
-    def checkout1() do
-      test2 = Shell.prompt("Try2 -> checkout1")
+    def checkout1(arg) do
+      test2 = Shell.info("Try2 -> checkout1 #{arg}")
       test2
     end
 
-    def checkout2() do
-      test3 = Shell.prompt("Try2 -> checkout2")
+    def checkout2(arg) do
+      Shell.info("Try2 -> checkout2 #{arg}")
       try do
-        elem(Integer.parse(test3), 0)
+        elem(Integer.parse(arg), 0)
         |> boolean()
       catch 
         {:error, message} ->  #Só funciona se o catch pegar um throw
@@ -86,35 +88,32 @@ defmodule Test.ImpureFunctions do
 ##################################################################################################################################
   defmodule Monad do
     # Monad difícil estudar mais 
-    def checkout0(), do: Shell.info("Monad não está sendo usado ainda")
-    def checkout1(), do: Shell.info("Monad não está sendo usado ainda")
-    def checkout2(), do: Shell.info("Monad não está sendo usado ainda")
+    def checkout0(arg), do: "Monad não está sendo usado ainda #{arg}"
+    def checkout1(arg), do: "Monad não está sendo usado ainda #{arg}"
+    def checkout2(arg), do: "Monad não está sendo usado ainda #{arg}"
   end
 
   defmodule With do
-    def checkout0(test1) do 
-      #test1 = "aaa\n"
-      #test1 = Shell.prompt("With -> checkout0")
+    def checkout0(arg) do 
+      Shell.info("With -> checkout0 #{arg}")
       result = 
-        with :error <- Integer.parse(test1), 
-             {n, _} <- Integer.parse(test1),
-             num <- n + 10,
-             do: num * 2
-        if result == :error, do: IO.puts("Error wrong"), else: IO.puts(result)
+        with {n, _} <- Integer.parse(arg), #do: n
+             num <- n + 10, do: num
+        if result == :error, do: "Error wrong", else: result
     end
-    def checkout1() do
-      test2 = Shell.prompt("With -> checkout1")
-        with {n, _} <- Integer.parse(test2),
-          :error <- Integer.parse(test2),
+    def checkout1(arg) do
+      Shell.info("With -> checkout1 #{arg}")
+        with {n, _} <- Integer.parse(arg),
+          #:error <- Integer.parse(test2),
           num <- n + 10 do
             num * 2
           else
-            :error -> IO.puts("Error wrong")
+            :error -> "Error wrong"
           end
     end
-    def checkout2() do
+    def checkout2(arg) do
       # test3 = Shell.prompt("With -> checkout2")
-      Shell.prompt("With -> checkout2")
+      Shell.info("With -> checkout2 #{arg}")
     end
   end
 end

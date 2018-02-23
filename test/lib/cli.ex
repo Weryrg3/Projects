@@ -5,7 +5,8 @@ defmodule ImpureFunctions.CLI do
   def start() do
     selected_module = modules()
     selected_function = functions(selected_module) 
-    selected_function.()
+    arg = Shell.prompt("Entre com um argumento qualquer")
+    IO.puts(selected_function.(arg))
   end
 
   defp number() do
@@ -36,9 +37,9 @@ defmodule ImpureFunctions.CLI do
     function = number()
     case function do
       0 -> start()
-      1 -> &selected_module.checkout0/0
-      2 -> &selected_module.checkout1/0
-      3 -> &selected_module.checkout2/0
+      1 -> &selected_module.checkout0/1
+      2 -> &selected_module.checkout1/1
+      3 -> &selected_module.checkout2/1
       _ -> Shell.info("Opção inválida\nCaso tenha errado o módulo digite 0\n")
         functions(selected_module)
     end
