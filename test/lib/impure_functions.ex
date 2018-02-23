@@ -92,8 +92,29 @@ defmodule Test.ImpureFunctions do
   end
 
   defmodule With do
-    def checkout0(), do: Shell.info("With não está sendo usado ainda")
-    def checkout1(), do: Shell.info("With não está sendo usado ainda")
-    def checkout2(), do: Shell.info("With não está sendo usado ainda")
+    def checkout0(test1) do 
+      #test1 = "aaa\n"
+      #test1 = Shell.prompt("With -> checkout0")
+      result = 
+        with :error <- Integer.parse(test1), 
+             {n, _} <- Integer.parse(test1),
+             num <- n + 10,
+             do: num * 2
+        if result == :error, do: IO.puts("Error wrong"), else: IO.puts(result)
+    end
+    def checkout1() do
+      test2 = Shell.prompt("With -> checkout1")
+        with {n, _} <- Integer.parse(test2),
+          :error <- Integer.parse(test2),
+          num <- n + 10 do
+            num * 2
+          else
+            :error -> IO.puts("Error wrong")
+          end
+    end
+    def checkout2() do
+      # test3 = Shell.prompt("With -> checkout2")
+      Shell.prompt("With -> checkout2")
+    end
   end
 end

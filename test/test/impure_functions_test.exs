@@ -1,7 +1,7 @@
 defmodule ImpureFunctionsTest do
   use ExUnit.Case
 
-  test "Teste de valores corretos" do
-    assert Test.ImpureFunctions.Try.checkout() == 1
+  test "Test de erro do With" do
+    assert Test.ImpureFunctions.With.checkout0(10) == 40
   end
 end
