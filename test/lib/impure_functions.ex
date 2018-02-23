@@ -19,11 +19,9 @@ defmodule Test.ImpureFunctions do
       rescue
         # MatchError -> "No match"
         ArgumentError -> 
-          Shell.info("Erro de argumento")
-          checkout0(Shell.prompt("Erro tent ..."))
+          "Erro de argumento"
         ArithmeticError -> 
-          Shell.info("Erro de operação")
-          checkout0(Shell.prompt("Erro tent ..."))
+          "Erro de operação"
       end
     end
 
@@ -46,7 +44,7 @@ defmodule Test.ImpureFunctions do
     
     defp test0(), do: 1.0
     defp test1(num), do: num * 2
-    defp test2(num), do: ([num] ++ [1, "1", "2"]) |> Enum.random()
+    defp test2(num), do: if rem(num, 2) == 0, do: "1", else: 2
     defmodule Try1, do: defexception message: "Erro geral bugou tudo"
   end
 ##################################################################################################################################
