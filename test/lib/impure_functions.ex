@@ -4,16 +4,15 @@ defmodule Test.ImpureFunctions do
   use Monad.Operators 
   defmodule Try do
     def checkout0(arg) do
+      #arg = "21\n"
       try do
         Shell.info("Try -> checkout0 #{arg}")
         test =
           arg
           |> String.trim()
           |> String.to_integer()
-
-        n0 = test0()
-        n1 = test1(n0)
-        n2 = test2(n1)
+        
+        n2 = test2(test)
         # n2 * n1
         n2 + test
       rescue
@@ -32,7 +31,7 @@ defmodule Test.ImpureFunctions do
           raise Try.Try1
 
         _ ->
-          "messagem qualquer"
+          "mensagem qualquer"
       end
     end
 
@@ -42,8 +41,6 @@ defmodule Test.ImpureFunctions do
       "test1 no test #{test}"
     end
     
-    defp test0(), do: 1.0
-    defp test1(num), do: num * 2
     defp test2(num), do: if rem(num, 2) == 0, do: "1", else: 2
     defmodule Try1, do: defexception message: "Erro geral bugou tudo"
   end
@@ -62,8 +59,8 @@ defmodule Test.ImpureFunctions do
     end
     
     def checkout1(arg) do
-      test2 = Shell.info("Try2 -> checkout1 #{arg}")
-      test2
+      Shell.info("Try2 -> checkout1 #{arg}")
+      arg
     end
 
     def checkout2(arg) do

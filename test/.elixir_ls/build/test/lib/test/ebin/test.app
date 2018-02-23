@@ -2,8 +2,10 @@
              [{applications,[kernel,stdlib,elixir,logger,httpoison,monadex]},
               {description,"test"},
               {modules,['Elixir.ImpureFunctions.CLI','Elixir.Mix.Tasks.Start',
-                        'Elixir.Test','Elixir.Test.Behaviour',
-                        'Elixir.Test.Callback','Elixir.Test.ImpureFunctions',
+                        'Elixir.Tes1','Elixir.Tes2','Elixir.Tes3',
+                        'Elixir.Tes4','Elixir.Test','Elixir.Test.Behaviour',
+                        'Elixir.Test.Callback','Elixir.Test.Httpoison',
+                        'Elixir.Test.ImpureFunctions',
                         'Elixir.Test.ImpureFunctions.Monad',
                         'Elixir.Test.ImpureFunctions.Try',
                         'Elixir.Test.ImpureFunctions.Try.Try1',
@@ -17,4 +19,4 @@
                         'Elixir.Test4']},
               {registered,[]},
               {vsn,"0.1.0"},
-              {extra_applications,[logger]}]}.
+              {extra_applications,[logger,httpoison]}]}.
