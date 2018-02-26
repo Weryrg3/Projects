@@ -14,7 +14,7 @@ defmodule Test.Httpoison do
   def resposta({:ok, %{status_code: 200, body: body}}) do
     {:ok, body}
   end
-  def respost({_, %{status_code: _, body: body}}) do
+  def resposta({_, %{status_code: _, body: body}}) do
     {:error, body}
   end
 end
