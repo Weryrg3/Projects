@@ -5,11 +5,15 @@ import Conditions.Screen
 
 defmodule Conditions.Main do
   def start() do
-    localization()
+    check = localization()
       |> request_xml()
       |> xml_response()
       |> organize()
-      # |> show()
+
+    case check do
+      {:error, reason} -> reason
+      {:ok, body} -> show(body)
+    end
   end
 
   defp xml_response({:ok, %{status_code: status_code, body: body}}) do
@@ -22,6 +26,5 @@ defmodule Conditions.Main do
     {new_status, body}
   end
 
-  defp xml_response({:page_not_found, _body}), do: {:error, "Page not found"}
   defp xml_response({:error, %{reason: :timeout}}), do: {:error, "timeout"}
 end

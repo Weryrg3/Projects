@@ -8,7 +8,7 @@ defmodule Conditions.CLI do
     |> String.upcase()
   end
 
-  def search_database(search) do
-    
-  end
+  # def search_database(search) do
+    # 
+  # end
 end
