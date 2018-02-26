@@ -1,5 +1,9 @@
 defmodule Conditions.Xml do
+  
   def request_xml(loc) do
-    HTTPoison.get("http://w1.weather.gov/xml/current_obs/#{loc}.xml")   
+    # base_url = Application.get_env(:conditions, :w1_weather)           # -> It's not working
+    # HTTPoison.get("#{base_url}/xml/current_obs/#{loc}.xml")            # -> It's not working
+    HTTPoison.get("http://w1.weather.gov/xml/current_obs/#{loc}.xml")
+    request_xml()
   end
 end
