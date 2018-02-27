@@ -5,23 +5,30 @@ import Conditions.Screen
 
 defmodule Conditions.Main do
   def start() do
-    check = localization()
-      |> request_xml()
-      |> xml_response()
-      |> organize()
+    localization()
+    |> request_xml()
+    |> xml_response()
+    |> organize()
+    |> case1()
+    |> IO.puts()
+  end
 
-    case check do
+  defp case1(body) do
+    case body do
       {:error, reason} -> reason
-      {:ok, body} -> show(body)
+      {:ok, body} -> 
+        xml_for_list(body) 
+          |> structure()
     end
   end
 
   defp xml_response({:ok, %{status_code: status_code, body: body}}) do
-    new_status = case status_code do
-      200 -> :ok
-      404 -> :page_not_found
-      _ -> :error
-    end
+    new_status =
+      case status_code do
+        200 -> :ok
+        404 -> :page_not_found
+        _ -> :error
+      end
 
     {new_status, body}
   end
