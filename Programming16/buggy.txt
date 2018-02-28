@@ -1,0 +1,8 @@
+require IEx; IEx.pry
+binding	-> Mostra todas váriaveis locais
+
+No iex roda isso 
+
+require IEx
+break! Buggy.decode/1 -> testa a função desse módulo
+

@@ -15,8 +15,10 @@
                         'Elixir.Test.Protocols.Test2',
                         'Elixir.Test.Protocols.Test3',
                         'Elixir.Test.Protocols.Test4','Elixir.Test.Sort',
-                        'Elixir.Test1','Elixir.Test2','Elixir.Test3',
-                        'Elixir.Test4']},
+                        'Elixir.Test.Tooling.Buggy',
+                        'Elixir.Test.Tooling.DocT',
+                        'Elixir.Test.Tooling.Stats','Elixir.Test1',
+                        'Elixir.Test2','Elixir.Test3','Elixir.Test4']},
               {registered,[]},
               {vsn,"0.1.0"},
               {extra_applications,[logger,httpoison]}]}.
