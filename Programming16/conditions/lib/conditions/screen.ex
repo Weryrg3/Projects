@@ -31,14 +31,11 @@ defmodule Conditions.Screen do
   end
 
   defp trace_v(main_string, big_string \\ "") do
-    size = 
-      [main_string, big_string]
+    [main_string, big_string]
       |> Enum.map(& String.length(&1))
       |> Enum.min_max()
-      |> 
-    
-    #size = String.length(max) - String.length(min) + 1
-    "| #{main_string}#{String.duplicate(" ", size)}|"
+      |> (fn {min, max} -> max - min + 1 end).()
+      |> (& ("| #{main_string}#{String.duplicate(" ", &1)}|")).()
   end
 
   defp max_length(range_list), do: Enum.max_by(range_list, &String.length/1)
