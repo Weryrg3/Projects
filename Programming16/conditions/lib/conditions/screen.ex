@@ -1,4 +1,5 @@
 defmodule Conditions.Screen do
+  @moduledoc "Arquivos que serão mostrados no prompt de comando ou CLI"
   def organize({:page_not_found, _body}), do: {:error, "Page not found"}
   def organize({:error, reason}), do: {:error, "Error reason #{reason}"}
   def organize({:ok, body}), do: {:ok, body}
@@ -13,29 +14,24 @@ defmodule Conditions.Screen do
     traces = &String.duplicate("-", String.length(&1) + 4)
 
     "\n#{traces.(title)}\n#{trace_v(title, title)}\n#{traces.(title)}\n#{traces.(group1)}\n#{
-      trace_v(elem(tuple, 1), group1)}\n#{
-      trace_v(elem(tuple, 2), group1)}\n#{
-      trace_v(elem(tuple, 3), group1)}\n#{
-      trace_v(elem(tuple, 4), group1)}\n#{traces.(group1)}\n#{
-      traces.(group2)}  #{traces.(group3)}\n#{
-      trace_v(elem(tuple, 5), group2)}  #{
-      trace_v(elem(tuple, 9), group3)}\n#{
-      trace_v(elem(tuple, 6), group2)}  #{
-      trace_v(elem(tuple, 10), group3)}\n#{
-      trace_v(elem(tuple, 7), group2)}  #{
-      trace_v(elem(tuple, 11), group3)}\n#{
-      trace_v(elem(tuple, 8), group2)}  #{
-      trace_v(elem(tuple, 12), group3)}\n#{traces.(group2)}  #{
-      traces.(group3)
-    }\n"
+      trace_v(elem(tuple, 1), group1)
+    }\n#{trace_v(elem(tuple, 2), group1)}\n#{trace_v(elem(tuple, 3), group1)}\n#{
+      trace_v(elem(tuple, 4), group1)
+    }\n#{traces.(group1)}\n#{traces.(group2)}  #{traces.(group3)}\n#{
+      trace_v(elem(tuple, 5), group2)
+    }  #{trace_v(elem(tuple, 9), group3)}\n#{trace_v(elem(tuple, 6), group2)}  #{
+      trace_v(elem(tuple, 10), group3)
+    }\n#{trace_v(elem(tuple, 7), group2)}  #{trace_v(elem(tuple, 11), group3)}\n#{
+      trace_v(elem(tuple, 8), group2)
+    }  #{trace_v(elem(tuple, 12), group3)}\n#{traces.(group2)}  #{traces.(group3)}\n"
   end
 
   defp trace_v(main_string, big_string) do
     [main_string, big_string]
-      |> Enum.map(& String.length(&1))
-      |> Enum.min_max()
-      |> (fn {min, max} -> max - min + 1 end).()
-      |> (& ("| #{main_string}#{String.duplicate(" ", &1)}|")).()
+    |> Enum.map(&String.length(&1))
+    |> Enum.min_max()
+    |> (fn {min, max} -> max - min + 1 end).()
+    |> (&"| #{main_string}#{String.duplicate(" ", &1)}|").()
   end
 
   defp max_length(range_list), do: Enum.max_by(range_list, &String.length/1)

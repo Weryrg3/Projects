@@ -1,7 +1,7 @@
 # defmodule ScreenTest do
-  # use ExUnit.Case
-  # alias Conditions.Screen
+# use ExUnit.Case
+# alias Conditions.Screen
 # 
-  # test "check organize" do
-  # end
+# test "check organize" do
+# end
 # end

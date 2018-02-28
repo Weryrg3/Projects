@@ -1,5 +1,6 @@
 {application,conditions,
-             [{applications,[kernel,stdlib,elixir,logger,httpoison,poison]},
+             [{applications,[kernel,stdlib,elixir,logger,httpoison,poison,
+                             coverex]},
               {description,"conditions"},
               {modules,['Elixir.Conditions','Elixir.Conditions.CLI',
                         'Elixir.Conditions.Main','Elixir.Conditions.Screen',

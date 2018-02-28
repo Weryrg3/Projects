@@ -1,6 +1,7 @@
 alias Mix.Shell.IO, as: Shell
 
 defmodule Conditions.CLI do
+  @moduledoc "Modulo para todos dados que serão input do prompt de comando"
   def localization() do
     Shell.info("Choice the option:")
     Shell.info("1 - Type the localization of airport that you want search")

@@ -1,4 +1,5 @@
 defmodule Mix.Tasks.Start do
+  @moduledoc "Inicia a aplicação por fora no iex -S mix"
   use Mix.Task
 
   def run(_) do

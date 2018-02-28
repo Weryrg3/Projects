@@ -4,7 +4,8 @@ import Conditions.Xml
 import Conditions.Screen
 
 defmodule Conditions.Main do
-  def start() do
+  @moduledoc "Função principal que trata todas outras funções"
+  def start do
     localization()
     |> request_xml()
     |> xml_response()
@@ -15,10 +16,13 @@ defmodule Conditions.Main do
 
   defp case1(body) do
     case body do
-      {:error, reason} -> reason
-      {:ok, body} -> 
-        xml_for_list(body) 
-          |> structure()
+      {:error, reason} ->
+        reason
+
+      {:ok, body} ->
+        body
+        |> xml_for_list()
+        |> structure()
     end
   end
 
