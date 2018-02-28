@@ -12,26 +12,33 @@ defmodule Conditions.Screen do
 
     traces = &String.duplicate("-", String.length(&1) + 4)
 
-    "\n#{traces.(title)}\n#{trace_v(title, "")}\n#{traces.(title)}\n#{traces.(group1)}\n#{
-      trace_v(elem(tuple, 1), group1)
-    }\n#{trace_v(elem(tuple, 2), group1)}\n#{trace_v(elem(tuple, 3), group1)}\n#{trace_v(group1)}\n#{
-      traces.(group1)
-    }\n#{traces.(group2)}  #{traces.(group3)}\n#{trace_v(elem(tuple, 5), group2)}  #{
-      trace_v(elem(tuple, 9), group3)
-    }\n#{trace_v(group2)}  #{trace_v(elem(tuple, 10), group3)}\n#{trace_v(elem(tuple, 7), group2)}  #{
-      trace_v(elem(tuple, 11), group3)
-    }\n#{trace_v(elem(tuple, 8), group2)}  #{trace_v(elem(tuple, 12), group3)}\n#{traces.(group2)}  #{
+    "\n#{traces.(title)}\n#{trace_v(title)}\n#{traces.(title)}\n#{traces.(group1)}\n#{
+      trace_v(elem(tuple, 1), group1)}\n#{
+      trace_v(elem(tuple, 2), group1)}\n#{
+      trace_v(elem(tuple, 3), group1)}\n#{
+      trace_v(elem(tuple, 4), group1)}\n#{traces.(group1)}\n#{
+      traces.(group2)}  #{traces.(group3)}\n#{
+      trace_v(elem(tuple, 5), group2)}  #{
+      trace_v(elem(tuple, 9), group3)}\n#{
+      trace_v(elem(tuple, 6), group2)}  #{
+      trace_v(elem(tuple, 10), group3)}\n#{
+      trace_v(elem(tuple, 7), group2)}  #{
+      trace_v(elem(tuple, 11), group3)}\n#{
+      trace_v(elem(tuple, 8), group2)}  #{
+      trace_v(elem(tuple, 12), group3)}\n#{traces.(group2)}  #{
       traces.(group3)
     }\n"
   end
 
   defp trace_v(main_string, big_string \\ "") do
-    if big_string == "" do
-      "| #{main_string}#{String.duplicate(" ", 1)}|"
-    else
-      size = String.length(big_string) - String.length(main_string) + 1
-      "| #{main_string}#{String.duplicate(" ", size)}|"
-    end
+    size = 
+      [main_string, big_string]
+      |> Enum.map(& String.length(&1))
+      |> Enum.min_max()
+      |> 
+    
+    #size = String.length(max) - String.length(min) + 1
+    "| #{main_string}#{String.duplicate(" ", size)}|"
   end
 
   defp max_length(range_list), do: Enum.max_by(range_list, &String.length/1)

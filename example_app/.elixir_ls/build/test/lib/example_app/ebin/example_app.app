@@ -1,0 +1,9 @@
+{application,example_app,
+             [{applications,[kernel,stdlib,elixir,logger,ecto,postgrex]},
+              {description,"example_app"},
+              {modules,['Elixir.ExampleApp','Elixir.ExampleApp.App',
+                        'Elixir.ExampleApp.Repo',
+                        'Elixir.ExampleApp.Repo.Migrations.CreateUser']},
+              {registered,[]},
+              {vsn,"0.1.0"},
+              {extra_applications,[logger,ecto,postgrex]}]}.
