@@ -24,7 +24,8 @@ defmodule Test.MixProject do
     [
       {:dialyxir, "~> 0.5.1", only: [:dev], runtime: false},
       {:monadex, "~> 1.1"},
-      {:httpoison, "~> 0.13.0"}
+      {:httpoison, "~> 0.13.0"},
+      {:credo, "~> 0.9.0-rc1", only: [:dev, :test], runtime: false}
     ]
   end
 end

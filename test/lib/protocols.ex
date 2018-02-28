@@ -28,6 +28,7 @@ end
 
 defmodule Test3 do
   defstruct [:test]
+
   def new(test) do
     %Test3{test: test}
   end
@@ -39,6 +40,7 @@ end
 
 defmodule Test4 do
   defstruct [:test]
+
   def new(test) do
     %Test4{test: test}
   end

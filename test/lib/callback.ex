@@ -1,5 +1,5 @@
 # defmodule Test.Callback do
-  # @callback run(arg :: String.t) :: integer
+# @callback run(arg :: String.t) :: integer
 # end
 
 defmodule Test.Callback do
