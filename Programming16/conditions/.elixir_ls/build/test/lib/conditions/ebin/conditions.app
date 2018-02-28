@@ -3,7 +3,7 @@
               {description,"conditions"},
               {modules,['Elixir.Conditions','Elixir.Conditions.CLI',
                         'Elixir.Conditions.Main','Elixir.Conditions.Screen',
-                        'Elixir.Conditions.Xml']},
+                        'Elixir.Conditions.Xml','Elixir.Mix.Tasks.Start']},
               {registered,[]},
               {vsn,"0.1.0"},
               {extra_applications,[logger,httpoison]}]}.

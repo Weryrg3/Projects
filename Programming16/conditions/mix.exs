@@ -21,6 +21,7 @@ defmodule Conditions.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      #{ :hackney, github: "benoitc/hackney" },
       { :httpoison, "~> 0.13.0" },
       {:poison, "~> 3.1"}
     ]

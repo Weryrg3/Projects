@@ -3,7 +3,7 @@ alias Mix.Shell.IO, as: Shell
 defmodule Conditions.CLI do
   def localization() do
     Shell.info("Choice the option:")
-    Shell.info("1 - Type the localization of airport that you want search:")
+    Shell.info("1 - Type the localization of airport that you want search")
     Shell.info("2 - Random aiport of US 1 into 382")
 
     Shell.prompt("Your choice is:")

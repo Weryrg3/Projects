@@ -12,7 +12,7 @@ defmodule Conditions.Screen do
 
     traces = &String.duplicate("-", String.length(&1) + 4)
 
-    "\n#{traces.(title)}\n#{trace_v(title)}\n#{traces.(title)}\n#{traces.(group1)}\n#{
+    "\n#{traces.(title)}\n#{trace_v(title, title)}\n#{traces.(title)}\n#{traces.(group1)}\n#{
       trace_v(elem(tuple, 1), group1)}\n#{
       trace_v(elem(tuple, 2), group1)}\n#{
       trace_v(elem(tuple, 3), group1)}\n#{
@@ -30,7 +30,7 @@ defmodule Conditions.Screen do
     }\n"
   end
 
-  defp trace_v(main_string, big_string \\ "") do
+  defp trace_v(main_string, big_string) do
     [main_string, big_string]
       |> Enum.map(& String.length(&1))
       |> Enum.min_max()
