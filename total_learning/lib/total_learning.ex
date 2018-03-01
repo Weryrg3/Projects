@@ -10,6 +10,8 @@ defmodule TotalLearning do
 
       iex> TotalLearning.hello
       :world
+      iex> TotalLearning.hello
+      :world
 
   """
   def hello do

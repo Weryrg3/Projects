@@ -1,5 +1,6 @@
 {application,total_learning,
-             [{applications,[kernel,stdlib,elixir,logger]},
+             [{applications,[kernel,stdlib,elixir,logger,poison,coverex,
+                             httpoison]},
               {description,"total_learning"},
               {modules,['Elixir.TotalLearning']},
               {registered,[]},
