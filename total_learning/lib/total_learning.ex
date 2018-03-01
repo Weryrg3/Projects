@@ -1,20 +1,20 @@
-defmodule TotalLearning do
-  @moduledoc """
-  Documentation for TotalLearning.
-  """
+# defmodule TotalLearning do
+#   @moduledoc """
+#   Documentation for TotalLearning.
+#   """
 
-  @doc """
-  Hello world.
+#   @doc """
+#   Hello world.
 
-  ## Examples
+#   ## Examples
 
-      iex> TotalLearning.hello
-      :world
-      iex> TotalLearning.hello
-      :world
+#       iex> TotalLearning.hello
+#       :world
+#       iex> TotalLearning.hello
+#       :world
 
-  """
-  def hello do
-    :world
-  end
-end
+#   """
+#   def hello do
+#     :world
+#   end
+# end
