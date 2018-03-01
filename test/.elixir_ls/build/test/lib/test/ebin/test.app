@@ -1,5 +1,6 @@
 {application,test,
-             [{applications,[kernel,stdlib,elixir,logger,httpoison,monadex]},
+             [{applications,[kernel,stdlib,elixir,logger,httpoison,
+                             stream_data,monadex]},
               {description,"test"},
               {modules,['Elixir.ImpureFunctions.CLI','Elixir.Mix.Tasks.Start',
                         'Elixir.Tes1','Elixir.Tes2','Elixir.Tes3',
