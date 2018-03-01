@@ -1,0 +1,17 @@
+digraph "xref graph" {
+  "lib/test/behaviour.ex"
+  "lib/test/callback.ex"
+  "lib/test/callback.ex" -> "lib/test/behaviour.ex" [label="(compile)"]
+  "lib/test/cli.ex"
+  "lib/test/cli.ex" -> "lib/test/impure_functions.ex"
+  "lib/test/httpoison.ex"
+  "lib/test/impure_functions.ex"
+  "lib/test/protocols.ex"
+  "lib/test/sort.ex"
+  "lib/test/start.ex"
+  "lib/test/start.ex" -> "lib/test/cli.ex"
+  "lib/test/test.ex"
+  "lib/test/tooling/buggy.ex"
+  "lib/test/tooling/doc_t.ex"
+  "lib/test/tooling/stats.ex"
+}

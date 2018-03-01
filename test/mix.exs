@@ -8,7 +8,13 @@ defmodule Test.MixProject do
       elixir: "~> 1.6-rc",
       start_permanent: Mix.env() == :prod,
       dialyzer: [plt_add_apps: [:mix]],
-      deps: deps()
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        "coveralls": :test,
+        "coveralss.detail": :test,
+        "coveralss.post": :test
+      ],
+      deps: deps(),
     ]
   end
 
@@ -26,7 +32,8 @@ defmodule Test.MixProject do
       {:monadex, "~> 1.1"},
       {:httpoison, "~> 0.13.0"},
       {:credo, "~> 0.9.0-rc1", only: [:dev, :test], runtime: false},
-      {:stream_data, ">= 0.4.1"}
+      {:stream_data, ">= 0.4.1"},
+      {:excoveralls, "~> 0.5.7", only: :test}
     ]
   end
 end

@@ -1,0 +1,64 @@
+digraph "xref graph" {
+  "lib/dungeon_crawl.ex"
+  "lib/dungeon_crawl/battle.ex"
+  "lib/dungeon_crawl/battle.ex" -> "lib/dungeon_crawl/character.ex"
+  "lib/dungeon_crawl/character.ex"
+  "lib/dungeon_crawl/cli/base_commands.ex"
+  "lib/dungeon_crawl/cli/difficult_choice.ex"
+  "lib/dungeon_crawl/cli/difficult_choice.ex" -> "lib/dungeon_crawl/cli/base_commands.ex" [label="(compile)"]
+  "lib/dungeon_crawl/cli/hero_choice.ex"
+  "lib/dungeon_crawl/cli/hero_choice.ex" -> "lib/dungeon_crawl/cli/base_commands.ex" [label="(compile)"]
+  "lib/dungeon_crawl/cli/hero_choice.ex" -> "lib/dungeon_crawl/heroes.ex"
+  "lib/dungeon_crawl/heroes.ex" -> "lib/dungeon_crawl/character.ex" [label="(struct)"]
+  "lib/dungeon_crawl/cli/invalid_option.ex"
+  "lib/dungeon_crawl/cli/main.ex"
+  "lib/dungeon_crawl/cli/main.ex" -> "lib/dungeon_crawl/character.ex"
+  "lib/dungeon_crawl/cli/main.ex" -> "lib/dungeon_crawl/cli/difficult_choice.ex" [label="(compile)"]
+  "lib/dungeon_crawl/cli/main.ex" -> "lib/dungeon_crawl/cli/hero_choice.ex"
+  "lib/dungeon_crawl/cli/main.ex" -> "lib/dungeon_crawl/cli/room_actions_choice.ex"
+  "lib/dungeon_crawl/cli/room_actions_choice.ex" -> "lib/dungeon_crawl/cli/base_commands.ex" [label="(compile)"]
+  "lib/dungeon_crawl/cli/main.ex" -> "lib/dungeon_crawl/room.ex"
+  "lib/dungeon_crawl/room.ex" -> "lib/dungeon_crawl/room/action.ex" [label="(compile)"]
+  "lib/dungeon_crawl/room.ex" -> "lib/dungeon_crawl/room/triggers/different.ex"
+  "lib/dungeon_crawl/room/triggers/different.ex" -> "lib/dungeon_crawl/life.ex"
+  "lib/dungeon_crawl/life.ex" -> "lib/dungeon_crawl/character.ex" [label="(compile)"]
+  "lib/dungeon_crawl/room/triggers/different.ex" -> "lib/dungeon_crawl/objects.ex"
+  "lib/dungeon_crawl/objects.ex" -> "lib/dungeon_crawl/character.ex" [label="(struct)"]
+  "lib/dungeon_crawl/room/triggers/different.ex" -> "lib/dungeon_crawl/room/action.ex" [label="(struct)"]
+  "lib/dungeon_crawl/room/triggers/different.ex" -> "lib/dungeon_crawl/room/trigger.ex" [label="(compile)"]
+  "lib/dungeon_crawl/room/trigger.ex" -> "lib/dungeon_crawl/character.ex"
+  "lib/dungeon_crawl/room/trigger.ex" -> "lib/dungeon_crawl/room/action.ex"
+  "lib/dungeon_crawl/room.ex" -> "lib/dungeon_crawl/room/triggers/enemy.ex"
+  "lib/dungeon_crawl/room/triggers/enemy.ex" -> "lib/dungeon_crawl/battle.ex"
+  "lib/dungeon_crawl/room/triggers/enemy.ex" -> "lib/dungeon_crawl/enemies.ex"
+  "lib/dungeon_crawl/enemies.ex" -> "lib/dungeon_crawl/character.ex" [label="(struct)"]
+  "lib/dungeon_crawl/room/triggers/enemy.ex" -> "lib/dungeon_crawl/room/action.ex" [label="(struct)"]
+  "lib/dungeon_crawl/room/triggers/enemy.ex" -> "lib/dungeon_crawl/room/trigger.ex" [label="(compile)"]
+  "lib/dungeon_crawl/room.ex" -> "lib/dungeon_crawl/room/triggers/exit.ex"
+  "lib/dungeon_crawl/room/triggers/exit.ex" -> "lib/dungeon_crawl/room/trigger.ex" [label="(compile)"]
+  "lib/dungeon_crawl/room.ex" -> "lib/dungeon_crawl/room/triggers/safe.ex"
+  "lib/dungeon_crawl/room/triggers/safe.ex" -> "lib/dungeon_crawl/character.ex"
+  "lib/dungeon_crawl/room/triggers/safe.ex" -> "lib/dungeon_crawl/room/action.ex" [label="(struct)"]
+  "lib/dungeon_crawl/room/triggers/safe.ex" -> "lib/dungeon_crawl/room/trigger.ex" [label="(compile)"]
+  "lib/dungeon_crawl/cli/main.ex" -> "lib/dungeon_crawl/score_system.ex" [label="(compile)"]
+  "lib/dungeon_crawl/score_system.ex" -> "lib/dungeon_crawl/cli/base_commands.ex" [label="(compile)"]
+  "lib/dungeon_crawl/cli/room_actions_choice.ex"
+  "lib/dungeon_crawl/display.ex"
+  "lib/dungeon_crawl/display.ex" -> "lib/dungeon_crawl/character.ex" [label="(compile)"]
+  "lib/dungeon_crawl/display.ex" -> "lib/dungeon_crawl/room/action.ex" [label="(compile)"]
+  "lib/dungeon_crawl/enemies.ex"
+  "lib/dungeon_crawl/heroes.ex"
+  "lib/dungeon_crawl/life.ex"
+  "lib/dungeon_crawl/objects.ex"
+  "lib/dungeon_crawl/room.ex"
+  "lib/dungeon_crawl/room/action.ex"
+  "lib/dungeon_crawl/room/trigger.ex"
+  "lib/dungeon_crawl/room/triggers/different.ex"
+  "lib/dungeon_crawl/room/triggers/enemy.ex"
+  "lib/dungeon_crawl/room/triggers/exit.ex"
+  "lib/dungeon_crawl/room/triggers/safe.ex"
+  "lib/dungeon_crawl/score_system.ex"
+  "lib/dungeon_crawl/traps.ex"
+  "lib/mix/tasks/start.ex"
+  "lib/mix/tasks/start.ex" -> "lib/dungeon_crawl/cli/main.ex"
+}
