@@ -2,7 +2,8 @@
              [{applications,[kernel,stdlib,elixir,logger,poison,coverex,
                              httpoison]},
               {description,"total_learning"},
-              {modules,['Elixir.TotalLearning']},
+              {modules,['Elixir.Learn.MainLearn','Elixir.Pro16.MainPro16',
+                        'Elixir.TotalLearning']},
               {registered,[]},
               {vsn,"0.1.0"},
               {extra_applications,[logger]}]}.
