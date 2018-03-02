@@ -9,7 +9,11 @@ defmodule TotalLearning.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       test_coverage: [tool: Coverex.Task],
-      dialyzer: [plt_add_deps: :apps_direct, plt_add_apps: [:wx], ignore_warnings: ".dialyzer-warnings"]
+      dialyzer: [
+        plt_add_deps: :apps_direct,
+        plt_add_apps: [:wx],
+        ignore_warnings: ".dialyzer-warnings"
+      ]
     ]
   end
 
@@ -28,7 +32,6 @@ defmodule TotalLearning.MixProject do
       {:coverex, "~> 1.4.15", only: :test},
       {:httpoison, "~> 1.0.0"},
       {:poison, "~> 3.1.0"}
-
     ]
   end
 end

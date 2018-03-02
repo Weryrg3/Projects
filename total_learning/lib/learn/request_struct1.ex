@@ -32,6 +32,6 @@ defmodule Learn.RequestStruct1 do
         school: "Ulbra",
         stronger: 15,
         range: 1..4
-      },
+      }
     ]
 end

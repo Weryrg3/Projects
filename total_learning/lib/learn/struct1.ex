@@ -12,22 +12,24 @@ defmodule Learn.Struct1 do
             stage: nil,
             stronger: 0,
             range: nil
+
   # @type -> TypeSpecs definindo o tipo de cada váriavel
   # da struct, irá dar erro apenas em programs exteriores
   # como dialyzer
   @type t :: %Learn.Struct1{
-    name: String.t,
-    age: non_neg_integer,
-    school: String.t,
-    stage: String.t,
-    stronger: non_neg_integer,
-    range: Range.t
-  }
+          name: String.t(),
+          age: non_neg_integer,
+          school: String.t(),
+          stage: String.t(),
+          stronger: non_neg_integer,
+          range: Range.t()
+        }
 end
+
 # b = %Learn.Struct1{
-  # name: "wesley",
-  # age: 20, school: "ULBRA",
-  # stage: "Eficiencia",
-  # stronger: 10,
-  # range: 1..5
+# name: "wesley",
+# age: 20, school: "ULBRA",
+# stage: "Eficiencia",
+# stronger: 10,
+# range: 1..5
 # }
