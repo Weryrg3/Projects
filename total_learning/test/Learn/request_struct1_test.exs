@@ -10,7 +10,8 @@ defmodule Learn.RequestStruct1Test do
                range: 1..5,
                school: "Unijipa",
                stage: nil,
-               stronger: 20
+               stronger: 20,
+               atom: :test1
              },
              %Learn.Struct1{
                age: 21,
@@ -18,7 +19,8 @@ defmodule Learn.RequestStruct1Test do
                range: 1..10,
                school: "Ifro",
                stage: nil,
-               stronger: 26
+               stronger: 26,
+               atom: :test2
              },
              %Learn.Struct1{
                age: 30,
@@ -26,7 +28,8 @@ defmodule Learn.RequestStruct1Test do
                range: 1..4,
                school: "Ulbra",
                stage: nil,
-               stronger: 15
+               stronger: 15,
+               atom: :test1
              }
            ]
   end

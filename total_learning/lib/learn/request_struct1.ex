@@ -17,21 +17,24 @@ defmodule Learn.RequestStruct1 do
         age: 17,
         school: "Unijipa",
         stronger: 20,
-        range: 1..5
+        range: 1..5,
+        atom: :test1
       },
       %Struct1{
         name: "Jaqueline",
         age: 21,
         school: "Ifro",
         stronger: 26,
-        range: 1..10
+        range: 1..10,
+        atom: :test2
       },
       %Struct1{
         name: "Gloria",
         age: 30,
         school: "Ulbra",
         stronger: 15,
-        range: 1..4
+        range: 1..4,
+        atom: :test1
       }
     ]
 end

@@ -1,15 +1,17 @@
 defmodule Learn.Struct2 do
   alias Learn.Struct2
-  @moduledoc "Esse modulo é apenas um struct simples para testes"
-
-  # Essa struct contem apenas dois valores default apenas para test
+  @moduledoc "Esse modulo é apenas um struct simples para testes
+  Essa struct contem apenas dois valores default apenas para test
+  Para mais info de types https://hexdocs.pm/elixir/typespecs.html
+  "
   defstruct string: nil, id: nil
 
   @type t :: %Struct2{id: atom, string: String.t()}
 
   @doc """
   Função1 que não recebe argumento, porém ao ser chamada retorna
-  uma struct com um atom e uma string
+  uma `struct` com um `atom` e uma `string`
+  ## Examples
     iex> Learn.Struct2.fun1
     %Learn.Struct2{id: :first, string: "Primeira string."}
   """
@@ -18,6 +20,7 @@ defmodule Learn.Struct2 do
   @doc """
   Função2 que não recebe argumento, porém ao ser chamada retorna
   uma struct com um atom e uma string
+  ## Examples
     iex> Learn.Struct2.fun2
     %Learn.Struct2{id: :second, string: "Segunda string."}
   """
@@ -26,6 +29,7 @@ defmodule Learn.Struct2 do
   @doc """
   Função3 que não recebe argumento, porém ao ser chamada retorna
   uma struct com um atom e uma string
+  ## Examples
     iex> Learn.Struct2.fun3
     %Learn.Struct2{id: :third, string: "Terceira string."}
   """
