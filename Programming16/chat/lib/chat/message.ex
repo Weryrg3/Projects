@@ -10,12 +10,10 @@ defmodule Chat.Message do
     receive do
       {:msg, user, msg, who} ->
         IO.puts("[#{user}, #{who}]: #{msg} ")
-        recebe_mensagens()
 
       {:new_user, user, people} ->
         IO.puts("#{user} entrou na sala")
         IO.puts("#{people} pessoas online")
-        recebe_mensagens()
 
       {:not_found, user} ->
         IO.puts("Usúario #{user} não foi encontrado")
@@ -24,5 +22,6 @@ defmodule Chat.Message do
         IO.puts("#{user} saiu da sala.")
         IO.puts("#{people} pessoas online")
     end
+    recebe_mensagens
   end
 end

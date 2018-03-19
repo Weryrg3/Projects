@@ -28,3 +28,5 @@ end
 # implementar @user para enviar para um usúario especifico, problemas que ficam no caminho, como pegar até o espaço
 # Chat.iniciar_client("Wesley", Chat.iniciar_server)
 # implementar todos enviar todos exceto quem está enviando
+# bug quando alguém sai da sala todas salas desconectam com a outra
+
