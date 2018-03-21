@@ -1,32 +1,24 @@
 defmodule Chat do
-  @moduledoc """
-  Documentation for Chat.
-  """
+  alias Chat.{Room, Client, Controler}
+  def iniciar do
+    room = iniciar_chat("Digite o nome da nova sala: ")
+    user = iniciar_chat("Digite o nome de usuário: ")
 
-  @doc """
-  Hello world.
+    pid_room = Room.iniciar_room(room)
+    Client.iniciar_client(user, pid_room)
+  end
 
-  ## Examples
-
-      iex> Chat.hello
-      :world
-
-  """
-  def hello do
-    :world
+  defp iniciar_chat(arg) do
+    new_chat = String.trim(IO.gets(arg))
+    y_n = IO.gets("[#{new_chat}] O nome está correto? ") |> String.trim() |> String.upcase()
+    answer = ".SIM.S.Y.YES.."
+    if String.contains?(answer, "." <> y_n <> ".") do
+      new_chat
+    else
+      iniciar_chat(arg)
+    end
   end
 end
 
-# Aplicação de bots que conversam e respondam
-# o usuário inicia um bot, depois outro, então envia mensagem de um para o outro
-# e recebe uma resposta
-# quando tiver 1 ou mais bots # fulano de tal entrou envie uma mensagem para ele!!
-# bots automaticos
-# pessoa saiu da sala
-# implementar @todos para evitar o segundo IO.gets exemplo enviar mensagem: OI pessoal @todos
-# String.contains?
-# implementar @user para enviar para um usúario especifico, problemas que ficam no caminho, como pegar até o espaço
-# Chat.iniciar_client("Wesley", Chat.iniciar_server)
-# implementar todos enviar todos exceto quem está enviando
-# bug quando alguém sai da sala todas salas desconectam com a outra
-
+# bug, quando usúario que iniciou o server sai
+# implementar desentralizar o servidor, quando usuário principal sair, troca para proximo na lista.

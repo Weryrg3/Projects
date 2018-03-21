@@ -7,7 +7,7 @@ defmodule Chat.Client do
       :already_exits ->
         IO.puts("Já existe um usuário com esse nome")
       :continue ->
-        Message.enviar_mensagens(server, pid)
+        Message.enviar_mensagens(server, pid, self())
     end
   end
 end
