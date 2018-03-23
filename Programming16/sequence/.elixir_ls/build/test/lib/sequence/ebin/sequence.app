@@ -1,0 +1,10 @@
+{application,sequence,
+             [{applications,[kernel,stdlib,elixir,logger]},
+              {description,"sequence"},
+              {modules,['Elixir.Sequence','Elixir.Sequence.Impl',
+                        'Elixir.Sequence.Server','Elixir.Sequence.Server0',
+                        'Elixir.Sequence.Server1',
+                        'Elixir.SequenceStack.Server']},
+              {registered,[]},
+              {vsn,"0.1.0"},
+              {extra_applications,[logger]}]}.
