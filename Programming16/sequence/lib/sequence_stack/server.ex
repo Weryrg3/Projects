@@ -28,7 +28,6 @@ defmodule SequenceStack.Server do
   # impl
 
   def init(initial_elements) do
-    Process.flag(:trap_exit, true)
     {:ok, initial_elements}
   end
 
@@ -37,7 +36,6 @@ defmodule SequenceStack.Server do
   end
 
   def handle_call(:next, _from, [head | tail]) do
-    Process.flag(:trap_exit, true)
     {:reply, head, tail}
   end
 
