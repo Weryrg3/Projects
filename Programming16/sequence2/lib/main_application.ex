@@ -22,3 +22,4 @@ end
 # :permanent  Sempre irá reiniciar p.258
 # :temporary  Nunca irá reiniciar p.258
 # :transient  Irá reiniciar apenas se travar p.259
+
