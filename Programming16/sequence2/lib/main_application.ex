@@ -1,16 +1,15 @@
-defmodule Sequence2.Application do
-
+defmodule MainApplication do
   use Application
 
-  def start(_type, _args) do
+  def start(_type, args) do
+
     children = [
-      {Sequence2.Stash, 123},
-      {Sequence2.Server, nil},
-      {Stack.Stash, [122]},
-      {Stack.Server, [nil]}
+      # Sequence2.Stash.start_link(Application.get_env(:sequence2, :initial_number)),
+      {SequenceSupervisor, args},
+      {StackSupervisor, [1, 2, 4, 3, 5]}
     ]
 
-    opts = [strategy: :rest_for_one, name: Sequence2.Supervisor]
+    opts = [strategy: :rest_for_one, name: MainApplication.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end

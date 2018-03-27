@@ -12,7 +12,7 @@ defmodule Stack.Server do
 
   def show, do: GenServer.call(@name, :show)
   # impl
-  def init(_), do: {:ok, Sequence2.Stash.get()}
+  def init(_), do: {:ok, Stack.Stash.get()}
 
   def handle_call(:show, _from, list), do: {:reply, list, list}
 
@@ -23,6 +23,6 @@ defmodule Stack.Server do
   end
 
   def terminate(_reason, current_list) do
-    Sequence2.Stash.update(current_list)
+    Stack.Stash.update(current_list)
   end
 end
