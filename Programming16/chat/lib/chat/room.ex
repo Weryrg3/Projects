@@ -1,5 +1,5 @@
 defmodule Chat.Room do
-  alias Chat.{Server, Controler}
+  alias Chat.Server
 
   def iniciar_room(name_room) do
     name_atom = String.to_atom(name_room)

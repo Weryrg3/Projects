@@ -1,0 +1,10 @@
+{application,chat3,
+             [{applications,[kernel,stdlib,elixir,logger]},
+              {description,"chat3"},
+              {modules,['Elixir.Chat3','Elixir.Chat3.Application',
+                        'Elixir.Chat3.Manager','Elixir.Chat3.Server',
+                        'Elixir.Chat3.ServerImpl']},
+              {registered,[]},
+              {vsn,"0.1.0"},
+              {extra_applications,[logger]},
+              {mod,{'Elixir.Chat3.Application',[]}}]}.

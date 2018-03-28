@@ -1,9 +1,0 @@
-{application,chat2,
-             [{applications,[kernel,stdlib,elixir,logger]},
-              {description,"chat2"},
-              {modules,['Elixir.Chat2','Elixir.Chat2.Client',
-                        'Elixir.Chat2.Managenment','Elixir.Chat2.Message',
-                        'Elixir.Chat2.Rooms','Elixir.Chat2.Server']},
-              {registered,[]},
-              {vsn,"0.1.0"},
-              {extra_applications,[logger]}]}.

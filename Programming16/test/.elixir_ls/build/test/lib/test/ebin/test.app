@@ -1,0 +1,9 @@
+{application,test,
+             [{applications,[kernel,stdlib,elixir,logger]},
+              {description,"test"},
+              {modules,['Elixir.Test','Elixir.Test.Application',
+                        'Elixir.Test.TestGen']},
+              {registered,[]},
+              {vsn,"0.1.0"},
+              {extra_applications,[logger]},
+              {mod,{'Elixir.Test.Application',[]}}]}.

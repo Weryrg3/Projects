@@ -17,8 +17,8 @@ defmodule Chat.Message do
         IO.puts("#{user} saiu da sala.")
         IO.puts("#{people} pessoas online")
 
-      {:new_server, name_server} ->
-        
+      # {:new_server, name_server} ->
+
     end
 
     recebe_mensagens()
