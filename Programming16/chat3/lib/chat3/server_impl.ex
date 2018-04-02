@@ -1,11 +1,7 @@
 defmodule Chat3.ServerImpl do
-  @server {:global, Server}
-
-  def show do
-    GenServer.call(@server, :show)
-  end
-
-  def novo(user_name, pid_name) do
-    GenServer.cast(@server, {:new, user_name, pid_name})
+  def new_user(new_user, pid_user, map) do
+      map
+      |> Map.put(new_user, pid_user)
+      |> Map.put(pid_user, new_user)
   end
 end

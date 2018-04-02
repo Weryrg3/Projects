@@ -2,7 +2,7 @@ defmodule Sequence2.Server do
   use GenServer
   require Logger
 
-  @vsn "0"
+  @vsn "1"
 
   defmodule State do
     defstruct(current_number: 0, delta: 1)

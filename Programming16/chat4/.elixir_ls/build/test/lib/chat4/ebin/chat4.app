@@ -1,0 +1,11 @@
+{application,chat4,
+             [{applications,[kernel,stdlib,elixir,logger]},
+              {description,"chat4"},
+              {modules,['Elixir.Chat4','Elixir.Chat4.Application',
+                        'Elixir.Chat4.Client','Elixir.Chat4.Client.Printer',
+                        'Elixir.Chat4.Manager','Elixir.Chat4.Master',
+                        'Elixir.Chat4.MasterSupervisor']},
+              {registered,[]},
+              {vsn,"0.1.0"},
+              {extra_applications,[logger]},
+              {mod,{'Elixir.Chat4.Application',[]}}]}.
