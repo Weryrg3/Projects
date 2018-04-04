@@ -5,10 +5,8 @@ defmodule Chat4.Client.Printer do
     GenServer.start_link(__MODULE__, client)
   end
 
-  def init(client) do
-    client = Map.put(client, :pid_print, self())
-    # Chat4.Manager.start_link(client)
-    {:ok, client}
+  def init(state) do
+    {:ok, state}
   end
 
   def handle_info({:server_message, message}, state) do
@@ -16,14 +14,13 @@ defmodule Chat4.Client.Printer do
     {:noreply, state}
   end
 
-  def handle_info({:all, message, pid_sender}, state) do
-    IO.inspect(state)
-    IO.puts("[#{pid_sender}] >> #{message}")
+  def handle_info({:all, message, name_sender}, state) do
+    IO.puts("[#{name_sender}, Todos] - #{message}")
     {:noreply, state}
   end
 
-  def handle_info({:manager, message}, state) do # Gerenciador
-    send(state, message)
+  def handle_info({:private, message, name_sender}, state) do
+    IO.puts("[#{name_sender}, você] - #{message}")
     {:noreply, state}
   end
 end

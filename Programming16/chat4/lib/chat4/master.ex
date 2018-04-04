@@ -1,8 +1,9 @@
 defmodule Chat4.Master do
   use GenServer
-  require Logger
+  # require Logger
 
   def start_link(arg) do
+    
     GenServer.start_link(__MODULE__, arg, name: {:global, __MODULE__})
     |> case do
       {:ok, pid} ->
@@ -15,7 +16,8 @@ defmodule Chat4.Master do
   end
 
   def init(_arg) do
-    Logger.info("Iniciando Master")
+    # Logger.info("Iniciando Master")
+    IO.puts("Iniciando Servidor")
     {:ok, %{clients: []}}
   end
 
@@ -36,12 +38,35 @@ defmodule Chat4.Master do
     end
   end
 
-  def handle_info({:message_all, _message, user_name, pid_input, pid_print}, %{clients: []}) do
-    {:noreply, %{clients: [%{pid_input: pid_input, pid_print: pid_print, user_name: user_name}]}}
+  def handle_info({:reconnect, client}, state) do
+    new_state = %{clients: [client | state.clients]}
+    {:noreply, new_state}
   end
 
-  def handle_info({:message_all, message, name_sender, _pid_sender, _pid_mprint}, state) do
-    Enum.each(state.clients, fn client -> send(client.pid_print, {:all, message, name_sender}) end)
+  def handle_info({:message_all, _, _, _, _}, state = %{clients: []}) do
+    {:noreply, state}
+  end
+
+  def handle_info({:message_all, message, name_sender, _pid_sender, pid_print}, state) do
+    Enum.each(state.clients, fn client ->
+      if client.pid_print != pid_print do
+        send(client.pid_print, {:all, message, name_sender})
+      end
+    end)
+
+    {:noreply, state}
+  end
+
+  def handle_info({:private, message, name_sender, _pid_sender, pid_print, name_receive}, state) do
+    if Enum.any?(state.clients, fn map -> map.user_name == name_receive end) do
+      Enum.each(state.clients, fn map ->
+        if map.user_name == name_receive do
+          send(map.pid_print, {:private, message, name_sender})
+        end
+      end)
+    else
+      send(pid_print, {:server_message, "Usuário não encontrado"})
+    end
 
     {:noreply, state}
   end
