@@ -2,29 +2,29 @@ defmodule TaskAgent do
   alias TaskAgent.Agent.{List, Map}
   alias TaskAgent.Task.{ShowList, ShowMap}
   alias TaskAgent.Supervisor.{GenGenServer, GenSupervisor}
-
+  alias TaskAgent.Application, as: App
 
   def gen_new_number(num) do
     GenGenServer.new_number(num)
   end
 
-  def add_elem_list_begin(elem) do
+  def list_add_elem_begin(elem) do
     List.add_elem_begin(elem)
   end
 
-  def add_elem_list_final(elem) do
+  def list_add_elem_final(elem) do
     List.add_elem_final(elem)
   end
 
-  def add_elem_map(key, elem) do
+  def map_add_elem(key, elem) do
     Map.add_elem(key, elem)
   end
 
-  def size_list do
+  def list_size do
     List.size()
   end
 
-  def size_map do
+  def map_size do
     Map.size()
   end
 
@@ -32,11 +32,11 @@ defmodule TaskAgent do
     GenGenServer.show()
   end
 
-  def show_list do
+  def list_show do
     List.elements()
   end
 
-  def show_map do
+  def map_show do
     Map.elements()
   end
 
@@ -48,13 +48,23 @@ defmodule TaskAgent do
     GenSupervisor.kill()
   end
 
-  def kill_list do
+  def list_kill do
     ShowList.kill()
     List.kill()
   end
 
-  def kill_map do
+  def map_kill do
     ShowMap.kill()
     Map.kill()
+  end
+
+  def kill_all do
+    GenSupervisor.kill()
+    GenGenServer.kill()
+    ShowList.kill()
+    ShowMap.kill()
+    List.kill()
+    Map.kill()
+    App.kill()
   end
 end

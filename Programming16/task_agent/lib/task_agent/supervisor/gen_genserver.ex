@@ -18,7 +18,7 @@ defmodule TaskAgent.Supervisor.GenGenServer do
   end
 
   def kill do
-    Process.exit(self(), :kill)
+    GenServer.call(__MODULE__, :kill)
   end
 
   def handle_call({:new_number, number}, _from, state) do
@@ -27,5 +27,9 @@ defmodule TaskAgent.Supervisor.GenGenServer do
 
   def handle_call(:show, _from, state) do
     {:reply, state, state}
+  end
+
+  def handle_call(:kill, _from, _state) do
+    Process.exit(self(), :kill)
   end
 end

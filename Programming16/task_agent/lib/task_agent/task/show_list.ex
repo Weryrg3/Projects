@@ -1,6 +1,7 @@
 defmodule TaskAgent.Task.ShowList do
   use Task
   alias TaskAgent.Agent.List
+  alias TaskAgent.Task.ShowList
 
   def start_link(list) do
     Task.start_link(__MODULE__, :init_agent, [list])
@@ -11,7 +12,7 @@ defmodule TaskAgent.Task.ShowList do
   end
 
   def show(list) do
-    Enum.each(list, &IO.puts/1)
+    Enum.each(list, &IO.inspect/1)
     list
   end
 
@@ -21,6 +22,10 @@ defmodule TaskAgent.Task.ShowList do
   end
 
   def kill do
+    ShowList.kill_me()
+  end
+
+  def kill_me do
     Process.exit(self(), :kill)
   end
 end

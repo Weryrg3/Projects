@@ -1,5 +1,6 @@
 defmodule TaskAgent.Agent.List do
   alias TaskAgent.Task.ShowList
+  alias TaskAgent.Agent.List, as: ListAgent
 
   def start(param) do
     Agent.start_link(fn -> param end, name: __MODULE__)
@@ -13,7 +14,7 @@ defmodule TaskAgent.Agent.List do
 
   def add_elem_final(elem) do
     Agent.update(__MODULE__, fn list ->
-      [list | elem]
+      list ++ [elem]
     end)
   end
 
@@ -26,6 +27,10 @@ defmodule TaskAgent.Agent.List do
   end
 
   def kill do
-    Process.exit(self(), :kill)
+    ListAgent.kill_me()
+  end
+
+  def kill_me do
+    Process.exit(__MODULE__, :kill)
   end
 end

@@ -3,6 +3,7 @@ defmodule TaskAgent.Application do
 
   alias TaskAgent.Task.{ShowList, ShowMap}
   alias TaskAgent.Supervisor.GenSupervisor
+  alias TaskAgent.Application, as: App
 
   def start(_type, arg) do
     children = [
@@ -13,5 +14,13 @@ defmodule TaskAgent.Application do
 
     opts = [strategy: :one_for_one, name: TaskAgent.Supervisor]
     Supervisor.start_link(children, opts)
+  end
+
+  def kill do
+    App.kill_me()
+  end
+
+  def kill_me do
+    Process.exit(self(), :kill)
   end
 end

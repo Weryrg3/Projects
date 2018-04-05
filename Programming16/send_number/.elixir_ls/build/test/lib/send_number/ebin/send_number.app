@@ -1,0 +1,13 @@
+{application,send_number,
+             [{applications,[kernel,stdlib,elixir,logger]},
+              {description,"send_number"},
+              {modules,['Elixir.SendNumber','Elixir.SendNumber.Application',
+                        'Elixir.SendNumber.Clients.RandomName',
+                        'Elixir.SendNumber.Clients.ReceiveNumbers',
+                        'Elixir.SendNumber.Clients.SendNumbers',
+                        'Elixir.SendNumber.Server.MainServer',
+                        'Elixir.SendNumber.Server.ServerSupervisor']},
+              {registered,[]},
+              {vsn,"0.1.0"},
+              {extra_applications,[logger]},
+              {mod,{'Elixir.SendNumber.Application',[]}}]}.

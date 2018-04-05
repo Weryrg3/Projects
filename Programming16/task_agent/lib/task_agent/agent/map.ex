@@ -1,5 +1,6 @@
 defmodule TaskAgent.Agent.Map do
   alias TaskAgent.Task.ShowMap
+  # alias TaskAgent.Agent.Map, as: MapAgent
 
   def start_link(map) do
     Agent.start_link(fn -> map end, name: __MODULE__)
@@ -9,6 +10,7 @@ defmodule TaskAgent.Agent.Map do
     Agent.update(__MODULE__, fn map ->
       Map.put(map, key, elem)
     end)
+
     {key, elem}
   end
 
@@ -27,6 +29,6 @@ defmodule TaskAgent.Agent.Map do
   end
 
   def kill do
-    Process.exit(self(), :kill)
+    Process.exit(__MODULE__, :kill)
   end
 end
