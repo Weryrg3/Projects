@@ -7,6 +7,5 @@ defmodule Clients.ReceiveNumbersTest do
 
   test "test1" do
     send(@pid, {:name, "Wesley"})
-
   end
 end

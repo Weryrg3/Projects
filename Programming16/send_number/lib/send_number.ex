@@ -1,18 +1,8 @@
 defmodule SendNumber do
-  @moduledoc """
-  Documentation for SendNumber.
-  """
+  alias SendNumber.Clients.SendNumbers
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> SendNumber.hello
-      :world
-
-  """
-  def hello do
-    :world
+  def start(num \\ 3) do
+    SendNumbers.start_link(num)
   end
 end
+
