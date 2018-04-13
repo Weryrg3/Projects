@@ -2,11 +2,11 @@ defmodule Rumbl.ErrorView do
   use Rumbl.Web, :view
 
   def render("404.html", _assigns) do
-    "Page not found"
+    "Página não encontrada, continue procurando jovem padwin"
   end
 
   def render("500.html", _assigns) do
-    "Internal server error"
+    "Internal server error, Deu erro aqui OH!!"
   end
 
   # In case no render clause matches or no

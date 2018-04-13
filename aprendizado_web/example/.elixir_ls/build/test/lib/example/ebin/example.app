@@ -1,0 +1,12 @@
+{application,example,
+             [{applications,[kernel,stdlib,elixir,logger,cowboy,plug]},
+              {description,"example"},
+              {modules,['Elixir.Example','Elixir.Example.HelloWorldPlug',
+                        'Elixir.Example.Plug.VerifyRequest',
+                        'Elixir.Example.Plug.VerifyRequest.IncompleteRequestError',
+                        'Elixir.Example.Router']},
+              {registered,[]},
+              {vsn,"0.1.0"},
+              {extra_applications,[logger]},
+              {mod,{'Elixir.Example',[]}},
+              {env,[{cowboy_port,8080}]}]}.
