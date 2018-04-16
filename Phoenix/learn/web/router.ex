@@ -17,6 +17,9 @@ defmodule Learn.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
+    get "/test1", Teste1Controller, :show
+    get "/test2", Teste2Controller, :teste2
+    get "/test2/:test0", Teste3Controller, :teste3
   end
 
   # Other scopes may use custom stacks.

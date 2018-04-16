@@ -1,0 +1,2 @@
+<h1>Its Working</h1>
+<h3><%= "teste" %></h3>

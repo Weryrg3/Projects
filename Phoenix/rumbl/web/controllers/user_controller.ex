@@ -11,3 +11,4 @@ defmodule Rumbl.UserController do
     render conn, "show.html", user: user
   end
 end
+

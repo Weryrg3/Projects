@@ -1,0 +1,3 @@
+<h1><%= "Olá mundo"%></h1>
+<h1><%= inspect @teste3%></h1>
+<h2>Testando</h2>
