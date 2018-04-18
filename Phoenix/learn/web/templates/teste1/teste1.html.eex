@@ -1,3 +1,2 @@
 <h1>Teste 1 feito com <b>Sucesso!!!</b></h1>
 <h1><%= inspect self() %> </h1>
-

@@ -1,5 +1,6 @@
 <div class="jumbotron">
   <h1>Bem vindo <b><%= gettext "%{name}", name: "Wesley!" %></b></h1>
   <p class="lead">Esse WebSite é apenas para testes e aprendizado!!!</p>
-  <a href="https://www.w3schools.com">w3schools</a>
+  <button> <a href="https://www.w3schools.com">w3schools</a> </button>
+
 </div>

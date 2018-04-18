@@ -19,7 +19,7 @@
             <li><a href="http://www.phoenixframework.org/docs">Docs Phoenix</a></li>
           </ul>
         </nav>
-        <span class="logo"></span>
+        <a href= "http://localhost:4000/"><span class="logo"></span> </a>
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>

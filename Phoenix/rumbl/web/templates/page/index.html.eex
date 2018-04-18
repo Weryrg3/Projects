@@ -33,4 +33,18 @@
       </li>
     </ul>
   </div>
+
+  <div class="col-lg-6">
+      <h4>Pages Rumbl</h4>
+      <ul>
+        <li>
+          <a href="http://localhost:4000/users">List of users</a>
+        </li>
+        
+        <li>
+          <a href="http://localhost:4000/users/new">New user</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
