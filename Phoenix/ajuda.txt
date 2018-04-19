@@ -1,0 +1,3 @@
+render -> 
+	Renderiza site... Mas render é de qual função e o que ele 		realmente faz
+
