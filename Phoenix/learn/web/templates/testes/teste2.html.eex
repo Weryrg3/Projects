@@ -1,0 +1,5 @@
+<h4> <%= link "Inicio", to: page_path(@conn, :index)%> </h4>
+<h1>Its Working</h1>
+<h3><%= "teste" %></h3>
+<h4> <%= link "Teste1", to: testes_path(@conn, :teste1)%> </h4>
+

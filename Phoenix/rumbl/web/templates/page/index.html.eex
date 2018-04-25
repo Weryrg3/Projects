@@ -1,5 +1,5 @@
 <div class="jumbotron">
-  <h2>Welcome to Rumbl.io!</h2>
+  <h2>Bem vindo ao Rumbl.io!</h2>
   <p class="lead">Rumble out loud.</p>
 </div>
 
@@ -8,13 +8,13 @@
     <h4>Resources</h4>
     <ul>
       <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
+        <a href="http://phoenixframework.org/docs/overview" target="_blank">Guides</a>
       </li>
       <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
+        <a href="https://hexdocs.pm/phoenix" target="_blank">Docs</a>
       </li>
       <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
+        <a href="https://github.com/phoenixframework/phoenix" target="_blank">Source</a>
       </li>
     </ul>
   </div>
@@ -23,13 +23,13 @@
     <h4>Help</h4>
     <ul>
       <li>
-        <a href="http://groups.google.com/group/phoenix-talk">Mailing list</a>
+        <a href="http://groups.google.com/group/phoenix-talk" target="_blank">Mailing list</a>
       </li>
       <li>
-        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
+        <a href="http://webchat.freenode.net/?channels=elixir-lang" target="_blank">#elixir-lang on freenode IRC</a>
       </li>
       <li>
-        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
+        <a href="https://twitter.com/elixirphoenix" target="_blank" >@elixirphoenix</a>
       </li>
     </ul>
   </div>
@@ -38,13 +38,18 @@
       <h4>Pages Rumbl</h4>
       <ul>
         <li>
-          <a href="http://localhost:4000/users">List of users</a>
+          <%= link "Login", to: session_path(@conn, :new)%>
+        </li>
+
+        <li>
+          <%= link "List of users", to: user_path(@conn, :index) %>
         </li>
         
         <li>
-          <a href="http://localhost:4000/users/new">New user</a>
+          <%= link "New user", to: user_path(@conn, :new) %>
         </li>
       </ul>
     </div>
   </div>
 </div>
+

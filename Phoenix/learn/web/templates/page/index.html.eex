@@ -1,17 +1,29 @@
 <div class="jumbotron">
   <h1>Bem vindo <b><%= gettext "%{name}", name: "Wesley!" %></b></h1>
   <p class="lead">Esse WebSite é apenas para testes e aprendizado!!!</p>
-  <button> <a href="https://www.w3schools.com">w3schools</a> </button>
+  <button> <a href="https://www.w3schools.com" target="_blank">w3schools</a> </button>
+  <a href="http://phoenixframework.org/" target="_blank"> 
+  <img src= " <%= static_path(@conn, "/images/phoenix2.png") %>" width="152" height="99" alt="Teste1"> </a>
 </div>
 
 <h3> 
-  <p>
-    Links da página
-    <li> <a href="http://localhost:4000/test1"> Teste1</a> </li>
-    <li> <a href="http://localhost:4000/test2"> Teste2</a> </li>
-    <li> <a href="http://localhost:4000/test1/1+2"> Calculadora</a> </li>
-    <li> <a href="http://localhost:4000/test2/name"> Plug.Conn</a> </li>
-  </p>
+  Links da página
+  <ul>
+    <li> <%= link "Calculadora", to: calculadora_path(@conn, :index, "1+2")%> </li>
+    <li> <%= link "Plug & Conn", to: plug_conn_path(@conn, :index, "conn")%> </li>
+    <li> <%= link "Form", to: form_path(@conn, :index)%> </li>
+    <ul>
+      <h4><li> <%= link "New Thing", to: form_path(@conn, :new)%> </li><h4>
+      <h4><li> <%= link "Testes", to: form_path(@conn, :teste1)%> </li><h4>
+    </ul>
+    <li> <%= link "Testes", to: testes_path(@conn, :index)%> </li>
+      <ul>
+        <h4> <li> <%= link "Teste 1", to: testes_path(@conn, :teste1)%> </li>
+        <li> <%= link "Teste 2", to: testes_path(@conn, :teste2)%> </li>
+        <li> <%= link "Teste CSS", to: testes_path(@conn, :teste_css)%> </li> </h4>
+      </ul>
+  </ul>
 </h3>
 
-
+<a href= "https://wall.alphacoders.com/by_sub_category.php?id=168636&name=Floresta+Pap%C3%A9is+de+Parede&lang=Portuguese" target="_blank">
+<img src= " <%= static_path(@conn, "/images/road.jpg") %>" width="500" height="300" alt="Teste1"></a>

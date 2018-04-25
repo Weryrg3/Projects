@@ -6,7 +6,7 @@
             <p>Oops, something went wrong! Please check the errors bellow.</p>
         </div>
     <% end %>
-    <div class="forma-group">
+    <div class="form-group">
         <%= text_input f, :name, placeholder: "Name", class: "form-control" %>
         <%= error_tag f, :name%>
     </div>
@@ -20,5 +20,9 @@
         <%= password_input f, :password, placeholder: "Password", class: "form-control"%>
         <%= error_tag f, :password%>
     </div>
+    
     <%= submit "Create User", class: "btn btn-primary"%>
 <% end %>
+
+<%# for i in range(0, int(input())):
+...     print(round(len(input())/100,2)) %>

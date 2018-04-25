@@ -1,0 +1,23 @@
+<h4> <%= link "Inicio", to: page_path(@conn, :index)%> </h4>
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            #teste1 {
+                color: red;
+                text-align: center;
+            } 
+            #teste2 {
+                color: green;
+                text-align: center;
+            } 
+        </style>
+    </head>
+    
+    <body>
+        <p id="teste1"> Teste1 </p>
+        <p id="teste2"> Teste2 </p>
+        <p>These paragraphs are styled with CSS.</p>
+    </body>
+
+</html>

@@ -1,0 +1,2 @@
+<h4> <%= link "Inicio", to: page_path(@conn, :index)%> </h4>
+<h1>Não há nada por aqui, por enquanto! </h1>

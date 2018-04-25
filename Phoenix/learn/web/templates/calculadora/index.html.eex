@@ -1,0 +1,5 @@
+<h4> <%= link "Inicio", to: page_path(@conn, :index)%> </h4>
+<h4>Para entrar com dados digite na barra de endereço</h4>
+<h4>Exemplo: ".../calculadora/1+2"</h4>
+<h3>Entrada: <%= @operation %> </h3>
+<h3>Operação: <%= handle(@operation) %> </h3>

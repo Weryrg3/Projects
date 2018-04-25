@@ -1,4 +1,0 @@
-<h4> <a href="http://localhost:4000/"> Inicio</a></h4>
-<h1><%= "Olá mundo"%></h1>
-<h1><%= inspect @teste3%></h1>
-<h2>Testando</h2>

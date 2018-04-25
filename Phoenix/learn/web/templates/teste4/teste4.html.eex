@@ -1,5 +1,0 @@
-<h4> <a href="http://localhost:4000/"> Inicio</a></h4>
-<h4>Para entrar com dados digite na barra de endereço</h4>
-<h4>Exemplo: ".../test1/1+2"</h4>
-<h3>Entrada: <%= @name %> </h3>
-<h3>Operação: <%= handle(@name) %> </h3>

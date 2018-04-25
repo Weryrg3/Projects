@@ -17,11 +17,20 @@ defmodule Learn.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "/test1", Teste1Controller, :show
-    get "/test2", Teste2Controller, :teste2
-    get "/test2/:test0", Teste3Controller, :teste3
-    get "/test1/:name", Teste4Controller, :teste4
+    get "/plug/:p", PlugConnController, :index
+    get "/calculadora/:op", CalculadoraController, :index
+    get "/form/teste1", FormController, :teste1
+    get "/testes", TestesController, :index
+    resources "/form", FormController, only: [:index, :new, :create]
+
+    scope "/testes" do
+      get "/teste1", TestesController, :teste1
+      get "/teste2", TestesController, :teste2
+      get "/teste_css", TestesController, :teste_css
+    end
   end
+
+
 
   # Other scopes may use custom stacks.
   # scope "/api", Learn do

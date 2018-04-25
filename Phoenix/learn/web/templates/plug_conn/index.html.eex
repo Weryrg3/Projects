@@ -1,0 +1,5 @@
+<h4> <%= link "Inicio", to: page_path(@conn, :index)%> </h4>
+<h1><%= "Olá mundo"%></h1>
+<h1>Params = <%= inspect @param%></h1>
+<h2> Conn</h2>
+<p><%= inspect @conn%></p>

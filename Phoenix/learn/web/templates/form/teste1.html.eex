@@ -1,0 +1,20 @@
+<h4> <%= link "Inicio", to: page_path(@conn, :index)%> </h4>
+<h1>Testes</h1>
+<%= form_for @changeset, form_path(@conn, :teste1), fn f -> %>
+    <%= text_input f, :text, placeholder: "Texto", class: "form-control" %>
+    <%= checkbox f, :text, placeholder: "text", class: "form-control" %>
+    <%= color_input f, :text, placeholder: "text", class: "form-control" %>
+    <%= date_select f, :text, placeholder: "text", class: "form-control" %>
+    <%= datetime_select f, :text, placeholder: "text", class: "form-control" %>
+    <%= email_input f, :text, placeholder: "email", class: "form-control" %>
+    <%= hidden_input f, :text, placeholder: "hidden", class: "form-control" %>
+    <%= number_input f, :text, placeholder: "number", class: "form-control" %>
+    <%= password_input f, :text, placeholder: "password", class: "form-control" %>
+    <%= range_input f, :text, placeholder: "text", class: "form-control" %>
+    <%= search_input f, :text, placeholder: "pesquisa", class: "form-control" %>
+    <%= telephone_input f, :text, placeholder: "telefone", class: "form-control" %>
+    <%= textarea f, :text, placeholder: "text", class: "form-control" %>
+    <%= time_select f, :text, placeholder: "text", class: "form-control" %>
+    <%= url_input f, :text, placeholder: "URL", class: "form-control" %>
+<% end %>
+

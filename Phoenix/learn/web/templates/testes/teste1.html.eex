@@ -1,0 +1,63 @@
+<h4> <%= link "Inicio", to: page_path(@conn, :index)%> </h4>
+<h1 style="font-size:180px;">Bigger</h1>
+<h1>Teste 1 feito com <b>Sucesso!!!</b></h1>
+<h2><%= inspect self() %> </h2>
+<h3 style="color:green">I am a text green</h3>
+<h3 style="color:red">I am a text red</h3>
+<hr>
+<p title="Yes is yes">
+<b><u>This is a paragraph.</u></b> Lorem ipsum dolor sit amet,
+consectetur adipiscing elit. Etiam molestie, nib
+ac pulvinar fermentum, augue nisi gravida leo, ut
+consectetur velit nulla eu felis. Praesent consequat
+luctus eros sit amet iaculis. Fusce tempor consectetur
+pharetra. Integer mauris elit, venenatis sed justo sed,
+</p>
+
+<svg width="135" height="124">
+  <circle cx="70" cy="62" r="60" stroke="black" stroke-width="3" fill="green" />
+</svg>
+<svg width="250" height="60">
+  <rect width="250" height="60" style="fill:rgb(0,0,255);stroke-width:7;stroke:rgb(0,0,0)" />
+</svg>
+<svg width="106" height="172">
+  <rect x="5" y="70" rx="40" ry="40" width="100" height="100" style="fill:red;stroke:black;stroke-width:3;opacity:0.5" />
+</svg>
+<svg width="190" height="200">
+  <polygon points="100,10 40,198 190,78 10,78 160,198"
+  style="fill:lime;stroke:purple;stroke-width:3;fill-rule:evenodd;" />
+</svg>
+
+<svg height="130" width="500">
+<defs>
+<linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+  <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+  <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+</linearGradient>
+</defs>
+
+<ellipse cx="100" cy="70" rx="85" ry="55" fill="url(#grad1)" />
+
+<text fill="#ffffff" font-size="45" font-family="Verdana" x="50" y="86">SVG</text>
+</svg>
+
+<textarea rows="4" cols="50">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis metus sed purus iaculis pulvinar. Vestibulum et dapibus risus. Aliquam ac lacus nibh. Aenean sit amet sapien vitae augue facilisis malesuada ac vitae mi. Maecenas et pretium dui. Nulla quis facilisis urna, vitae imperdiet magna. Sed a euismod lectus. Donec ac orci quam. Donec condimentum vestibulum neque. Mauris tristique nisi metus, non dictum leo tempor nec. Praesent bibendum sapien velit, eget maximus augue tincidunt id. Maecenas consectetur ex id consectetur ultrices.
+</textarea>
+
+<h2>Number Field</h2>
+<p>The <strong>input type="number"</strong> defines a numeric input field.</p>
+<p>You can use the min and max attributes to add numeric restrictions in the input field:</p>
+
+<form action="/action_page.php">
+  Quantity (between 1 and 5):
+  <input type="number" name="quantity" min="1" max="5">
+  <input type="submit">
+  
+</form>
+
+<p><b>Note:</b> type="number" is not supported in IE9 and earlier.</p>
+
+<h1> <%= "<hello>" %> </h1>
+<h1> &lt;hello&gt; </h1>
+<h1> <%= text_input :user, :name, value: "This is a prepopulated value" %> <h1>

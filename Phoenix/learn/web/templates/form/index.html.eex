@@ -1,0 +1,11 @@
+<h4> <%= link "Inicio", to: page_path(@conn, :index)%> </h4>
+
+<h3>
+    <ul>
+      <li> <%= link "New Thing", to: form_path(@conn, :new)%> </li>
+    </ul>
+</h3>
+<h4>Qtd: <%= len_list(Learn.Repo.all(Learn.Thing)) %><h4>
+<h4> <%= Enum.map(Learn.Repo.all(Learn.Thing), fn struct -> %> </h4>
+<h4> <%="#{struct.name} #{struct.name2} -> id(#{struct.id})"%> <h4>
+<h4> <% end)%> <h4>
