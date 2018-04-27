@@ -20,7 +20,7 @@ defmodule Learn.Router do
     get "/plug/:p", PlugConnController, :index
     get "/calculadora/:op", CalculadoraController, :index
     get "/form/teste1", FormController, :teste1
-    get "/testes", TestesController, :index
+    resources "/testes", TestesController, only: [:index, :create]
     resources "/form", FormController, only: [:index, :new, :create]
 
     scope "/testes" do

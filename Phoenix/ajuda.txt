@@ -9,39 +9,37 @@ form phoenix html
 changeset
 
 Phoenix
- Cap 1 -> History
+Cap 1 -> History
+Cap 2 - pg 15
+	Plug p. 31
+Cap 3 - pg 37
 
- Cap 2 - pg 15
-   Plug p. 31
-
- Cap 3 - pg 37
-
- Cap 4 - pg 53
-   Schema p. 55
+Cap 4 - pg 53
+	Schema p. 55
 	timestamps()
-   changeset p. 60
-	cast, validadte_length p. 60
-   form_fo p. 63
 
- Cap 5 - pg 69
-   
- Cap 6 -
-   
- Cap 7 -
-   
- Cap 8 -
-   
- Cap 9 -
-   
- Cap 10 -
-   
- Cap 11 -
-   
- Cap 12 -
-   
- Cap 13 -
-   
- Cap 14 -
+	form_fo p. 63
 
+Cap 5 - pg 69
+	Plug - p. 75
+   
+Cap 6 -
+	
+Cap 7 -
+	
+Cap 8 -
+	
+Cap 9 -
+	
+Cap 10 -
+	
+Cap 11 -
+	
+Cap 12 -
+	
+Cap 13 -
+	
+Cap 14 -
+	
 
    

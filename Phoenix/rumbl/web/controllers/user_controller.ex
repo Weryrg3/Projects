@@ -15,7 +15,7 @@ defmodule Rumbl.UserController do
   end
 
   def new(conn, _params) do
-    changeset = User.changeset(%User{})
+    changeset = User.changeset(%User{}) 
     render(conn, "new.html", changeset: changeset)
   end
 
