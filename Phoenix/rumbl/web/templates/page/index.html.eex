@@ -48,6 +48,14 @@
         <li>
           <%= link "New user", to: user_path(@conn, :new) %>
         </li>
+
+        <li>
+          <%= link "new videos", to: video_path(@conn, :new) %>
+        </li>
+
+        <li>
+          <%= link "Videos", to: video_path(@conn, :index) %>
+        </li>
       </ul>
     </div>
   </div>
