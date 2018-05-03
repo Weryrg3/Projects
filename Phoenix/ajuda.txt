@@ -16,6 +16,7 @@ Cap 3 - pg 37
 	M.V.C -> Complete
 Cap 4 - pg 53
 	Schema p. 55
+	cast p. 60
 	timestamps()
 
 	form_fo p. 63
@@ -42,8 +43,5 @@ Cap 13 -
 	
 Cap 14 -
 
-8 - 12 
-20 - 22
-	
 
    
