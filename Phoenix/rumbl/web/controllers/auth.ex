@@ -47,7 +47,7 @@ defmodule Rumbl.Auth do
       conn
     else
       conn
-      |> put_flash(:error, "Você deve estar logado para acessar essa página")
+      |> put_flash(:error, "Você precisa estar logado para acessar essa página")
       |> redirect(to: Helpers.page_path(conn, :index))
       |> halt()
     end

@@ -17,7 +17,7 @@ defmodule Learn.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", PageController, :index
-    get "/plug/:p", PlugConnController, :index
+    get "/plug/:p", PlugConnAssignsController, :index
     get "/calculadora/:op", CalculadoraController, :index
     get "/form/teste1", FormController, :teste1
     resources "/testes", TestesController, only: [:index, :create]

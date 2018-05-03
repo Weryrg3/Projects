@@ -13,7 +13,7 @@ Cap 1 -> History
 Cap 2 - pg 15
 	Plug p. 31
 Cap 3 - pg 37
-
+	M.V.C -> Complete
 Cap 4 - pg 53
 	Schema p. 55
 	timestamps()
@@ -41,6 +41,9 @@ Cap 12 -
 Cap 13 -
 	
 Cap 14 -
+
+8 - 12 
+20 - 22
 	
 
    

@@ -10,7 +10,7 @@
   Links da página
   <ul>
     <li> <%= link "Calculadora", to: calculadora_path(@conn, :index, "1+2")%> </li>
-    <li> <%= link "Plug & Conn", to: plug_conn_path(@conn, :index, "conn")%> </li>
+    <li> <%= link "Plug, Conn && Assigns", to: plug_conn_assigns_path(@conn, :index, "conn")%> </li>
     <li> <%= link "Form", to: form_path(@conn, :index)%> </li>
     <ul>
       <h4><li> <%= link "New Thing", to: form_path(@conn, :new)%> </li><h4>
