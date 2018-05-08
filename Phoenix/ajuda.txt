@@ -15,18 +15,13 @@ Cap 2 - pg 15
 Cap 3 - pg 37
 	M.V.C -> Complete
 Cap 4 - pg 53
-	Schema p. 55
-	cast p. 60
-	timestamps()
-
-	form_fo p. 63
 
 Cap 5 - pg 69
-	cast - p. 70
 	Plug - p. 75
 	revisar aqui depois
 Cap 6 - pg 91
-	
+	Relacionamentos p. 99
+	revisar aqui depois
 Cap 7 -
 	
 Cap 8 -
