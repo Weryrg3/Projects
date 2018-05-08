@@ -42,19 +42,19 @@
         </li>
 
         <li>
-          <%= link "List of users", to: user_path(@conn, :index) %>
-        </li>
-        
-        <li>
           <%= link "New user", to: user_path(@conn, :new) %>
         </li>
 
         <li>
-          <%= link "new videos", to: video_path(@conn, :new) %>
+          <%= link "List of users", to: user_path(@conn, :index) %>
+        </li>
+        
+        <li>
+          <%= link "New videos", to: video_path(@conn, :new) %>
         </li>
 
         <li>
-          <%= link "Videos", to: video_path(@conn, :index) %>
+          <%= link "List of videos", to: video_path(@conn, :index) %>
         </li>
       </ul>
     </div>
