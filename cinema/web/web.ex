@@ -36,6 +36,7 @@ defmodule Cinema.Web do
 
       import Cinema.Router.Helpers
       import Cinema.Gettext
+      import Cinema.Auth, only: [autenticar_user: 2]
     end
   end
 
@@ -58,6 +59,8 @@ defmodule Cinema.Web do
   def router do
     quote do
       use Phoenix.Router
+
+      import Cinema.Auth, only: [autenticar_user: 2]
     end
   end
 

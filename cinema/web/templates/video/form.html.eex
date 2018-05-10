@@ -1,0 +1,77 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= label f, :titulo, class: "control-label" %>
+    <%= text_input f, :titulo, class: "form-control" %>
+    <%= error_tag f, :titulo %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :classificacao, class: "control-label" %>
+    <%= textarea f, :classificacao, class: "form-control" %>
+    <%= error_tag f, :classificacao %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :ano, class: "control-label" %>
+    <%= text_input f, :ano, class: "form-control" %>
+    <%= error_tag f, :ano %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :sinopse, class: "control-label" %>
+    <%= textarea f, :sinopse, class: "form-control" %>
+    <%= error_tag f, :sinopse %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :elenco, class: "control-label" %>
+    <%= text_input f, :elenco, class: "form-control" %>
+    <%= error_tag f, :elenco %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :genero, class: "control-label" %>
+    <%= text_input f, :genero, class: "form-control" %>
+    <%= error_tag f, :genero %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :subgenero, class: "control-label" %>
+    <%= text_input f, :subgenero, class: "form-control" %>
+    <%= error_tag f, :subgenero %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :diretor, class: "control-label" %>
+    <%= text_input f, :diretor, class: "form-control" %>
+    <%= error_tag f, :diretor %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :formato, class: "control-label" %>
+    <%= text_input f, :formato, class: "form-control" %>
+    <%= error_tag f, :formato %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :duracao, class: "control-label" %>
+    <%= text_input f, :duracao, class: "form-control" %>
+    <%= error_tag f, :duracao %>
+  </div>
+
+  <div class="form-group">
+    <%= label f, :trailer, class: "control-label" %>
+    <%= text_input f, :trailer, class: "form-control" %>
+    <%= error_tag f, :trailer %>
+  </div>
+
+  <div class="form-group">
+    <%= submit "Submit", class: "btn btn-primary" %>
+  </div>
+<% end %>

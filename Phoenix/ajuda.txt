@@ -8,6 +8,9 @@ changeset
 mix ecto.drop
 mix ecto.create
 
+MIX_ENV=test mix ecto.drop
+MIX_ENV=test mix ecto.create
+
 Phoenix
 Cap 1 -> History
 Cap 2 - pg 15

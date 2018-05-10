@@ -14,6 +14,7 @@ defmodule Cinema.User do
     field(:senha, :string, virtual: true)
     field(:senha_confirm, :string, virtual: true)
     field(:senha_hash, :string)
+    field(:permission, :boolean, default: false)
     timestamps()
   end
 
@@ -42,6 +43,7 @@ defmodule Cinema.User do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{senha: pass}} ->
         put_change(changeset, :senha_hash, Comeonin.Bcrypt.hashpwsalt(pass))
+
       _ ->
         changeset
     end

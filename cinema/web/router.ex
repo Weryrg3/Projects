@@ -20,6 +20,13 @@ defmodule Cinema.Router do
     get "/", PageController, :index
     resources "/user", UserController
     resources "/sessions", SessionController
+    resources "/video", VideoController
+  end
+
+  scope "/manage", Cinema do
+    pipe_through [:browser, :autenticar_user]
+
+    resources "/videos", VideoController
   end
 
   # Other scopes may use custom stacks.

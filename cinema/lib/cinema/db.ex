@@ -3,7 +3,7 @@ defmodule Cinema.DB do
   alias Cinema.Repo
 
   def insert_in_db(user_params) do
-    changeset = User.registrar_changeset(%User{}, user_params)
-    Repo.insert(changeset)
+    User.registrar_changeset(%User{}, user_params)
+    |> Repo.insert()
   end
 end

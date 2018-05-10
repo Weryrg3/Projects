@@ -1,0 +1,68 @@
+<h2>Show video</h2>
+
+<ul>
+
+  <li>
+    <strong>User:</strong>
+    <%= @video.user_id %>
+  </li>
+
+  <li>
+    <strong>Titulo:</strong>
+    <%= @video.titulo %>
+  </li>
+
+  <li>
+    <strong>Classificacao:</strong>
+    <%= @video.classificacao %>
+  </li>
+
+  <li>
+    <strong>Ano:</strong>
+    <%= @video.ano %>
+  </li>
+
+  <li>
+    <strong>Sinopse:</strong>
+    <%= @video.sinopse %>
+  </li>
+
+  <li>
+    <strong>Elenco:</strong>
+    <%= @video.elenco %>
+  </li>
+
+  <li>
+    <strong>Genero:</strong>
+    <%= @video.genero %>
+  </li>
+
+  <li>
+    <strong>Subgenero:</strong>
+    <%= @video.subgenero %>
+  </li>
+
+  <li>
+    <strong>Diretor:</strong>
+    <%= @video.diretor %>
+  </li>
+
+  <li>
+    <strong>Formato:</strong>
+    <%= @video.formato %>
+  </li>
+
+  <li>
+    <strong>Duracao:</strong>
+    <%= @video.duracao %>
+  </li>
+
+  <li>
+    <strong>Trailer:</strong>
+    <%= @video.trailer %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: video_path(@conn, :edit, @video) %>
+<%= link "Back", to: video_path(@conn, :index) %>

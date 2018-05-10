@@ -11,6 +11,7 @@ defmodule Cinema.Repo.Migrations.CreateUser do
       add(:endereco, :string)
       add(:telefone, :string)
       add(:senha_hash, :string)
+      add(:permission, :boolean)
       timestamps()
     end
 
@@ -19,3 +20,4 @@ defmodule Cinema.Repo.Migrations.CreateUser do
     create(unique_index(:users, [:username]))
   end
 end
+

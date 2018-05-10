@@ -1,6 +1,8 @@
 defmodule Cinema.Auth do
   import Plug.Conn
   import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
+  import Phoenix.Controller
+  alias Cinema.Router.Helpers
 
   def init(opts) do
     Keyword.fetch!(opts, :repo)
@@ -25,7 +27,7 @@ defmodule Cinema.Auth do
 
     cond do
       user && checkpw(senha, user.senha_hash) ->
-        {:ok, login(conn, user)}
+        {:ok, login(conn, user), user.permission}
 
       user ->
         {:error, :unauthorized, conn}
@@ -38,5 +40,25 @@ defmodule Cinema.Auth do
 
   def logout(conn) do
     configure_session(conn, drop: true)
+  end
+
+  def autenticar_user(conn, _opts) do
+    if conn.assigns.current_user do
+      conn
+    else
+      conn
+      |> put_flash(:error, "Você precisa estar logado para acessar essa página")
+      |> redirect(to: Helpers.page_path(conn, :index))
+    end
+  end
+
+  def autenticar_manager(conn, _opts) do
+    if conn.assigns.current_user do
+      conn
+    else
+      conn
+      |> put_flash(:error, "Você não tem permissão para isso")
+      |> redirect(to: Helpers.page_path(conn, :index))
+    end
   end
 end

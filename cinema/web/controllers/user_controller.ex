@@ -3,7 +3,7 @@ defmodule Cinema.UserController do
   alias Cinema.User
   alias Cinema.DB
 
-  plug(:autenticar when action in [:index])
+  plug(:autenticar_user when action in [:index])
 
   def index(conn, _params) do
     users = Repo.all(User)
@@ -31,17 +31,6 @@ defmodule Cinema.UserController do
         {:error, changeset} ->
           render(conn, "new.html", changeset: changeset)
       end
-    end
-  end
-
-  defp autenticar(conn, _opts) do
-    if conn.assigns.current_user do
-      conn
-    else
-      conn
-      |> put_flash(:error, "Você precisa estar logado para acessar essa página")
-      |> redirect(to: page_path(conn, :index))
-      |> halt()
     end
   end
 end

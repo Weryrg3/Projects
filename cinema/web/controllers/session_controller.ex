@@ -7,9 +7,14 @@ defmodule Cinema.SessionController do
 
   def create(conn, %{"session" => %{"username" => user, "senha" => senha}}) do
     case Cinema.Auth.login_por_username(conn, user, senha, repo: Repo) do
-      {:ok, conn} ->
+      {:ok, conn, false} ->
         conn
         |> put_flash(:info, "Bem vindo de volta!")
+        |> redirect(to: page_path(conn, :index))
+
+      {:ok, conn, true} ->
+        conn
+        |> put_flash(:info, "Bem vindo de volta Gerente!")
         |> redirect(to: page_path(conn, :index))
 
       {:error, :unauthorized, conn} ->
