@@ -1,0 +1,48 @@
+
+<h1>Criar uma nova conta</h1>
+
+<%= if @changeset.action do %>
+  <div class="alert alert-danger">
+    <p>Algo deu errado, verifique os erros!!!<p>
+  </div>
+<% end %>
+
+<%= form_for @changeset, user_path(@conn, :create), fn f -> %>
+  <div class="form-group">
+    <%= text_input f, :username, placeholder: "Username", class: "form-control" %>
+    <%= error_tag f, :username%>
+  </div>
+  <div class="form-group">
+    <%= text_input f, :nome, placeholder: "Nome", class: "form-control" %>
+    <%= error_tag f, :nome%>
+  </div>
+  <div class="form-group">
+    <%= password_input f, :senha, placeholder: "Senha", class: "form-control" %>
+    <%= error_tag f, :senha%>
+  </div>
+  <div class="form-group">
+    <%= password_input f, :senha_confirm, placeholder: "Repita a senha", class: "form-control" %>
+    <%= error_tag f, :senha_confirm%>
+  </div>
+  <div class="form-group">
+    <%= text_input f, :cpf, placeholder: "CPF", class: "form-control" %>
+    <%= error_tag f, :cpf%>
+  </div>
+  <div class="form-group">
+    <%= text_input f, :rg, placeholder: "RG", class: "form-control" %>
+    <%= error_tag f, :rg%>
+  </div>
+  <div class="form-group">
+    <%= text_input f, :cartao, placeholder: "Número Cartão", class: "form-control" %>
+    <%= error_tag f, :cartao%>
+  </div>
+  <div class="form-group">
+    <%= text_input f, :endereco, placeholder: "Endereço", class: "form-control" %>
+    <%= error_tag f, :endereco%>
+  </div>
+  <div class="form-group">
+    <%= text_input f, :telefone, placeholder: "Telefone", class: "form-control" %>
+    <%= error_tag f, :telefone%>
+  </div>
+  <%= submit "Criar Conta", class: "btn btn-primary" %>
+<% end %>

@@ -1,12 +1,12 @@
 Plug -> Atom -> o que são? funções? argumentos?
 
-render -> 
-	Renderiza site... Mas render é de qual função e o que ele 		realmente faz
-
 user_path()
 static_path()
 form phoenix html
 changeset
+
+mix ecto.drop
+mix ecto.create
 
 Phoenix
 Cap 1 -> History
@@ -23,7 +23,7 @@ Cap 6 - pg 91
 	Relacionamentos p. 99
 	revisar aqui depois
 Cap 7 -
-	
+	120
 Cap 8 -
 	
 Cap 9 -
@@ -39,4 +39,4 @@ Cap 13 -
 Cap 14 -
 
 
-   
+  

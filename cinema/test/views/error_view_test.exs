@@ -6,16 +6,16 @@ defmodule Cinema.ErrorViewTest do
 
   test "renders 404.html" do
     assert render_to_string(Cinema.ErrorView, "404.html", []) ==
-           "Page not found"
+           "Página não encontrada, continue procurando jovem padwin"
   end
 
   test "render 500.html" do
     assert render_to_string(Cinema.ErrorView, "500.html", []) ==
-           "Internal server error"
+           "Internal server error, Deu erro aqui OH!!"
   end
 
   test "render any other" do
     assert render_to_string(Cinema.ErrorView, "505.html", []) ==
-           "Internal server error"
+           "Internal server error, Deu erro aqui OH!!"
   end
 end
