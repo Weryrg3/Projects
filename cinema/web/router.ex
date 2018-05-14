@@ -20,7 +20,6 @@ defmodule Cinema.Router do
     get "/", PageController, :index
     resources "/user", UserController
     resources "/sessions", SessionController
-    resources "/video", VideoController
   end
 
   scope "/manage", Cinema do

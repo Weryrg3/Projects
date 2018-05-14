@@ -49,16 +49,18 @@ defmodule Cinema.Auth do
       conn
       |> put_flash(:error, "Você precisa estar logado para acessar essa página")
       |> redirect(to: Helpers.page_path(conn, :index))
+      |> halt()
     end
   end
 
   def autenticar_manager(conn, _opts) do
-    if conn.assigns.current_user do
+    if conn.assigns.current_user.permission do
       conn
     else
       conn
       |> put_flash(:error, "Você não tem permissão para isso")
       |> redirect(to: Helpers.page_path(conn, :index))
+      |> halt()
     end
   end
 end

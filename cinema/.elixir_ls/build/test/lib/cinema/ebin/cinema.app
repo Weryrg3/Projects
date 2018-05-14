@@ -1,7 +1,6 @@
 {application,cinema,
              [{description,"cinema"},
               {modules,['Elixir.Cinema','Elixir.Cinema.Auth',
-                        'Elixir.Cinema.AuthManager',
                         'Elixir.Cinema.ChannelCase','Elixir.Cinema.ConnCase',
                         'Elixir.Cinema.DB','Elixir.Cinema.Endpoint',
                         'Elixir.Cinema.ErrorHelpers',

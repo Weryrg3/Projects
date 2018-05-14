@@ -4,7 +4,7 @@ defmodule Cinema.Repo.Migrations.CreateVideo do
   def change do
     create table(:videos) do
       add :titulo, :string
-      add :classificacao, :text
+      add :classificacao, :string
       add :ano, :string
       add :sinopse, :text
       add :elenco, :string

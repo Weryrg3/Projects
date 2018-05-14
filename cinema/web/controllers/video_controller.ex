@@ -1,7 +1,9 @@
 defmodule Cinema.VideoController do
   use Cinema.Web, :controller
-
   alias Cinema.Video
+
+  plug(:autenticar_manager when action in [:new, :edit, :update, :delete, :create])
+
 
   def index(conn, _params) do
     videos = Repo.all(Video)

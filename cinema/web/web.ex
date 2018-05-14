@@ -36,7 +36,7 @@ defmodule Cinema.Web do
 
       import Cinema.Router.Helpers
       import Cinema.Gettext
-      import Cinema.Auth, only: [autenticar_user: 2]
+      import Cinema.Auth, only: [autenticar_user: 2, autenticar_manager: 2]
     end
   end
 

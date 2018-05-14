@@ -1,8 +1,4 @@
-<div class="jumbotron">
-  <h2><%= gettext "Bem vindo ao %{name}", name: "Cine{nome}" %></h2>
-  <p class="lead">Melhor lugar para reservar seus ingressos<br />com preços baixos e acessíveis</p>
-</div>
-
+<center> <h1> Bem vindo ao Cine{name} </h1> </center>
 <div class="row marketing">
   <div class="col-lg-6">
     <h4>Usuário</h4>
@@ -14,5 +10,20 @@
         <%= link "Criar uma nova conta", to: user_path(@conn, :new)%>
       </li>
     </ul>
-  </div>
-  
+</div>
+
+<div class="row marketing">
+  <div class="col-lg-6">
+    <h4>Compra online</h4>
+    <ul>
+      <li>
+        <%= link "Ingressos", to: user_path(@conn, :index)%>
+      </li>
+      <li>
+        <%= link "Produtos de conveniência", to: user_path(@conn, :index)%>
+      </li>
+    </ul>
+</div>
+
+<h1>Filmes em exibição</h1>
+<h1>Filmes em breve</h1>
