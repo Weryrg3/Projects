@@ -3,7 +3,6 @@ defmodule BD.Test do
   use Cinema.ModelCase
 
   @user_params %{
-    "cartao" => "1230132012301230",
     "cpf" => "12345678921",
     "endereco" => "jklçkjasdf",
     "nome" => "Wesley",

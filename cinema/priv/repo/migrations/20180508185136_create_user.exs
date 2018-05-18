@@ -7,7 +7,6 @@ defmodule Cinema.Repo.Migrations.CreateUser do
       add(:nome, :string)
       add(:cpf, :string)
       add(:rg, :string)
-      add(:cartao, :string)
       add(:endereco, :string)
       add(:telefone, :string)
       add(:senha_hash, :string)
