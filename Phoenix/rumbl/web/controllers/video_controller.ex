@@ -4,7 +4,7 @@ defmodule Rumbl.VideoController do
   alias Rumbl.Video
 
   plug :scrub_params, "video" when action in [:create, :update]
-  # plug(:authenticate_user when action in [:index, :new])
+  plug(:authenticate_user when action in [:index, :new])
   plug(:load_categories when action in [:new, :create, :edit, :update])
 
   def index(conn, _params, user) do

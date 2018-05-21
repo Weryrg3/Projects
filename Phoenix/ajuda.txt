@@ -11,6 +11,9 @@ mix ecto.create
 MIX_ENV=test mix ecto.drop
 MIX_ENV=test mix ecto.create
 
+mix phoenix.gen.html Video videos user_id:references:users url:string title:string description:text
+mix ecto.migrate
+
 Phoenix
 Cap 1 -> History
 Cap 2 - pg 15
@@ -21,7 +24,6 @@ Cap 4 - pg 53
 
 Cap 5 - pg 69
 	Plug - p. 75
-	revisar aqui depois
 Cap 6 - pg 91
 	Relacionamentos p. 99
 	revisar aqui depois
