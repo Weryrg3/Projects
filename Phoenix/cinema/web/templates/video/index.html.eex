@@ -1,19 +1,16 @@
-<h2>Listing videos</h2>
-
 <table class="table">
   <thead>
     <tr>
-      <th>User</th>
       <th>Titulo</th>
       <th>Classificacao</th>
-      <th>Ano</th>
+      <%# <th>Ano</th> %>
       <th>Sinopse</th>
       <th>Elenco</th>
       <th>Genero</th>
-      <th>Subgenero</th>
+      <%# <th>Subgenero</th> %>
       <th>Diretor</th>
-      <th>Formato</th>
-      <th>Duracao</th>
+      <%# <th>Formato</th> %>
+      <%# <th>Duracao</th> %>
       <th>Trailer</th>
 
       <th></th>
@@ -22,27 +19,26 @@
   <tbody>
 <%= for video <- @videos do %>
     <tr>
-      <td><%= video.user_id %></td>
       <td><%= video.titulo %></td>
       <td><%= video.classificacao %></td>
-      <td><%= video.ano %></td>
       <td><%= video.sinopse %></td>
       <td><%= video.elenco %></td>
       <td><%= video.genero %></td>
-      <td><%= video.subgenero %></td>
       <td><%= video.diretor %></td>
-      <td><%= video.formato %></td>
-      <td><%= video.duracao %></td>
       <td><%= video.trailer %></td>
 
       <td class="text-right">
-        <%= link "Show", to: video_path(@conn, :show, video), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: video_path(@conn, :edit, video), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: video_path(@conn, :delete, video), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+        <%= link "Mostrar", to: video_path(@conn, :show, video), class: "btn btn-default btn-xs" %>
+        <%= if @conn.assigns.current_user do %>
+          <%= if @conn.assigns.current_user.permission do %>
+            <%= link "Novo", to: video_path(@conn, :new), class: "btn btn-default btn-xs" %>
+            <%= link "Editar", to: video_path(@conn, :edit, video), class: "btn btn-default btn-xs" %>
+            <%= link "Apagar", to: video_path(@conn, :delete, video), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+          <% end %>
+        <% end %>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
 
-<%= link "New video", to: video_path(@conn, :new) %>

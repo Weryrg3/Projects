@@ -1,4 +1,9 @@
 <center> <h1> Bem vindo ao Cine{name} </h1> </center>
+
+<center> <h2>Filmes em exibição</h2> </center>
+<%= render(Cinema.VideoView, "index.html", conn: @conn, videos: @videos) %>
+<h1>Filmes em breve</h1>
+
 <div class="row marketing">
   <div class="col-lg-6">
     <h4>Usuário</h4>
@@ -10,9 +15,7 @@
         <%= link "Criar uma nova conta", to: user_path(@conn, :new)%>
       </li>
     </ul>
-</div>
-
-<div class="row marketing">
+    <div class="row marketing">
   <div class="col-lg-6">
     <h4>Compra online</h4>
     <ul>
@@ -23,7 +26,5 @@
         <%= link "Produtos de conveniência", to: user_path(@conn, :index)%>
       </li>
     </ul>
+  </div>
 </div>
-
-<h1>Filmes em exibição</h1>
-<h1>Filmes em breve</h1>

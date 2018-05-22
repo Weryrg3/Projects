@@ -60,7 +60,7 @@ defmodule Cinema.Web do
     quote do
       use Phoenix.Router
 
-      import Cinema.Auth, only: [autenticar_user: 2]
+      # import Cinema.Auth, only: [autenticar_user: 2]
     end
   end
 

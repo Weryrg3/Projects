@@ -14,6 +14,7 @@ defmodule Cinema.User do
     field(:senha_confirm, :string, virtual: true)
     field(:senha_hash, :string)
     field(:permission, :boolean, default: false)
+    has_many :videos, Cinema.Video
     timestamps()
   end
 
@@ -33,6 +34,7 @@ defmodule Cinema.User do
     model
     |> changeset(params)
     |> cast(params, [:senha], [])
+    |> validate_required(:senha)
     |> validate_length(:senha, min: 6, max: 30)
     |> criptografia_hash()
   end

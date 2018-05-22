@@ -23,7 +23,7 @@ defmodule Cinema.Router do
   end
 
   scope "/manage", Cinema do
-    pipe_through [:browser, :autenticar_user]
+    pipe_through [:browser]
 
     resources "/videos", VideoController
   end

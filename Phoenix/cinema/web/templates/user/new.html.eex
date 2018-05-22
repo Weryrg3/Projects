@@ -33,10 +33,6 @@
     <%= error_tag f, :rg%>
   </div>
   <div class="form-group">
-    <%= text_input f, :cartao, placeholder: "Número Cartão", class: "form-control" %>
-    <%= error_tag f, :cartao%>
-  </div>
-  <div class="form-group">
     <%= text_input f, :endereco, placeholder: "Endereço", class: "form-control" %>
     <%= error_tag f, :endereco%>
   </div>
