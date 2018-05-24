@@ -15,7 +15,8 @@
         <%= link "Criar uma nova conta", to: user_path(@conn, :new)%>
       </li>
     </ul>
-    <div class="row marketing">
+  </div>
+
   <div class="col-lg-6">
     <h4>Compra online</h4>
     <ul>

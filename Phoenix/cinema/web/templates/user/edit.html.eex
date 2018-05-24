@@ -1,0 +1,6 @@
+<h3>Alterar conta</h3>
+
+<%= render "form.html", changeset: @changeset, 
+                        action: user_path(@conn, :update, @user), 
+                        conn: @conn, 
+                        action_send: "Alterar conta"  %>

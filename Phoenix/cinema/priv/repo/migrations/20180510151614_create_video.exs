@@ -8,8 +8,6 @@ defmodule Cinema.Repo.Migrations.CreateVideo do
       add(:ano, :string)
       add(:sinopse, :text)
       add(:elenco, :string)
-      add(:genero, :string)
-      add(:subgenero, :string)
       add(:diretor, :string)
       add(:formato, :string)
       add(:duracao, :string)

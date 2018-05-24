@@ -1,7 +1,6 @@
 defmodule Cinema.UserController do
   use Cinema.Web, :controller
-  alias Cinema.User
-  alias Cinema.DB
+  alias Cinema.{User, DB}
 
   plug(:autenticar_user when action in [:index])
 
@@ -21,7 +20,7 @@ defmodule Cinema.UserController do
       |> put_flash(:error, "As senhas inseridas não são iguais.")
       |> redirect(to: user_path(conn, :new))
     else
-      case DB.insert_in_db(user_params) do
+      case DB.insert_in_db_user(user_params) do
         {:ok, user} ->
           conn
           |> Cinema.Auth.login(user)
@@ -32,5 +31,30 @@ defmodule Cinema.UserController do
           render(conn, "new.html", changeset: changeset)
       end
     end
+  end
+
+  def update(conn, %{"id" => id, "user" => user_params}) do
+    user = Repo.get!(User, id)
+    changeset = User.changeset(user, user_params)
+
+    case Repo.update(changeset) do
+      {:ok, user} ->
+        conn
+        |> put_flash(:info, "Conta alterada com sucesso.")
+        |> redirect(to: user_path(conn, :show, user))
+
+      {:error, changeset} ->
+        render(conn, "edit.html", user: user, changeset: changeset)
+    end
+  end
+
+  def delete(_conn, params) do
+    IO.inspect(params)
+  end
+
+  def edit(conn, %{"id" => id}) do
+    user = Repo.get!(User, id)
+    changeset = User.changeset(user)
+    render(conn, "edit.html", changeset: changeset, user: user)
   end
 end

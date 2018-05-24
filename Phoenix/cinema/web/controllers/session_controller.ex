@@ -14,7 +14,7 @@ defmodule Cinema.SessionController do
 
       {:ok, conn, true} ->
         conn
-        |> put_flash(:info, "Bem vindo de volta Gerente!")
+        |> put_flash(:info, "Bem vindo de volta Administrador!")
         |> redirect(to: page_path(conn, :index))
 
       {:error, :unauthorized, conn} ->

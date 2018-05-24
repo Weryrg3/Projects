@@ -13,7 +13,7 @@
 
   <div class="form-group">
     <%= label f, :classificacao, class: "control-label" %>
-    <%= textarea f, :classificacao, class: "form-control" %>
+    <%= select f, :classificacao_id, @classificacao, class: "form-control", prompt: "Escolha a classificação"%>
     <%= error_tag f, :classificacao %>
   </div>
 
@@ -36,15 +36,9 @@
   </div>
 
   <div class="form-group">
-    <%= label f, :genero, class: "control-label" %>
-    <%= text_input f, :genero, class: "form-control" %>
-    <%= error_tag f, :genero %>
-  </div>
-
-  <div class="form-group">
-    <%= label f, :subgenero, class: "control-label" %>
-    <%= text_input f, :subgenero, class: "form-control" %>
-    <%= error_tag f, :subgenero %>
+    <%= label f, :categoria_id, class: "control-label" %>
+    <%= select f, :categoria_id, @categorias, class: "form-control", prompt: "Escolha o gênero"%>
+    <%= error_tag f, :categoria %>
   </div>
 
   <div class="form-group">

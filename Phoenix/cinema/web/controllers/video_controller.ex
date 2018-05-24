@@ -1,9 +1,11 @@
 defmodule Cinema.VideoController do
   use Cinema.Web, :controller
-  alias Cinema.Video
+  alias Cinema.{Video, Categoria, Classificacao, DB}
 
   plug(:autenticar_manager when action in [:new, :edit, :update, :delete, :create])
   plug(:scrub_params, "video" when action in [:create, :update])
+  plug(:load_categorias when action in [:new, :create, :edit, :update])
+  plug(:load_classificacoes when action in [:new, :create, :edit, :update])
 
   def index(conn, _params) do
     videos = Repo.all(Video)
@@ -21,7 +23,7 @@ defmodule Cinema.VideoController do
     case Repo.insert(changeset) do
       {:ok, _video} ->
         conn
-        |> put_flash(:info, "Video created successfully.")
+        |> put_flash(:info, "Filme postado com sucesso.")
         |> redirect(to: video_path(conn, :index))
 
       {:error, changeset} ->
@@ -47,7 +49,7 @@ defmodule Cinema.VideoController do
     case Repo.update(changeset) do
       {:ok, video} ->
         conn
-        |> put_flash(:info, "Video updated successfully.")
+        |> put_flash(:info, "Filme alterado com sucesso.")
         |> redirect(to: video_path(conn, :show, video))
 
       {:error, changeset} ->
@@ -63,7 +65,27 @@ defmodule Cinema.VideoController do
     Repo.delete!(video)
 
     conn
-    |> put_flash(:info, "Video deleted successfully.")
+    |> put_flash(:info, "Filme deletado.")
     |> redirect(to: video_path(conn, :index))
+  end
+
+  defp load_categorias(conn, _) do
+    query =
+      Categoria
+      |> Categoria.alfabeto()
+      |> Categoria.nomes_e_ids()
+
+    categorias = Repo.all(query)
+    assign(conn, :categorias, categorias)
+  end
+
+  defp load_classificacoes(conn, _) do
+    query =
+      Classificacao
+      |> Classificacao.ordenar()
+      |> Classificacao.nomes_e_ids()
+
+    classificacao = Repo.all(query)
+    assign(conn, :classificacao, classificacao)
   end
 end

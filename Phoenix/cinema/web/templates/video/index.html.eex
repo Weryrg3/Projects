@@ -20,10 +20,10 @@
 <%= for video <- @videos do %>
     <tr>
       <td><%= video.titulo %></td>
-      <td><%= video.classificacao %></td>
+      <%# <td><%= video.classificacao_id</td> %> %>
       <td><%= video.sinopse %></td>
       <td><%= video.elenco %></td>
-      <td><%= video.genero %></td>
+      <%# <td><%= video.categoria_id</td> %> %>
       <td><%= video.diretor %></td>
       <td><%= video.trailer %></td>
 
@@ -33,7 +33,7 @@
           <%= if @conn.assigns.current_user.permission do %>
             <%= link "Novo", to: video_path(@conn, :new), class: "btn btn-default btn-xs" %>
             <%= link "Editar", to: video_path(@conn, :edit, video), class: "btn btn-default btn-xs" %>
-            <%= link "Apagar", to: video_path(@conn, :delete, video), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+            <%= link "Apagar", to: video_path(@conn, :delete, video), method: :delete, data: [confirm: "Você tem certeza que quer apagar esse video?"], class: "btn btn-danger btn-xs" %>
           <% end %>
         <% end %>
       </td>
