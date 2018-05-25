@@ -2,11 +2,11 @@ defmodule Cinema2.ErrorView do
   use Cinema2.Web, :view
 
   def render("404.html", _assigns) do
-    "Page not found"
+    "Página não encontrada"
   end
 
   def render("500.html", _assigns) do
-    "Internal server error"
+    "Erro interno do servidor"
   end
 
   # In case no render clause matches or no

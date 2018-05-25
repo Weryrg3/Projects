@@ -1,0 +1,27 @@
+<%= form_for @changeset, usuario_path(@conn, :create), fn f -> %>
+    <div class="form-group">
+        <%= text_input f, :username, placeholder: "Username", class: "form-control"%>
+    </div>
+    <div class="form-group">
+        <%= text_input f, :nome, placeholder: "Nome", class: "form-control"%>
+    </div>
+    <div class="form-group">
+        <%= text_input f, :cpf, placeholder: "CPF", class: "form-control"%>
+    </div>
+    <div class="form-group">
+        <%= text_input f, :rg, placeholder: "RG", class: "form-control"%>
+    </div>
+    <div class="form-group">
+        <%= text_input f, :endereco, placeholder: "Endereço", class: "form-control"%>
+    </div>
+    <div class="form-group">
+        <%= text_input f, :telefone, placeholder: "Telefone", class: "form-control"%>
+    </div>
+    <div class="form-group">
+        <%= password_input f, :senha, placeholder: "Senha", class: "form-control"%>
+    </div>
+    <div class="form-group">
+        <%= password_input f, :senha_confirm, placeholder: "Confirmar senha", class: "form-control"%>
+    </div>
+    <%= submit @conta, class: "btn-primary"%>
+<% end %>
