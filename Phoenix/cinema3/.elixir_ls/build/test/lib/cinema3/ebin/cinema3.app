@@ -1,6 +1,7 @@
 {application,cinema3,
              [{description,"cinema3"},
-              {modules,['Elixir.Cinema3','Elixir.Cinema3.ChannelCase',
+              {modules,['Elixir.Cinema3','Elixir.Cinema3.Autenticar',
+                        'Elixir.Cinema3.BD','Elixir.Cinema3.ChannelCase',
                         'Elixir.Cinema3.ConnCase','Elixir.Cinema3.Endpoint',
                         'Elixir.Cinema3.ErrorHelpers',
                         'Elixir.Cinema3.ErrorView','Elixir.Cinema3.Gettext',
@@ -10,10 +11,12 @@
                         'Elixir.Cinema3.PageView','Elixir.Cinema3.Repo',
                         'Elixir.Cinema3.Router',
                         'Elixir.Cinema3.Router.Helpers',
-                        'Elixir.Cinema3.UserSocket','Elixir.Cinema3.Web']},
+                        'Elixir.Cinema3.UserSocket','Elixir.Cinema3.Usuario',
+                        'Elixir.Cinema3.UsuarioController',
+                        'Elixir.Cinema3.UsuarioView','Elixir.Cinema3.Web']},
               {registered,[]},
               {vsn,"0.0.1"},
               {mod,{'Elixir.Cinema3',[]}},
               {applications,[kernel,stdlib,elixir,phoenix,phoenix_pubsub,
                              phoenix_html,cowboy,logger,gettext,phoenix_ecto,
-                             postgrex]}]}.
+                             postgrex,comeonin]}]}.

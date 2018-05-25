@@ -1,0 +1,2 @@
+<h1> Criar nova conta </h1>
+<%= render "form.html", conn: @conn, changeset: @changeset, funcao: "Criar nova conta" %>

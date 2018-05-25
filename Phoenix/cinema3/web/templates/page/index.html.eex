@@ -33,4 +33,19 @@
       </li>
     </ul>
   </div>
+
+  <div class="col-lg-6">
+    <h4>Usuário</h4>
+    <ul>
+      <li>
+        <%=link "Criar nova conta", to: usuario_path(@conn, :new) %>
+      </li>
+      <li>
+        <a href="http://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on freenode IRC</a>
+      </li>
+      <li>
+        <a href="https://twitter.com/elixirphoenix">@elixirphoenix</a>
+      </li>
+    </ul>
+  </div>
 </div>
