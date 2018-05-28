@@ -8,7 +8,9 @@ defmodule Cinema3.BDTest do
     "cpf" => "12345678945",
     "rg" => "1234789",
     "telefone" => "45698745",
-    "endereco" => "rua das avenidas"
+    "endereco" => "rua das avenidas",
+    "senha" => "123456",
+    "senha_confirm" => "123456"
   }
 
   describe "Usuarios" do

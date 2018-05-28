@@ -19,19 +19,20 @@ defmodule Cinema3.Usuario do
   def changeset(model, usuario_params \\ %{}) do
     model
     |> cast(usuario_params, @allowed)
+    |> validate_required(@allowed)
     |> validate_length(:username, min: 3, max: 25)
     |> validate_length(:cpf, is: 11)
     |> validate_length(:rg, is: 7)
     |> unique_constraint(:username)
     |> unique_constraint(:cpf)
     |> unique_constraint(:rg)
-    |> validate_required(@allowed)
   end
 
   def registrar_changeset(model, usuario_params) do
     model
     |> changeset(usuario_params)
-    |> cast(usuario_params, :senha)
+    |> cast(usuario_params, [:senha])
+    |> validate_required(:senha)
     |> validate_length(:senha, min: 5, max: 100)
     |> criptografar()
   end
@@ -46,3 +47,4 @@ defmodule Cinema3.Usuario do
     end
   end
 end
+

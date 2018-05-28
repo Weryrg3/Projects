@@ -1,1 +1,5 @@
 <center><h1>Bem vindo <h1></center>
+
+<div class="form-group">
+    <%= link "Voltar", to: page_path(@conn, :index), class: "btn btn-default"%>
+</div>
