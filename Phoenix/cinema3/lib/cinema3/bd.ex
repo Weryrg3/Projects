@@ -1,6 +1,7 @@
 defmodule Cinema3.BD do
   alias Cinema3.{Usuario, Repo}
 
+
   def changeset(usuario_params \\ nil) do
     if usuario_params do
       Usuario.registrar_changeset(%Usuario{}, usuario_params)

@@ -37,7 +37,6 @@ defmodule Cinema3.Autenticar do
   def login_por_nome_e_senha(conn, username, senha, opts) do
     repo = Keyword.fetch!(opts, :repo)
     usuario = repo.get_by(Cinema3.Usuario, username: username)
-
     cond do
       usuario && checkpw(senha, usuario.senha_hash) ->
         {:ok, login(conn, usuario)}
@@ -51,7 +50,7 @@ defmodule Cinema3.Autenticar do
     end
   end
 
-  def autentificar_usuario(conn, _) do
+  def autenticar_usuario(conn, _) do
     if conn.assigns.usuario_atual do
       conn
     else

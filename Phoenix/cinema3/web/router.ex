@@ -19,6 +19,7 @@ defmodule Cinema3.Router do
 
     get "/", PageController, :index
     resources "/usuario", UsuarioController
+    resources "/sessoes", SessaoController
   end
 
   # Other scopes may use custom stacks.

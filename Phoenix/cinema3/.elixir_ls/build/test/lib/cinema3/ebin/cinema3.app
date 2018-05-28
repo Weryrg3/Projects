@@ -11,6 +11,8 @@
                         'Elixir.Cinema3.PageView','Elixir.Cinema3.Repo',
                         'Elixir.Cinema3.Router',
                         'Elixir.Cinema3.Router.Helpers',
+                        'Elixir.Cinema3.SessaoController',
+                        'Elixir.Cinema3.SessaoView',
                         'Elixir.Cinema3.UserSocket','Elixir.Cinema3.Usuario',
                         'Elixir.Cinema3.UsuarioController',
                         'Elixir.Cinema3.UsuarioView','Elixir.Cinema3.Web']},

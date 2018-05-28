@@ -31,11 +31,14 @@ defmodule Cinema3.Web do
       use Phoenix.Controller
 
       alias Cinema3.Repo
+
       import Ecto
       import Ecto.Query
 
       import Cinema3.Router.Helpers
       import Cinema3.Gettext
+
+      import Cinema3.Autenticar, only: [autenticar_usuario: 2]
     end
   end
 

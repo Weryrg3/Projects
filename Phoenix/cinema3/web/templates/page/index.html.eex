@@ -5,25 +5,13 @@
 
 <div class="row marketing">
   <div class="col-lg-6">
-    <h4>Resources</h4>
-    <ul>
-      <li>
-        <a href="http://phoenixframework.org/docs/overview">Guides</a>
-      </li>
-      <li>
-        <a href="https://hexdocs.pm/phoenix">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="col-lg-6">
     <h4>Usuário</h4>
     <ul>
       <li>
         <%= link "Página inicial", to: usuario_path(@conn, :index) %>
+      </li>
+      <li>
+        <%= link "Log in", to: sessao_path(@conn, :new) %>
       </li>
       <li>
         <%=link "Criar nova conta", to: usuario_path(@conn, :new) %>

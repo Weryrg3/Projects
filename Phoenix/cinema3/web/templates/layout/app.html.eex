@@ -14,11 +14,17 @@
   <body>
     <div class="container">
       <header class="header">
-        <nav role="navigation">
-          <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
-          </ul>
-        </nav>
+        <ol class="breadcrumb text-right">
+          <%= if @usuario_atual do %>
+          <li><%= @usuario_atual.username%> </li>
+          <li>
+            <%= link "Log out", to: sessao_path(@conn, :delete, @usuario_atual), method: "delete"%>
+          </li>
+          <% else %>
+            <li><%= link "Registrar", to: usuario_path(@conn, :new) %></li>
+            <li><%= link "Log in", to: sessao_path(@conn, :new) %></li>
+          <% end%>
+          </ol>
         <a href= "http://localhost:4003/"><span class="logo"></span> </a>
       </header>
 
