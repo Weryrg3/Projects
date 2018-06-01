@@ -1,0 +1,52 @@
+<%= if @changeset.action do %>
+    <div class="alert alert-danger">
+        <p>Erro ao adicionar filme</p>
+    </div>
+<% end %>
+
+<%= form_for @changeset, filme_path(@conn, :create), fn f -> %>
+    <div class="form-group">
+        <%= text_input f, :nome, placeholder: "Nome", class: "form-control"%>
+        <%= error_tag f, :nome %>
+    </div>
+
+    <div class= "form-group">
+        <%= text_input f, :ano, placeholder: "Ano", class: "form-control" %>
+        <%= error_tag f, :ano%>
+    </div>
+
+    <div class= "form-group">
+        <%= text_input f, :sinopse, placeholder: "Sinopse", class: "form-control" %>
+        <%= error_tag f, :sinopse%>
+    </div>
+
+    <div class= "form-group">
+        <%= text_input f, :elenco, placeholder: "Elenco", class: "form-control" %>
+        <%= error_tag f, :elenco%>
+    </div>
+
+    <div class= "form-group">
+        <%= text_input f, :formato, placeholder: "Formato", class: "form-control" %>
+        <%= error_tag f, :formato%>
+    </div>
+
+    <div class= "form-group">
+        <%= text_input f, :duracao, placeholder: "Duração", class: "form-control" %>
+        <%= error_tag f, :duracao%>
+    </div>
+
+    <div class= "form-group">
+        <%= text_input f, :categoria, placeholder: "Categoria", class: "form-control" %>
+        <%= error_tag f, :categoria%>
+    </div>
+
+    <div class= "form-group">
+        <%= text_input f, :classificacao, placeholder: "Classificacão", class: "form-control" %>
+        <%= error_tag f, :classificacao%>
+    </div>
+
+    <div class="form-group">
+        <%= submit @funcao, class: "btn btn-primary"%>
+        <%= link "Voltar", to: page_path(@conn, :index), class: "btn btn-default"%>
+    </div>
+<% end %>

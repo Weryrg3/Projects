@@ -11,6 +11,7 @@ defmodule Cinema3.Usuario do
     field(:senha, :string, virtual: true)
     field(:senha_confirm, :string, virtual: true)
     field(:senha_hash, :string)
+    has_many(:filmes, Cinema3.Filme)
     timestamps()
   end
 
@@ -47,4 +48,3 @@ defmodule Cinema3.Usuario do
     end
   end
 end
-

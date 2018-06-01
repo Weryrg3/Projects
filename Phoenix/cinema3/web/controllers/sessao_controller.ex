@@ -10,7 +10,7 @@ defmodule Cinema3.SessaoController do
       {:ok, conn} ->
         conn
         |> put_flash(:info, "Bem vindo de volta")
-        |> redirect(to: page_path(conn, :index))
+        |> redirect(to: usuario_path(conn, :index))
 
       {:error, :unauthorized, conn} ->
         conn

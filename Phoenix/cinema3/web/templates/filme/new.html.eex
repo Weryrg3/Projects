@@ -1,0 +1,2 @@
+<h1> Adicionar um novo filme </h1>
+<%= render "form.html", conn: @conn, changeset: @changeset, funcao: "Criar novo filme" %>

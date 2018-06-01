@@ -11,7 +11,7 @@ defmodule Cinema3.UsuarioController do
 
   # usuario_path GET /Usuario/new :new
   def new(conn, _) do
-    changeset = BD.changeset()
+    changeset = BD.changeset_usuario()
     render(conn, "new.html", changeset: changeset)
   end
 

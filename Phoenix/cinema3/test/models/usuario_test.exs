@@ -1,6 +1,6 @@
 defmodule Cinema3.UsuarioTest do
   use Cinema3.ModelCase
-  import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
+  import Comeonin.Bcrypt, only: [checkpw: 2]
   alias Cinema3.Usuario
 
   @params %{
