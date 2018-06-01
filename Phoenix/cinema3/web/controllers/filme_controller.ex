@@ -14,7 +14,6 @@ defmodule Cinema3.FilmeController do
   end
 
   def create(conn, %{"filme" => filme_params}) do
-    IO.inspect(filme_params)
     case BD.inserir_filme(filme_params) do
       {:ok, filme} ->
         conn

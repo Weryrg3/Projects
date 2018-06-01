@@ -14,6 +14,9 @@ defmodule Cinema3.ConnCase do
   """
 
   use ExUnit.CaseTemplate
+  alias Phoenix.ConnTest
+  alias Ecto.Adapters.SQL.Sandbox
+  alias Cinema3.Repo
 
   using do
     quote do
@@ -26,6 +29,7 @@ defmodule Cinema3.ConnCase do
       import Ecto.Query
 
       import Cinema3.Router.Helpers
+      import Cinema3.TestHelpers
 
       # The default endpoint for testing
       @endpoint Cinema3.Endpoint
@@ -33,12 +37,12 @@ defmodule Cinema3.ConnCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Cinema3.Repo)
+    :ok = Sandbox.checkout(Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Cinema3.Repo, {:shared, self()})
+      Sandbox.mode(Repo, {:shared, self()})
     end
 
-    {:ok, conn: Phoenix.ConnTest.build_conn()}
+    {:ok, conn: ConnTest.build_conn()}
   end
 end

@@ -1,12 +1,15 @@
 defmodule Cinema3.SessaoController do
   use Cinema3.Web, :controller
+  alias Cinema3.Autenticar
 
+  # sessao_path GET /sessoes/new :new
   def new(conn, _) do
     render(conn, "new.html")
   end
 
-  def create(conn, %{"sessao" => %{"username" => usuario, "senha" => senha}}) do
-    case Cinema3.Autenticar.login_por_nome_e_senha(conn, usuario, senha, repo: Repo) do
+  # sessao_path POST /sessoes :create
+  def create(conn, %{"sessao" => %{"username" => username, "senha" => senha}}) do
+    case Autenticar.login_por_nome_e_senha(conn, username, senha, repo: Repo) do
       {:ok, conn} ->
         conn
         |> put_flash(:info, "Bem vindo de volta")
@@ -26,7 +29,14 @@ defmodule Cinema3.SessaoController do
 
   def delete(conn, _) do
     conn
-    |> Cinema3.Autenticar.logout()
+    |> Autenticar.logout()
     |> redirect(to: page_path(conn, :index))
   end
 end
+
+# sessao_path GET /sessoes :index
+# sessao_path GET /sessoes/:id/edit :edit
+# sessao_path GET /sessoes/:id :show
+# sessao_path PATCH /sessoes/:id :update
+# sessao_path PUT /sessoes/:id :update
+# sessao_path DELETE /sessoes/:id :delete

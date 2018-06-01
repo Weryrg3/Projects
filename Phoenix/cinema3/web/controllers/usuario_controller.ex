@@ -1,6 +1,6 @@
 defmodule Cinema3.UsuarioController do
   use Cinema3.Web, :controller
-  alias Cinema3.BD
+  alias Cinema3.{BD, Autenticar}
 
   plug(:autenticar_usuario when action in [:index])
 
@@ -25,7 +25,7 @@ defmodule Cinema3.UsuarioController do
       case BD.inserir_usuario(usuario_params) do
         {:ok, usuario} ->
           conn
-          |> Cinema3.Autenticar.login(usuario)
+          |> Autenticar.login(usuario)
           |> put_flash(:info, "A conta #{usuario.nome} foi criada!")
           |> redirect(to: usuario_path(conn, :index))
 

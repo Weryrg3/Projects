@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>cover/Elixir.Cinema3.html</title>
+</head><body style='background-color: white; color: black'>
+<pre>
+File generated from /home/wesley/1.Wesley/Eficiencia/Projects/Phoenix/cinema3/lib/cinema3.ex by COVER 2018-06-01 at 11:26:59
+
+****************************************************************************
+
+        |  defmodule Cinema3 do
+        |    use Application
+        |    alias Cinema3.Endpoint
+        |    @moduledoc """
+        |    Aplicação principal
+        |    """
+        |  
+        |    # See http://elixir-lang.org/docs/stable/elixir/Application.html
+        |    # for more information on OTP Applications
+        |    def start(_type, _args) do
+        |      import Supervisor.Spec
+        |  
+        |      # Define workers and child supervisors to be supervised
+     1..|      children = [
+        |        # Start the Ecto repository
+        |        supervisor(Cinema3.Repo, []),
+        |        # Start the endpoint when the application starts
+        |        supervisor(Endpoint, []),
+        |        # Start your own worker by calling:
+        |        # Cinema3.Worker.start_link(arg1, arg2, arg3)
+        |        # worker(Cinema3.Worker, [arg1, arg2, arg3]),
+        |      ]
+        |  
+        |      # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
+        |      # for other strategies and supported options
+     1..|      opts = [strategy: :one_for_one, name: Cinema3.Supervisor]
+     1..|      Supervisor.start_link(children, opts)
+        |    end
+        |  
+        |    # Tell Phoenix to update the endpoint configuration
+        |    # whenever the application is updated.
+        |    def config_change(changed, _new, removed) do
+<font color=red>     0..|      Endpoint.config_change(changed, removed)</font>
+        |      :ok
+        |    end
+        |  end
+</pre>
+</body>
+</html>

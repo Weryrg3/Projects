@@ -26,7 +26,9 @@ defmodule Cinema3.UsuarioTest do
   end
 
   test "Testa a criptografia" do
-    %Ecto.Changeset{changes: %{senha: senha, senha_hash: senha_hash}} = Usuario.registrar_changeset(%Usuario{}, @params)
+    %Ecto.Changeset{changes: %{senha: senha, senha_hash: senha_hash}} =
+      Usuario.registrar_changeset(%Usuario{}, @params)
+
     assert checkpw(senha, senha_hash)
   end
 end

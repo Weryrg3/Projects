@@ -14,6 +14,8 @@ defmodule Cinema3.ChannelCase do
   """
 
   use ExUnit.CaseTemplate
+  alias Cinema3.Repo
+  alias Ecto.Adapters.SQL.Sandbox
 
   using do
     quote do
@@ -25,17 +27,16 @@ defmodule Cinema3.ChannelCase do
       import Ecto.Changeset
       import Ecto.Query
 
-
       # The default endpoint for testing
       @endpoint Cinema3.Endpoint
     end
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Cinema3.Repo)
+    :ok = Sandbox.checkout(Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Cinema3.Repo, {:shared, self()})
+      Sandbox.mode(Cinema3.Repo, {:shared, self()})
     end
 
     :ok

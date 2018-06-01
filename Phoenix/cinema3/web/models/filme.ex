@@ -1,5 +1,8 @@
 defmodule Cinema3.Filme do
   use Cinema3.Web, :model
+  @moduledoc """
+  Schema de filmes e changesets
+  """
 
   schema "filmes" do
     field(:nome, :string)
@@ -20,6 +23,7 @@ defmodule Cinema3.Filme do
     model
     |> cast(filme_params, @allowed)
     |> validate_required(@allowed)
+    |> validate_length(:ano, is: 6)
     |> unique_constraint(:usuario_id)
     |> unique_constraint(:nome)
   end

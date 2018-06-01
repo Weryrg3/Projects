@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>cover/Elixir.Cinema3.BD.html</title>
+</head><body style='background-color: white; color: black'>
+<pre>
+File generated from /home/wesley/1.Wesley/Eficiencia/Projects/Phoenix/cinema3/lib/cinema3/bd.ex by COVER 2018-06-01 at 11:26:59
+
+****************************************************************************
+
+        |  defmodule Cinema3.BD do
+        |    alias Cinema3.{Usuario, Repo, Filme}
+        |    @moduledoc """
+        |    Banco de dados, Sistema de gerenciamento do banco de dados
+        |    """
+        |  
+     2..|    def changeset_usuario(usuario_params \\ nil) do
+     6..|      if usuario_params do
+     4..|        Usuario.registrar_changeset(%Usuario{}, usuario_params)
+        |      else
+     2..|        Usuario.changeset(%Usuario{})
+        |      end
+        |    end
+        |  
+     1..|    def changeset_filme(filme_params \\ nil) do
+     3..|      if filme_params do
+     2..|        Filme.changeset(%Filme{}, filme_params)
+        |      else
+     1..|        Filme.changeset(%Filme{})
+        |      end
+        |    end
+        |  
+        |    def inserir_usuario(usuario_params) do
+     4..|      changeset = changeset_usuario(usuario_params)
+     4..|      Repo.insert(changeset)
+        |    end
+        |  
+        |    def inserir_filme(filme_params) do
+     2..|      changeset = changeset_filme(filme_params)
+     2..|      Repo.insert(changeset)
+        |    end
+        |  
+        |    def todo(param) do
+<font color=red>     0..|      Repo.all(param)</font>
+        |    end
+        |  end
+</pre>
+</body>
+</html>

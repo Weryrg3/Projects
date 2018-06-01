@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>cover/Elixir.Cinema3.Autenticar.html</title>
+</head><body style='background-color: white; color: black'>
+<pre>
+File generated from /home/wesley/1.Wesley/Eficiencia/Projects/Phoenix/cinema3/lib/cinema3/autenticar.ex by COVER 2018-06-01 at 11:26:59
+
+****************************************************************************
+
+        |  defmodule Cinema3.Autenticar do
+        |    import Plug.Conn
+        |    import Comeonin.Bcrypt, only: [checkpw: 2, dummy_checkpw: 0]
+        |    import Phoenix.Controller
+        |    alias Cinema3.{Router.Helpers, Usuario}
+        |  
+        |    @moduledoc """
+        |      Atentificação, autentificação de usuários por meio assigns
+        |    """
+        |    def init(opts) do
+<font color=red>     0..|      Keyword.fetch!(opts, :repo)</font>
+        |    end
+        |  
+        |    def call(conn, repo) do
+     9..|      usuario_id = get_session(conn, :usuario_id)
+        |  
+     9..|      cond do
+     9..|        usuario = conn.assigns[:usuario_atual] -&gt;
+<font color=red>     0..|          conn</font>
+        |  
+     9..|        usuario = usuario_id &amp;&amp; repo.get(Usuario, usuario_id) -&gt;
+     1..|          assign(conn, :usuario_atual, usuario)
+        |  
+        |        true -&gt;
+     8..|          assign(conn, :usuario_atual, nil)
+        |      end
+        |    end
+        |  
+        |    def login(conn, usuario) do
+        |      conn
+        |      |&gt; assign(:usuario_atual, usuario)
+     1..|      |&gt; put_session(:usuario_id, usuario.id)
+     1..|      |&gt; configure_session(renew: true)
+        |    end
+        |  
+        |    def logout(conn) do
+<font color=red>     0..|      configure_session(conn, drop: true)</font>
+        |    end
+        |  
+        |    def login_por_nome_e_senha(conn, username, senha, opts) do
+<font color=red>     0..|      repo = Keyword.fetch!(opts, :repo)</font>
+<font color=red>     0..|      usuario = repo.get_by(Cinema3.Usuario, username: username)</font>
+<font color=red>     0..|      cond do</font>
+<font color=red>     0..|        usuario &amp;&amp; checkpw(senha, usuario.senha_hash) -&gt;</font>
+        |          {:ok, login(conn, usuario)}
+        |  
+<font color=red>     0..|        usuario -&gt;</font>
+<font color=red>     0..|          {:error, :unauthorized, conn}</font>
+        |  
+        |        true -&gt;
+<font color=red>     0..|          dummy_checkpw()</font>
+<font color=red>     0..|          {:error, :not_found, conn}</font>
+        |      end
+        |    end
+        |  
+        |    def autenticar_usuario(conn, _) do
+     3..|      if conn.assigns.usuario_atual do
+     1..|        conn
+        |      else
+        |        conn
+        |        |&gt; put_flash(:error, "Você precisa estar logado para acessar essa página")
+        |        |&gt; redirect(to: Helpers.page_path(conn, :index))
+     2..|        |&gt; halt()
+        |      end
+        |    end
+        |  end
+</pre>
+</body>
+</html>

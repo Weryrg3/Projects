@@ -4,6 +4,9 @@ defmodule Cinema3.Autenticar do
   import Phoenix.Controller
   alias Cinema3.{Router.Helpers, Usuario}
 
+  @moduledoc """
+    Atentificação, autentificação de usuários por meio assigns
+  """
   def init(opts) do
     Keyword.fetch!(opts, :repo)
   end

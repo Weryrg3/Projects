@@ -1,5 +1,9 @@
 defmodule Cinema3 do
   use Application
+  alias Cinema3.Endpoint
+  @moduledoc """
+  Aplicação principal
+  """
 
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
@@ -11,8 +15,9 @@ defmodule Cinema3 do
       # Start the Ecto repository
       supervisor(Cinema3.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(Cinema3.Endpoint, []),
-      # Start your own worker by calling: Cinema3.Worker.start_link(arg1, arg2, arg3)
+      supervisor(Endpoint, []),
+      # Start your own worker by calling:
+      # Cinema3.Worker.start_link(arg1, arg2, arg3)
       # worker(Cinema3.Worker, [arg1, arg2, arg3]),
     ]
 
@@ -25,7 +30,7 @@ defmodule Cinema3 do
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   def config_change(changed, _new, removed) do
-    Cinema3.Endpoint.config_change(changed, removed)
+    Endpoint.config_change(changed, removed)
     :ok
   end
 end

@@ -1,5 +1,9 @@
 defmodule Cinema3.Usuario do
   use Cinema3.Web, :model
+  alias Comeonin.Bcrypt
+  @moduledoc """
+  Schema do usuário e changesets
+  """
 
   schema "usuarios" do
     field(:username, :string)
@@ -41,7 +45,7 @@ defmodule Cinema3.Usuario do
   defp criptografar(changeset) do
     case changeset do
       %Ecto.Changeset{valid?: true, changes: %{senha: senha}} ->
-        put_change(changeset, :senha_hash, Comeonin.Bcrypt.hashpwsalt(senha))
+        put_change(changeset, :senha_hash, Bcrypt.hashpwsalt(senha))
 
       _ ->
         changeset

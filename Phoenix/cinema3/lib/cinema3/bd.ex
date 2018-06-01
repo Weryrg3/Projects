@@ -1,5 +1,8 @@
 defmodule Cinema3.BD do
   alias Cinema3.{Usuario, Repo, Filme}
+  @moduledoc """
+  Banco de dados, Sistema de gerenciamento do banco de dados
+  """
 
   def changeset_usuario(usuario_params \\ nil) do
     if usuario_params do

@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>cover/Elixir.Cinema3.FilmeController.html</title>
+</head><body style='background-color: white; color: black'>
+<pre>
+File generated from /home/wesley/1.Wesley/Eficiencia/Projects/Phoenix/cinema3/web/controllers/filme_controller.ex by COVER 2018-06-01 at 11:26:59
+
+****************************************************************************
+
+     1..|  defmodule Cinema3.FilmeController do
+        |    use Cinema3.Web, :controller
+        |    alias Cinema3.BD
+        |  
+        |    # filme_path GET /filmes :index
+        |    def index(conn, _) do
+        |      filmes = BD.todo(Cinema3.Filme)
+        |      render(conn, "index.html", filmes: filmes)
+        |    end
+        |  
+        |    def new(conn, _) do
+        |      changeset = BD.changeset_filme()
+        |      render(conn, "new.html", changeset: changeset)
+        |    end
+        |  
+        |    def create(conn, %{"filme" =&gt; filme_params}) do
+        |      case BD.inserir_filme(filme_params) do
+        |        {:ok, filme} -&gt;
+        |          conn
+        |          |&gt; put_flash(:info, "Filme #{filme.nome} adicionado com sucesso!")
+        |          |&gt; redirect(to: filme_path(conn, :index))
+        |  
+        |        {:error, changeset} -&gt;
+        |          render(conn, "new.html", changeset: changeset)
+        |      end
+        |    end
+        |  end
+        |  
+        |  # filme_path GET /filmes/:id/edit :edit
+        |  # filme_path GET /filmes/new :new
+        |  # filme_path GET /filmes/:id :show
+        |  # filme_path POST /filmes :create
+        |  # filme_path PATCH /filmes/:id :update
+        |  # filme_path PUT /filmes/:id :update
+        |  # filme_path DELETE /filmes/:id :delete
+</pre>
+</body>
+</html>

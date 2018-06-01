@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>cover/Elixir.Cinema3.UsuarioController.html</title>
+</head><body style='background-color: white; color: black'>
+<pre>
+File generated from /home/wesley/1.Wesley/Eficiencia/Projects/Phoenix/cinema3/web/controllers/usuario_controller.ex by COVER 2018-06-01 at 11:26:59
+
+****************************************************************************
+
+     7..|  defmodule Cinema3.UsuarioController do
+        |    use Cinema3.Web, :controller
+        |    alias Cinema3.{BD, Autenticar}
+        |  
+        |    plug(:autenticar_usuario when action in [:index])
+        |  
+        |    # usuario_path GET /Usuario :index
+        |    def index(conn, _) do
+        |      render(conn, "index.html")
+        |    end
+        |  
+        |    # usuario_path GET /Usuario/new :new
+        |    def new(conn, _) do
+        |      changeset = BD.changeset_usuario()
+        |      render(conn, "new.html", changeset: changeset)
+        |    end
+        |  
+        |    # usuario_path POST /Usuario :create
+        |    def create(conn, %{"usuario" =&gt; usuario_params}) do
+        |      if usuario_params["senha"] != usuario_params["senha_confirm"] do
+        |        conn
+        |        |&gt; put_flash(:error, "As senhas inseridas não correspondem!!!")
+        |        |&gt; redirect(to: usuario_path(conn, :new))
+        |      else
+        |        case BD.inserir_usuario(usuario_params) do
+        |          {:ok, usuario} -&gt;
+        |            conn
+        |            |&gt; Autenticar.login(usuario)
+        |            |&gt; put_flash(:info, "A conta #{usuario.nome} foi criada!")
+        |            |&gt; redirect(to: usuario_path(conn, :index))
+        |  
+        |          {:error, changeset} -&gt;
+        |            render(conn, "new.html", changeset: changeset)
+        |        end
+        |      end
+        |    end
+        |  
+        |    # usuario_path GET /Usuario/:id/edit :edit
+        |    # usuario_path GET /Usuario/:id :show
+        |    # usuario_path PATCH /Usuario/:id :update
+        |    # PUT /Usuario/:id :update
+        |    # usuario_path DELETE /Usuario/:id :delete
+        |  end
+</pre>
+</body>
+</html>

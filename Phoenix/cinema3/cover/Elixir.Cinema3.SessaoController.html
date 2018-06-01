@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>cover/Elixir.Cinema3.SessaoController.html</title>
+</head><body style='background-color: white; color: black'>
+<pre>
+File generated from /home/wesley/1.Wesley/Eficiencia/Projects/Phoenix/cinema3/web/controllers/sessao_controller.ex by COVER 2018-06-01 at 11:26:59
+
+****************************************************************************
+
+<font color=red>     0..|  defmodule Cinema3.SessaoController do</font>
+        |    use Cinema3.Web, :controller
+        |    alias Cinema3.Autenticar
+        |  
+        |    def new(conn, _) do
+        |      render(conn, "new.html")
+        |    end
+        |  
+        |    def create(conn, %{"sessao" =&gt; %{"username" =&gt; usuario, "senha" =&gt; senha}}) do
+        |      case Autenticar.login_por_nome_e_senha(conn, usuario, senha, repo: Repo) do
+        |        {:ok, conn} -&gt;
+        |          conn
+        |          |&gt; put_flash(:info, "Bem vindo de volta")
+        |          |&gt; redirect(to: usuario_path(conn, :index))
+        |  
+        |        {:error, :unauthorized, conn} -&gt;
+        |          conn
+        |          |&gt; put_flash(:error, "Combinação username/senha inválida!!")
+        |          |&gt; render("new.html")
+        |  
+        |        {:error, :not_found, conn} -&gt;
+        |          conn
+        |          |&gt; put_flash(:error, "Usuário não encontrado")
+        |          |&gt; render("new.html")
+        |      end
+        |    end
+        |  
+        |    def delete(conn, _) do
+        |      conn
+        |      |&gt; Autenticar.logout()
+        |      |&gt; redirect(to: page_path(conn, :index))
+        |    end
+        |  end
+</pre>
+</body>
+</html>

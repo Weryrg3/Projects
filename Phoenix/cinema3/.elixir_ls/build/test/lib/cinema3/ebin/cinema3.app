@@ -15,6 +15,7 @@
                         'Elixir.Cinema3.Router.Helpers',
                         'Elixir.Cinema3.SessaoController',
                         'Elixir.Cinema3.SessaoView',
+                        'Elixir.Cinema3.TestHelpers',
                         'Elixir.Cinema3.UserSocket','Elixir.Cinema3.Usuario',
                         'Elixir.Cinema3.UsuarioController',
                         'Elixir.Cinema3.UsuarioView','Elixir.Cinema3.Web']},
@@ -23,4 +24,5 @@
               {mod,{'Elixir.Cinema3',[]}},
               {applications,[kernel,stdlib,elixir,phoenix,phoenix_pubsub,
                              phoenix_html,cowboy,logger,gettext,phoenix_ecto,
-                             postgrex,comeonin]}]}.
+                             postgrex,comeonin]},
+              {test_coverage,[{tool,'Elixir.Coverex.Task'}]}]}.

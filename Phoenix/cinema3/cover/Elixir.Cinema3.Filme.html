@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>cover/Elixir.Cinema3.Filme.html</title>
+</head><body style='background-color: white; color: black'>
+<pre>
+File generated from /home/wesley/1.Wesley/Eficiencia/Projects/Phoenix/cinema3/web/models/filme.ex by COVER 2018-06-01 at 11:26:59
+
+****************************************************************************
+
+        |  defmodule Cinema3.Filme do
+        |    use Cinema3.Web, :model
+        |    @moduledoc """
+        |    Schema de filmes e changesets
+        |    """
+        |  
+     6..|    schema "filmes" do
+        |      field(:nome, :string)
+        |      field(:ano, :string)
+        |      field(:sinopse, :string)
+        |      field(:elenco, :string)
+        |      field(:formato, :string)
+        |      field(:duracao, :string)
+        |      field(:categoria, :string)
+        |      field(:classificacao, :string)
+        |      belongs_to(:usuario, Cinema3.Usuario)
+        |      timestamps()
+        |    end
+        |  
+        |    @allowed ~w(nome ano sinopse elenco formato duracao categoria classificacao)a
+        |  
+        |    def changeset(model, filme_params \\ %{}) do
+        |      model
+        |      |&gt; cast(filme_params, @allowed)
+        |      |&gt; validate_required(@allowed)
+        |      |&gt; validate_length(:ano, is: 6)
+        |      |&gt; unique_constraint(:usuario_id)
+        |      |&gt; unique_constraint(:nome)
+        |    end
+        |  end
+</pre>
+</body>
+</html>

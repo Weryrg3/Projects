@@ -15,7 +15,7 @@ defmodule Cinema3.BDTest do
 
   @filme_params %{
     "nome" => "testando",
-    "ano" => "testando",
+    "ano" => "101220",
     "sinopse" => "testando",
     "elenco" => "testando",
     "formato" => "testando",

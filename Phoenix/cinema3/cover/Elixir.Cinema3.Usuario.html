@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title>cover/Elixir.Cinema3.Usuario.html</title>
+</head><body style='background-color: white; color: black'>
+<pre>
+File generated from /home/wesley/1.Wesley/Eficiencia/Projects/Phoenix/cinema3/web/models/usuario.ex by COVER 2018-06-01 at 11:26:59
+
+****************************************************************************
+
+        |  defmodule Cinema3.Usuario do
+        |    use Cinema3.Web, :model
+        |    alias Comeonin.Bcrypt
+        |    @moduledoc """
+        |    Schema do usuário e changesets
+        |    """
+        |  
+<font color=red>     0..|    schema "usuarios" do</font>
+        |      field(:username, :string)
+        |      field(:nome, :string)
+        |      field(:cpf, :string)
+        |      field(:rg, :string)
+        |      field(:endereco, :string)
+        |      field(:telefone, :string)
+        |      field(:senha, :string, virtual: true)
+        |      field(:senha_confirm, :string, virtual: true)
+        |      field(:senha_hash, :string)
+        |      has_many(:filmes, Cinema3.Filme)
+        |      timestamps()
+        |    end
+        |  
+        |    @allowed ~w(username nome cpf rg endereco telefone)a
+        |  
+        |    def changeset(model, usuario_params \\ %{}) do
+        |      model
+        |      |&gt; cast(usuario_params, @allowed)
+        |      |&gt; validate_required(@allowed)
+        |      |&gt; validate_length(:username, min: 3, max: 25)
+        |      |&gt; validate_length(:cpf, is: 11)
+        |      |&gt; validate_length(:rg, is: 7)
+        |      |&gt; unique_constraint(:username)
+        |      |&gt; unique_constraint(:cpf)
+        |      |&gt; unique_constraint(:rg)
+        |    end
+        |  
+        |    def registrar_changeset(model, usuario_params) do
+        |      model
+        |      |&gt; changeset(usuario_params)
+        |      |&gt; cast(usuario_params, [:senha])
+        |      |&gt; validate_required(:senha)
+        |      |&gt; validate_length(:senha, min: 5, max: 100)
+        |      |&gt; criptografar()
+        |    end
+        |  
+        |    defp criptografar(changeset) do
+        |      case changeset do
+        |        %Ecto.Changeset{valid?: true, changes: %{senha: senha}} -&gt;
+        |          put_change(changeset, :senha_hash, Bcrypt.hashpwsalt(senha))
+        |  
+        |        _ -&gt;
+        |          changeset
+        |      end
+        |    end
+        |  end
+</pre>
+</body>
+</html>

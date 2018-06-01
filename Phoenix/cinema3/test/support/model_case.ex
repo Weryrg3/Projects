@@ -13,6 +13,9 @@ defmodule Cinema3.ModelCase do
   """
 
   use ExUnit.CaseTemplate
+  alias Ecto.{Adapters, Changeset}
+  alias Cinema3.ErrorHelpers
+  alias Adapters.SQL.Sandbox
 
   using do
     quote do
@@ -26,10 +29,10 @@ defmodule Cinema3.ModelCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Cinema3.Repo)
+    :ok = Sandbox.checkout(Cinema3.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Cinema3.Repo, {:shared, self()})
+      Sandbox.mode(Cinema3.Repo, {:shared, self()})
     end
 
     :ok
@@ -58,8 +61,9 @@ defmodule Cinema3.ModelCase do
       true
   """
   def errors_on(struct, data) do
-    struct.__struct__.changeset(struct, data)
-    |> Ecto.Changeset.traverse_errors(&Cinema3.ErrorHelpers.translate_error/1)
+    struct
+    |> struct.__struct__.changeset(data)
+    |> Changeset.traverse_errors(&ErrorHelpers.translate_error/1)
     |> Enum.flat_map(fn {key, errors} -> for msg <- errors, do: {key, msg} end)
   end
 end
