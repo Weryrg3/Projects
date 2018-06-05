@@ -1,15 +1,14 @@
-# defmodule Cinema3.AutenticarTest do
-#   use Cinema3.ConnCase
-#   alias Cinema3.{Usuario, Autenticar, Repo}
+defmodule Cinema3.AutenticarTest do
+  use Cinema3.ConnCase
 
-#   @usuario_params %{
-#     "username" => "We22",
-#     "nome" => "Wesley",
-#     "cpf" => "12345678945",
-#     "rg" => "1234789",
-#     "telefone" => "45698745",
-#     "endereco" => "rua das avenidas",
-#     "senha" => "123456",
-#     "senha_confirm" => "123456"
-#   }
-# end
+  alias Cinema3.Router
+
+  setup %{conn: conn} do
+    conn =
+      conn
+      |> bypass_through(Router, :browser)
+      |> get("/")
+
+    {:ok, %{conn: conn}}
+  end
+end

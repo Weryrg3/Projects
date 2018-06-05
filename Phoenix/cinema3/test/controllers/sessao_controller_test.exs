@@ -10,21 +10,49 @@ defmodule Cinema3.SessaoControllerTest do
       :ok
     end
   end
+
   test "testando Get/sessoes/new", %{conn: conn} do
     conn = get(conn, "/sessao/new")
     assert html_response(conn, 200)
   end
 
-  @tag login_como: "Teste1"
-  test "testando GET/sessoes/ com usuário existente", %{conn: conn, usuario: usuario} do
-    conn = post(conn, sessao_path(conn, :create), %{"sessao" => %{"username" => usuario.username, "senha" => usuario.senha}})
-    conn = get(conn, "/usuario/")
-    assert html_response(conn, 200)
-  end
+  describe "testes de login de usuário" do
+    @tag login_como: "Teste1"
+    test "testando GET/sessoes/ com usuário existente", %{conn: conn, usuario: usuario} do
+      conn =
+        post(conn, sessao_path(conn, :create), %{
+          "sessao" => %{"username" => usuario.username, "senha" => usuario.senha}
+        })
 
-  # test "testando GET/usuarios/ com valores inválidos", %{conn: conn} do
-  #   conn = post(conn, usuario_path(conn, :create), usuario: %{})
-  #   conn = get(conn, "/usuario/")
-  #   assert html_response(conn, 302)
-  # end
+      conn = get(conn, "/usuario/")
+      assert html_response(conn, 200)
+    end
+
+    @tag login_como: "Teste2"
+    test "testando GET/sessoes/ com usuário existente e senha errada", %{
+      conn: conn,
+      usuario: usuario
+    } do
+      conn =
+        post(conn, sessao_path(conn, :create), %{
+          "sessao" => %{"username" => usuario.username, "senha" => "senha errada"}
+        })
+
+      conn = get(conn, "/usuario/")
+      assert html_response(conn, 302)
+    end
+
+    @tag login_como: "Teste2"
+    test "testando GET/sessoes/ com usuário existente e senha errada e username errados", %{
+      conn: conn
+    } do
+      conn =
+        post(conn, sessao_path(conn, :create), %{
+          "sessao" => %{"username" => "nenhum", "senha" => "senha errada"}
+        })
+
+      conn = get(conn, "/usuario/")
+      assert html_response(conn, 302)
+    end
+  end
 end
