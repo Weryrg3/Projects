@@ -7,5 +7,12 @@
     <div class="form-group">
         <%= text_input f, :name2, placeholder: "Name2", class: "form-control" %>
     </div>
-    <%= submit "Create Thing", class: "btn btn-primary" %>
+    <%= submit "link", class: "btn btn-link" %>
+    <%= submit "default", class: "btn btn-default" %>
+    <%= submit "btn", class: "btn btn" %>
+    <%= submit "primary", class: "btn btn-primary" %>
+    <%= submit "danger", class: "btn btn-danger" %>
+    <%= submit "success", class: "btn btn-success" %>
+    <%= submit "info", class: "btn btn-info" %>
+    <%= submit "warning", class: "btn btn-warning" %>
 <% end %>

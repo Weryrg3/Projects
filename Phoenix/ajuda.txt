@@ -35,8 +35,8 @@ Cap 8 -
 	Revisar tudo
 Cap 9 - pg 157
 	
-Cap 10 -
-	
+Cap 10 - pg 173
+	186 erro retornar
 Cap 11 -
 	
 Cap 12 -
@@ -44,6 +44,8 @@ Cap 12 -
 Cap 13 -
 	
 Cap 14 -
+
+** Verificar como quando request funciona update, edit, new ...
 
 
   

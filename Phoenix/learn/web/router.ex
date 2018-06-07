@@ -22,6 +22,7 @@ defmodule Learn.Router do
     get "/form/teste1", FormController, :teste1
     resources "/testes", TestesController, only: [:index, :create]
     resources "/form", FormController, only: [:index, :new, :create]
+    resources "/novostestes", NovosTestesController
 
     scope "/testes" do
       get "/teste1", TestesController, :teste1

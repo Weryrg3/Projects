@@ -11,17 +11,24 @@
   <ul>
     <li> <%= link "Calculadora", to: calculadora_path(@conn, :index, "1+2")%> </li>
     <li> <%= link "Plug, Conn && Assigns", to: plug_conn_assigns_path(@conn, :index, "conn")%> </li>
-    <li> <%= link "Form", to: form_path(@conn, :index)%> </li>
-    <ul>
-      <h4><li> <%= link "New Thing", to: form_path(@conn, :new)%> </li><h4>
-      <h4><li> <%= link "Testes", to: form_path(@conn, :teste1)%> </li><h4>
-    </ul>
-    <li> <%= link "Testes", to: testes_path(@conn, :index)%> </li>
+    <li> <%= link "Form", to: form_path(@conn, :index)%>
+      <ul>
+        <h4><li> <%= link "New Thing", to: form_path(@conn, :new)%> </li><h4>
+        <h4><li> <%= link "Testes", to: form_path(@conn, :teste1)%> </li><h4>
+      </ul>
+    </li>
+    
+    <li> <%= link "Testes", to: testes_path(@conn, :index)%> 
       <ul>
         <h4> <li> <%= link "Teste 1", to: testes_path(@conn, :teste1)%> </li>
         <li> <%= link "Teste 2", to: testes_path(@conn, :teste2)%> </li>
         <li> <%= link "Teste CSS", to: testes_path(@conn, :teste_css)%> </li> </h4>
       </ul>
+    </li>
+
+    <li> <%= link "Novos Testes", to: novos_testes_path(@conn, :index)%> 
+    
+    </li>
   </ul>
 </h3>
 

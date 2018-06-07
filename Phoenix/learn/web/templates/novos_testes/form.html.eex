@@ -1,0 +1,9 @@
+<%= form_for @changeset, novos_testes_path(@conn, :create), fn teste -> %>
+    <div class="form-group">
+        <%= textarea teste, :texto, placeholder: "Texto", class: "form-control" %>
+    </div>
+    <div class="form-group">
+        <%= number_input teste, :num, placeholder: "Número", class: "form-control" %>
+    </div>
+    <%= submit @acao, class: "btn btn-primary" %>
+<% end %>

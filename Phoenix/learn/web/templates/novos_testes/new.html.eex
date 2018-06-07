@@ -1,0 +1,4 @@
+<h4> <%= link "Inicio", to: page_path(@conn, :index)%> </h4>
+<h1>Novo teste</h1>
+<h2>Digite um texto e um número</h2>
+<%= render "form.html", conn: @conn, changeset: @changeset, acao: "Criar nova table" %>
