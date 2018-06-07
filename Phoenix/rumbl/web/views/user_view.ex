@@ -7,4 +7,9 @@ defmodule Rumbl.UserView do
     |> String.split(" ")
     |> Enum.at(0)
   end
+
+  # w123456 Adicionado ↓
+  def rende("user.json", %{user: user}) do
+    %{id: user.id, username: user.username}
+  end
 end
