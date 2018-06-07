@@ -7,6 +7,8 @@ defmodule Rumbl.User do
     field(:password, :string, virtual: true)
     field(:password_hash, :string)
     has_many(:videos, Rumbl.Video)
+    # w123456 Adicionado ↓
+    has_many(:annotations, Rumbl.Annotation)
 
     timestamps()
   end
