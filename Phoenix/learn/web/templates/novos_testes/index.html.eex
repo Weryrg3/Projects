@@ -1,3 +1,7 @@
 <h4> <%= link "Inicio", to: page_path(@conn, :index)%> </h4>
 <center><h1> Index </h1></center>
 <%= render "num.html", num: 4%>
+<h3> Testes: </h3>
+<%= for n <- nomes(@testes) do %>
+<h4><%= n %></h4>
+<% end %>

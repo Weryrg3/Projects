@@ -14,8 +14,8 @@ defmodule Learn.NovosTestes do
     |> validate_required([:texto, :num])
     |> validate_number(
       :num,
-      less_than: 1,
-      greater_than_or_equal_to: 100
+      greater_than_or_equal_to: 1,
+      less_than: 100
     )
     |> validate_length(:texto, min: 3, max: 500)
   end

@@ -27,7 +27,12 @@
     </li>
 
     <li> <%= link "Novos Testes", to: novos_testes_path(@conn, :index)%> 
-    
+      <ul>
+        <h4> 
+          <li><%= link "New", to: novos_testes_path(@conn, :new) %></li>
+       
+        <h4>
+      </ul>
     </li>
   </ul>
 </h3>
