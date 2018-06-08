@@ -1,3 +1,4 @@
+# livro123 ↓
 defmodule Rumbl.UserView do
   use Rumbl.Web, :view
   alias Rumbl.User
@@ -8,8 +9,7 @@ defmodule Rumbl.UserView do
     |> Enum.at(0)
   end
 
-  # w123456 Adicionado ↓
-  def rende("user.json", %{user: user}) do
+  def render("user.json", %{user: user}) do
     %{id: user.id, username: user.username}
   end
 end
