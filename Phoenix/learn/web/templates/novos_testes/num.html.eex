@@ -1,1 +1,1 @@
-<h1> O número passado foi <%= @num%> </h1>
+<h3> O número passado foi <%= @num%> </h3>

@@ -18,5 +18,6 @@ defmodule Learn.NovosTestes do
       less_than: 100
     )
     |> validate_length(:texto, min: 3, max: 500)
+    |> unique_constraint(:texto)
   end
 end

@@ -1,0 +1,7 @@
+<h1>Show</h1>
+<h3> ID: <%= @teste.id %> </h3>
+<h3> Texto: <%= @teste.texto %> </h3>
+<h3> Número: <%= @teste.num %> </h3>
+<h3> Inserido: <%= data(@teste.inserted_at) %> </h3>
+<h3> Atualizado: <%= data(@teste.updated_at) %> </h3>
+<%= link "Voltar", to: novos_testes_path(@conn, :index), class: "btn btn-default"%>

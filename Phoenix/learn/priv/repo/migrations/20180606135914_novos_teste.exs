@@ -7,5 +7,6 @@ defmodule Learn.Repo.Migrations.NovosTeste do
       add(:num, :integer)
       timestamps()
     end
+    create(unique_index(:novostestes, [:texto]))
   end
 end
