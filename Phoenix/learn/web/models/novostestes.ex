@@ -1,9 +1,11 @@
 defmodule Learn.NovosTestes do
   use Learn.Web, :model
+  alias Learn.Relacionamentos
 
   schema "novostestes" do
     field(:texto, :string)
     field(:num, :integer)
+    has_many(:relacionamentos, Relacionamentos)
 
     timestamps()
   end

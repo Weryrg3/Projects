@@ -13,5 +13,6 @@ defmodule Learn.Thing do
     model
     |> cast(params, ~w(name name2), [])
     |> validate_length(:name2, min: 3, max: 25)
+    |> validate_required([:name, :name2])
   end
 end

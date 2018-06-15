@@ -8,8 +8,13 @@ defmodule Learn.NovosTestesView do
 
   def data(data_time) do
     inspect(data_time)
-      |> String.replace("~N[", "")
-      |> String.split(".")
-      |> List.first()
+    |> String.replace("~N[", "")
+    |> String.split(".")
+    |> List.first()
+  end
+
+  def alfabeto(lista) do
+    lista
+    |> Enum.sort_by(& &1.texto)
   end
 end

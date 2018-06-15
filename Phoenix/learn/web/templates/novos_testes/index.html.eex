@@ -1,7 +1,7 @@
-<%= render "num.html", num: 4%>
-<center>
-<h3> Testes: </h3>
-<%= for teste <- @testes do %>
+<center> 
+<h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4>
+<%= render "titulo.html", titulo: "Testes:"%>
+<%= for teste <- alfabeto(@testes) do %>
 <h4>
     <%= link teste.texto, to: novos_testes_path(@conn, :show, teste), class: "btn btn-info" %> 
     <%= link "Editar", to: novos_testes_path(@conn, :edit, teste), class: "btn btn-warning" %>
@@ -9,5 +9,8 @@
 </h4>
 <% end %>
 <%= link "Criar novo teste", to: novos_testes_path(@conn, :new), class: "btn btn-primary"%>
+<%= link "Excluir todos", to: novos_testes_path(@conn, :delete, :todos), method: :delete, data: [confirm: "Você tem certeza que deseja excluir todos testes?"], class: "btn btn-danger" %>
+
 <%= link "Voltar", to: page_path(@conn, :index), class: "btn btn-default"%>
 </center>
+

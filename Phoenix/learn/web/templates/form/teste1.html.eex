@@ -1,4 +1,4 @@
-<h4> <%= link "Inicio", to: page_path(@conn, :index)%> </h4>
+<center><h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4></center>
 <h1>Testes</h1>
 <%= form_for @changeset, form_path(@conn, :teste1), fn f -> %>
     <%= text_input f, :text, placeholder: "Texto", class: "form-control" %>

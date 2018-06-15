@@ -1,4 +1,4 @@
-<h4> <%= link "Inicio", to: page_path(@conn, :index)%> </h4>
+<center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4> </center>
 <h1 style="font-size:180px;">Bigger</h1>
 <h1>Teste 1 feito com <b>Sucesso!!!</b></h1>
 <h2><%= inspect self() %> </h2>
@@ -61,3 +61,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam quis metus sed puru
 <h1> <%= "<hello>" %> </h1>
 <h1> &lt;hello&gt; </h1>
 <h1> <%= text_input :user, :name, value: "This is a prepopulated value" %> <h1>
+
+<a href= "https://wall.alphacoders.com/by_sub_category.php?id=168636&name=Floresta+Pap%C3%A9is+de+Parede&lang=Portuguese" target="_blank">
+<img src= " <%= static_path(@conn, "/images/road.jpg") %>" width="500" height="300" alt="Teste1"></a>

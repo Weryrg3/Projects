@@ -1,0 +1,10 @@
+<center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4></center>
+
+<h2> Id: <%= @thing.id %> </h2>
+<h2> Name: <%= @thing.name %> </h2>
+<h2> Name2: <%= @thing.name2 %> </h2>
+<h2> Name3: <%= @thing.name3 %> </h2>
+<h2> Código: <%= @thing.codigo %> </h2>
+<h2> Inserted_at: <%= @thing.inserted_at %> </h2>
+<h2> Updated_at: <%= @thing.updated_at %> </h2>
+<%= link "Voltar", to: form_path(@conn, :index), class: "btn btn-default"%>

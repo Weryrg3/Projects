@@ -1,4 +1,9 @@
-<%= form_for @changeset, novos_testes_path(@conn, :create), fn teste -> %>
+<%= form_for @changeset, @action, fn teste -> %>
+    <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Algo deu errado! Verifique os erros e tente novamente!!</p>
+    </div>
+  <% end %>
     <div class="form-group">
         <%= textarea teste, :texto, placeholder: "Texto", class: "form-control" %>
         <%= error_tag teste, :texto %>
@@ -8,5 +13,5 @@
         <%= error_tag teste, :num %>
     </div>
     <%= submit @acao, class: "btn btn-primary" %>
-    <%= link "Voltar", to: page_path(@conn, :index), class: "btn btn-default"%>
+    <%= link "Voltar", to: novos_testes_path(@conn, :index), class: "btn btn-default"%>
 <% end %>

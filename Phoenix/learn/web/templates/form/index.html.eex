@@ -1,11 +1,23 @@
-<h4> <%= link "Inicio", to: page_path(@conn, :index)%> </h4>
-
-<h3>
-    <ul>
-      <li> <%= link "New Thing", to: form_path(@conn, :new)%> </li>
-    </ul>
-</h3>
-<h4>Qtd: <%= len_list(Learn.Repo.all(Learn.Thing)) %><h4>
-<h4> <%= Enum.map(Learn.Repo.all(Learn.Thing), fn struct -> %> </h4>
-<h4> <%="#{struct.name} #{struct.name2} -> id(#{struct.id})"%> <h4>
-<h4> <% end)%> <h4>
+<center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4></center>
+<center>
+<h3>Qtd: <%= len_list(@all) %><h3>
+ 
+<h4> <%= for struct <- @all do %> </h4>
+<h4> 
+  <%= link "#{struct.name} - #{struct.name2}", to: form_path(@conn, :show, struct), class: "btn btn-info" %>
+  <%= link "Editar", to: form_path(@conn, :edit, struct), class: "btn btn-warning" %>
+  <%= link "Excluir", to: form_path(@conn, :delete, struct), method: :delete, data: [confirm: "Você tem certeza?"], class: "btn btn-danger"%>
+<h4>
+<h4> <% end %> <h4>
+<h1>
+  <%= link "New Thing", to: form_path(@conn, :new), class: "btn btn-primary"%>
+  <%= link "Voltar", to: page_path(@conn, :index), class: "btn btn-default"%>
+</h1>
+</center>
+<%# submit "link", class: "btn btn-link" %>
+<%# submit "default", class: "btn btn-default" %>
+<%# submit "btn", class: "btn btn" %>
+<%# submit "danger", class: "btn btn-danger" %>
+<%# submit "success", class: "btn btn-success" %>
+<%# submit "info", class: "btn btn-info" %>
+<%# submit "warning", class: "btn btn-warning" %>

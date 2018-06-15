@@ -23,8 +23,12 @@ defmodule Learn.TestesController do
 
   # testes_path POST /testes :create
   def create(conn, %{"testes" => %{"name" => name}}) do
-    conn
-    |> put_flash(:info, "Bem vindo #{name}!!")
-    |> redirect(to: calculadora_path(conn, :index, name))
+    if String.length(name) >= 3 and String.contains?(name, ["+", "-", "*", "/", "x"]) do
+      redirect(conn, to: calculadora_path(conn, :index, name))
+    else
+      conn
+      |> put_flash(:error, "Argumento inválido tente novamente!!")
+      |> render("teste2.html")
+    end
   end
 end

@@ -1,6 +1,9 @@
 defmodule Learn.NovosTestesController do
   use Learn.Web, :controller
   alias Learn.NovosTestes, as: NovosT
+
+  # plug :teste1_plug when action in [:index, :new]
+
   # novos_testes_path GET /novostestes :index
   def index(conn, _) do
     testes = Repo.all(NovosT)
@@ -20,13 +23,11 @@ defmodule Learn.NovosTestesController do
     case Repo.insert(changeset) do
       {:ok, teste} ->
         conn
-        |> put_flash(:info, "#{teste.texto} feito com sucesso")
+        |> put_flash(:info, "O #{teste.texto} foi feito com Sucesso!!!")
         |> redirect(to: novos_testes_path(conn, :index))
 
-      {:error, _changeset} ->
-        conn
-        |> put_flash(:error, "Erro ao criar teste")
-        |> redirect(to: novos_testes_path(conn, :new))
+      {:error, changeset} ->
+        render(conn, "new.html", changeset: changeset)
     end
   end
 
@@ -37,9 +38,29 @@ defmodule Learn.NovosTestesController do
     render(conn, "edit.html", teste: teste, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id}) do
-    IO.inspect(id)
-    render(conn, :index)
+  def update(conn, %{"id" => id, "novos_testes" => params}) do
+    teste = Repo.get!(NovosT, id)
+    changeset = NovosT.changeset(teste, params)
+
+    if changeset.changes == %{} do
+      conn
+      |> put_flash(:error, "Sem alterações!!")
+      |> render("edit.html", teste: teste, changeset: changeset)
+    end
+
+    case Repo.update(changeset) do
+      {:ok, teste} ->
+        conn
+        |> put_flash(:info, "Novo teste atualizado com sucesso!!")
+        |> redirect(to: novos_testes_path(conn, :show, teste))
+
+      {:error, changeset} ->
+        render(conn, "edit.html", teste: teste, changeset: changeset)
+    end
+  end
+
+  def links(conn, _) do
+    render(conn, "links.html")
   end
 
   # novos_testes_path GET /novostestes/:id :show
@@ -50,13 +71,22 @@ defmodule Learn.NovosTestesController do
 
   # novos_testes_path DELETE /novostestes/:id :delete
   def delete(conn, %{"id" => id}) do
-    teste = Repo.get!(NovosT, id)
-    Repo.delete!(teste)
+    if id == "todos" do
+      Repo.delete_all(NovosT)
 
-    conn
-    |> put_flash(:info, "teste excluído com sucesso")
-    |> redirect(to: novos_testes_path(conn, :index))
+      conn
+      |> put_flash(:info, "testes excluídos com sucesso")
+      |> redirect(to: novos_testes_path(conn, :index))
+    else
+      teste = Repo.get!(NovosT, id)
+      Repo.delete!(teste)
+
+      conn
+      |> put_flash(:info, "teste excluído com sucesso")
+      |> redirect(to: novos_testes_path(conn, :index))
+    end
   end
+
 end
 
 # novos_testes_path PATCH /novostestes/:id :update

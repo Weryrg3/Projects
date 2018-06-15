@@ -1,0 +1,8 @@
+<h3> <%= link("<%= link(\"<%= link(\"<%= ...\"), to: \"/novostestes\") \%\>\"), to: \"/novostestes\") \%\>", to: "/novostestes") %> </h3>
+<h3> <%= link("link(\"Link 1 \", to: \"/novostestes\")", to: "/novostestes") %> </h3> 
+<h3> <%= link("link(\"<Link 2>\", to: \"/novostestes\")", to: "/novostestes") %> </h3>
+<%= link("link(\"<Link 3>\", to: \"/novostestes\", class: \"btn\")", to: "/novostestes", class: "btn") %>
+<h4> <%= link("link(\"Link 4 - delete\", to: \"/novostestes\",method: :delete, data: [confirm: \"Really?\"])", to: "/novostestes",method: :delete, data: [confirm: "Really?"]) %> </h4>
+<h3> <%= link to: "/novostestes", do: "link to: \"/novostestes\", do: \"Link 5\"" %> </h3>
+
+

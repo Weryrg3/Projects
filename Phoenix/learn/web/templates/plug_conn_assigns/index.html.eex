@@ -1,7 +1,10 @@
-<h4> <%= link "Inicio", to: page_path(@conn, :index)%> </h4>
-<h1><%= "Olá mundo"%></h1>
-<h1>Params = <%= inspect @param%></h1>
+<center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4> </center>
+
+
+
+<%= render("params.html", param: @param) %>
 <h2> Conn</h2>
-<p><%= inspect @conn%></p>
+<%= render("conn.html", conn: @conn) %>
+
 <h2> Assigns </h2>
-<p><%=inspect assigns %></p>
+<%= render("assigns.html", assigns: assigns) %>

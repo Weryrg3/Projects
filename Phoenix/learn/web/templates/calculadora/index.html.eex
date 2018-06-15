@@ -1,4 +1,4 @@
-<h4> <%= link "Inicio", to: page_path(@conn, :index)%> </h4>
+<center><h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4> </center>
 <h4>Para entrar com dados digite na barra de endereço</h4>
 <h4>Exemplo: ".../calculadora/<%= @operation %>"</h4>
 <h3>Entrada: <%= @operation %> </h3>

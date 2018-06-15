@@ -4,7 +4,8 @@ defmodule Learn.FormController do
 
   # form_path GET /form :index
   def index(conn, _params) do
-    render(conn, "index.html")
+    all = Repo.all(Thing)
+    render(conn, "index.html", all: all)
   end
 
   # form_path GET /form/new :new
@@ -28,18 +29,55 @@ defmodule Learn.FormController do
         conn
         |> put_flash(:info, "#{thing.name} foi criado")
         |> redirect(to: form_path(conn, :index))
+
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
   end
 
+  def show(conn, %{"id" => id}) do
+    thing = Repo.get!(Thing, id)
+    render(conn, "show.html", thing: thing)
+  end
+
+  def edit(conn, %{"id" => id}) do
+    thing = Repo.get!(Thing, id)
+    changeset = Thing.changeset(thing)
+    render(conn, "edit.html", thing: thing, changeset: changeset)
+  end
+
+  def update(conn, %{"id" => id, "thing" => params}) do
+    thing = Repo.get!(Thing, id)
+    changeset = Thing.changeset(thing, params)
+
+    if changeset.changes == %{} do
+      conn
+      |> put_flash(:error, "Sem alterações!!")
+      |> render("edit.html", thing: thing, changeset: changeset)
+    end
+
+    case Repo.update(changeset) do
+      {:ok, thing} ->
+        conn
+        |> put_flash(:info, "Novo thing atualizado com sucesso!!")
+        |> redirect(to: form_path(conn, :show, thing))
+
+      {:error, changeset} ->
+        render(conn, "edit.html", thing: thing, changeset: changeset)
+    end
+  end
+
   def teste(conn, params) do
     conn
-    |> put_flash(:info, inspect params)
+    |> put_flash(:info, inspect(params))
+  end
+
+  def delete(conn, %{"id" => id}) do
+    thing = Repo.get!(Thing, id)
+    Repo.delete!(thing)
+
+    conn
+    |> put_flash(:info, "#{thing.name} foi excluída com sucesso!!")
+    |> redirect(to: form_path(conn, :index))
   end
 end
-
-
-
-
-

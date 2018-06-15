@@ -36,6 +36,7 @@ defmodule Learn.Web do
 
       import Learn.Router.Helpers
       import Learn.Gettext
+      import Learn.TestePlug
     end
   end
 
@@ -58,6 +59,7 @@ defmodule Learn.Web do
   def router do
     quote do
       use Phoenix.Router
+      import Learn.TestePlug, only: [teste1_plug: 2]
     end
   end
 

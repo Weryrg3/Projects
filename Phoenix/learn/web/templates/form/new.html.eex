@@ -1,10 +1,19 @@
+<center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4></center>
 <h1>New Thing</h1>
+    
 <%= form_for @changeset, form_path(@conn, :create), fn f -> %>
+    <%= if @changeset.action do %>
+        <div class="alert alert-danger">
+          <p>Algo deu errado! Verifique os erros e tente novamente!!</p>
+        </div>
+  <% end %>
     <div class="form-group">
         <%= text_input f, :name, placeholder: "Name", class: "form-control" %>
+        <%= error_tag f, :name %>
     </div>
     <div class="form-group">
         <%= text_input f, :name2, placeholder: "Name2", class: "form-control" %>
+        <%= error_tag f, :name2 %>
     </div>
     <%= submit "link", class: "btn btn-link" %>
     <%= submit "default", class: "btn btn-default" %>

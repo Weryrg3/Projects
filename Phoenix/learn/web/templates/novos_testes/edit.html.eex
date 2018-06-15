@@ -1,3 +1,4 @@
+<center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4></center>
 <h2> Editar teste </h2>
 <%= render "form.html", changeset: @changeset, conn: @conn, acao: "Editar", 
                         action: novos_testes_path(@conn, :update, @teste) %> 

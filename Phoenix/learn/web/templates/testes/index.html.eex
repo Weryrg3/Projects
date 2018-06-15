@@ -1,2 +1,2 @@
-<h4> <%= link "Inicio", to: page_path(@conn, :index)%> </h4>
+<center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4> </center>
 <h1>Olhe para cima! </h1>

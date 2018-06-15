@@ -1,3 +1,3 @@
-<h1>Novo teste</h1>
-<h4>Digite um texto e um número</h4>
-<%= render "form.html", conn: @conn, changeset: @changeset, acao: "Criar novo teste" %>
+<center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4> </center>
+<%= render "titulo.html", titulo: "Novo teste"%>
+<%= render "form.html", conn: @conn, changeset: @changeset, acao: "Criar novo teste", action: novos_testes_path(@conn, :create) %>
