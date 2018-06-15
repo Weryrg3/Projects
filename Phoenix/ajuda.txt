@@ -11,41 +11,40 @@ mix ecto.create
 MIX_ENV=test mix ecto.drop
 MIX_ENV=test mix ecto.create
 
+mix ecto.gen.migration criar_algo
+
 mix phoenix.gen.html Video videos user_id:references:users url:string title:string description:text
 mix ecto.migrate
 
 Phoenix
 Cap 1 -> History
 Cap 2 - pg 15
-	Plug p. 31
 Cap 3 - pg 37
-	M.V.C -> Complete
 Cap 4 - pg 53
-
 Cap 5 - pg 69
-	Plug - p. 75
 Cap 6 - pg 91
 	Relacionamentos p. 99
 	voltar aqui depois com cinema para relacionamento
 	revisar aqui depois
-Cap 7 -
+Cap 7 - pg 107
 	120
 	Revisar aqui depois com cinema
-Cap 8 -
+Cap 8 - pg 129
 	Revisar tudo
 Cap 9 - pg 157
 	
 Cap 10 - pg 173
 
-Cap 11 -
+Cap 11 - pg 199
 	
-Cap 12 -
+Cap 12 - pg 229
 	
-Cap 13 -
+Cap 13 - pg 239
 	
-Cap 14 -
+Cap 14 - pg 259
 
-** Verificar como quando request funciona update, edit, new ...
+** Verificar como quando request funciona update, edit, new ... -> Erro update52
+** Verificar como o Plug do router funciona
 
 
   
