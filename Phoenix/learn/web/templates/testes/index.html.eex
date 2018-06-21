@@ -1,2 +1,37 @@
-<center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4> </center>
-<h1>Olhe para cima! </h1>
+<center> 
+    <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%>
+</center>
+<%= case @action do %>
+<% "cima" -> %>
+    <center> 
+    <%= link "Clique em mim", to: testes_path(@conn, :index, t: "lado esquerdo"), class: random()%>
+    <h1>Olhe para cima! </h1> 
+    </center>
+<% "baixo" -> %>
+    <center> 
+    <h1>Olhe para baixo! </h1>
+    <%= link "Clique em mim", to: testes_path(@conn, :index, t: "cima"), class: random()%>
+    </center> 
+
+<% "lado esquerdo" -> %>
+    <center> 
+    <h1>Olhe para lado esquerdo! </h1>
+    </center> 
+    <%= link "Clique em mim", to: testes_path(@conn, :index, t: "lado direito"), class: random()%>
+    </center>
+
+<% "lado direito" -> %>
+    <center> 
+    <h1>Olhe para lado direito! </h1>
+    </center> 
+    <div align="right"><%= link "Clique em mim", to: testes_path(@conn, :index, t: "baixo"), class: random()%> <div>
+    </center>
+<% end %>
+
+<center>
+    <h1>
+    <%= Enum.map(1..108, fn _ -> %>
+    <%= link "bottom", to: testes_path(@conn, :index, t: random1()), class: random()%>
+    <% end) %>
+   </h1>
+</center>

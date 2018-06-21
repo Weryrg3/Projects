@@ -1,6 +1,6 @@
 <center><h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4></center>
 <h1>Testes</h1>
-<%= form_for @changeset, form_path(@conn, :teste1), fn f -> %>
+<%= form_for @changeset, form_path(@conn, :testes), fn f -> %>
     <%= text_input f, :text, placeholder: "Texto", class: "form-control" %>
     <%= checkbox f, :text, placeholder: "text", class: "form-control" %>
     <%= color_input f, :text, placeholder: "text", class: "form-control" %>

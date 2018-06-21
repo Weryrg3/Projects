@@ -2,8 +2,8 @@ defmodule Learn.TestesController do
   use Learn.Web, :controller
 
   # testes_path GET /testes :index
-  def index(conn, _params) do
-    render(conn, "index.html")
+  def index(conn, %{"t" => t}) do
+    render(conn, "index.html", action: t)
   end
 
   # testes_path GET /testes/teste1 :teste1
@@ -30,5 +30,11 @@ defmodule Learn.TestesController do
       |> put_flash(:error, "Argumento inválido tente novamente!!")
       |> render("teste2.html")
     end
+  end
+
+  def buttons(conn, %{"pos" => %{"x" => x, "y" => y}}) do
+    x = String.to_integer(x)
+    y = String.to_integer(y)
+    render(conn, "buttons.html", x: x, y: y)
   end
 end

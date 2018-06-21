@@ -20,12 +20,14 @@ defmodule Learn.Router do
     get "/", PageController, :index
     get "/plug/:p", PlugConnAssignsController, :index
     get "/calculadora/:op", CalculadoraController, :index
-    get "/form/teste1", FormController, :teste1
-    resources "/testes", TestesController, only: [:index, :create]
+    get "/form/testes", FormController, :testes
+    get "/form/submit", FormController, :submit
     resources "/form", FormController
-    resources "/novostestes", NovosTestesController
     get "/novostestes/testes/links", NovosTestesController, :links
+    get "/novostestes/buttons2", NovosTestesController, :buttons2
+    resources "/novostestes", NovosTestesController
     resources "/relacionamentos", RelacionamentosController
+    resources "/testes", TestesController, only: [:index, :create]
 
     scope "/testes" do
       # pipe_through [:browser]
@@ -33,6 +35,7 @@ defmodule Learn.Router do
       get "/teste1", TestesController, :teste1
       get "/teste2", TestesController, :teste2
       get "/teste_css", TestesController, :teste_css
+      get "/buttons", TestesController, :buttons
     end
   end
 

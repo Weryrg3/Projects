@@ -38,6 +38,7 @@ defmodule Learn.NovosTestesController do
     render(conn, "edit.html", teste: teste, changeset: changeset)
   end
 
+  # novos_testes_path PUT /novostestes/:id :update
   def update(conn, %{"id" => id, "novos_testes" => params}) do
     teste = Repo.get!(NovosT, id)
     changeset = NovosT.changeset(teste, params)
@@ -87,7 +88,85 @@ defmodule Learn.NovosTestesController do
     end
   end
 
+  def file_read do
+    "#{File.cwd!()}/lib/learn/pos.txt"
+    |> File.read!()
+    |> String.split("\n")
+    |> Enum.map(fn str ->
+      String.split(str, "=") |> List.to_tuple()
+    end)
+    |> Map.new()
+  end
+
+  def file_write(map) do
+    str =
+      Map.to_list(map)
+      |> Enum.map(fn {pos, cor} -> "#{pos}=#{cor}" end)
+      |> Enum.join("\n")
+
+    File.write!("#{File.cwd!()}/lib/learn/pos.txt", str)
+  end
+
+  defp pos("random") do
+    file = file_read()
+
+    Map.merge(file, file, fn m, p1, _ ->
+      if m == "cor" do
+        p1
+      else
+        Enum.random(["primary", "danger", "success", "info", "warning"])
+      end
+    end)
+  end
+
+  defp pos(cor) do
+    file = file_read()
+
+    Map.merge(file, file, fn m, p1, _ ->
+      if m == "cor" do
+        p1
+      else
+        cor
+      end
+    end)
+  end
+
+  def buttons2(conn, %{"clear" => "clear"}) do
+    pos = pos("default")
+    file_write(pos)
+    render(conn, "buttons2.html", buttons: pos)
+  end
+
+  def buttons2(conn, %{"all" => "all"}) do
+    pos = pos(file_read()["cor"])
+    file_write(pos)
+    render(conn, "buttons2.html", buttons: pos)
+  end
+
+  def buttons2(conn, params) do
+    pos =
+      Map.merge(file_read(), params, fn m, p1, p2 ->
+        case p1 do
+          "default" ->
+            p2
+
+          _ ->
+            cond do
+              m == "cor" and p1 == "random" ->
+                "primary"
+
+              m == "cor" and p1 != "random" ->
+                p2
+
+              true ->
+                "default"
+            end
+        end
+      end)
+
+    file_write(pos)
+    render(conn, "buttons2.html", buttons: pos)
+  end
 end
 
 # novos_testes_path PATCH /novostestes/:id :update
-# novos_testes_path PUT /novostestes/:id :update

@@ -25,3 +25,5 @@
     <%= submit "warning", class: "btn btn-warning" %>
 <% end %>
 <%= link "Voltar", to: page_path(@conn, :index), class: "btn btn-default"%>
+
+ 

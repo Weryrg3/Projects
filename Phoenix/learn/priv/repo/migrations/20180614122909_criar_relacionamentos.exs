@@ -4,11 +4,12 @@ defmodule Learn.Repo.Migrations.CriarRelacionamentos do
   def change do
     create table(:relacionamentos) do
       add(:campo, :string)
-      add(:novostestes_id, references(:novostestes, on_delete: :nothing))
+      add(:novos_testes_id, references(:novostestes, on_delete: :nothing))
       timestamps()
     end
 
     create(unique_index(:relacionamentos, [:campo]))
-    create(unique_index(:relacionamentos, [:novostestes_id]))
+    create(unique_index(:relacionamentos, [:novos_testes_id]))
   end
 end
+

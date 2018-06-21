@@ -1,0 +1,16 @@
+<center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4></center>
+
+<center>
+<h1>
+<%= Enum.map(1..2, fn i -> %>
+<%= Enum.map(1..1, fn a -> %>
+    <%= form_for @changeset, form_path(@conn, :update, @thing), fn f -> %>
+    <div class="form-group">
+        <%= checkbox f, :name2, placeholder: "Name2", class: "btn btn-default" %>
+    </div>
+    <%= submit "Editar", class: "btn btn-primary" %>
+<% end %>
+<% end)%>
+<% end)%>
+</h1>
+</center>

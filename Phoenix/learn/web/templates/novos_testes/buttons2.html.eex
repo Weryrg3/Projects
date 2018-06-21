@@ -1,0 +1,20 @@
+<center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-primary"%> </h4></center>
+<center> <h4> 
+    <% cor = random Map.get(@buttons, "cor")%>
+    <%= link "Preencher", to: novos_testes_path(@conn, :buttons2, %{"all" => "all"}), class: "btn btn-#{cor}" %> 
+    <%= link "Limpar", to: novos_testes_path(@conn, :buttons2, %{"clear" => "clear"}), class: "btn btn-default" %> 
+    <%= link "Trocar cor", to: novos_testes_path(@conn, :buttons2, %{"cor" => trocar_cor(cor)}), class: "btn btn-#{cor}" %>
+    <%= if Map.get(@buttons, "cor") == "random" do %>
+        <%= link "Random ativado", to: novos_testes_path(@conn, :buttons2, %{"cor" => "random"}), class: "btn btn-#{cor}" %>
+    <% else %>
+        <%= link "Random desativado", to: novos_testes_path(@conn, :buttons2, %{"cor" => "random"}), class: "btn btn-#{cor}" %>
+    <% end %>
+</h4></center>
+<center>
+    <h1>
+    <%= Enum.map(Map.delete(@buttons, "cor"), fn {v1, v2} -> %>
+        <%= link "bo", to: novos_testes_path(@conn, :buttons2, %{v1 => cor}), class: "btn btn-#{v2}" %>
+    <% end) %>
+    </h1>
+</center>
+

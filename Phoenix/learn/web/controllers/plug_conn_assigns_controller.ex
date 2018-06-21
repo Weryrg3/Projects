@@ -3,6 +3,9 @@ defmodule Learn.PlugConnAssignsController do
 
   # plug_conn_assigns_path GET /plug/:p :index
   def index(conn, params) do
-    render(conn, "index.html", [param: params, conn2: conn])
+    conn
+    |> assign(:teste, %{a1: 1})
+    |> configure_session(renew: true)
+    |> render("index.html", [param: params, conn2: conn])
   end
 end

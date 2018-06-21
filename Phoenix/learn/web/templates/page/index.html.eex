@@ -16,18 +16,21 @@
   <h1>
     <%= link "Form", to: form_path(@conn, :index), class: "btn btn-primary"%>
     <%= link "New Thing", to: form_path(@conn, :new), class: "btn btn-primary" %>
-    <%= link "Testes", to: form_path(@conn, :teste1), class: "btn btn-primary"%>
+    <%= link "Testes", to: form_path(@conn, :testes), class: "btn btn-primary"%>
+    <%= link "Submit", to: form_path(@conn, :submit), class: "btn btn-primary"%>
   </h1>
   <h1>
-    <%= link "Testes", to: testes_path(@conn, :index), class: "btn btn-danger"%>
+    <%= link "Testes", to: testes_path(@conn, :index, t: "cima"), class: "btn btn-danger"%>
     <%= link "Teste 1", to: testes_path(@conn, :teste1), class: "btn btn-danger"%>
     <%= link "Teste 2", to: testes_path(@conn, :teste2), class: "btn btn-danger"%>
     <%= link "Teste CSS", to: testes_path(@conn, :teste_css), class: "btn btn-danger"%>
+    <%= link "Buttons", to: testes_path(@conn, :buttons, pos: %{x: 7, y: 7}), class: "btn btn-danger"%>
   </h1>
   <h1>
     <%= link "Novos Testes", to: novos_testes_path(@conn, :index), class: "btn btn-success"%>
     <%= link "Criar teste", to: novos_testes_path(@conn, :new), class: "btn btn-success"%>
     <%= link "Links", to: "/novostestes/testes/links", class: "btn btn-success"%>
+    <%= link "Buttons 2", to: novos_testes_path(@conn, :buttons2, %{}), class: "btn btn-success"%>
   </h1>
   <h1>
     <%= link "Relacionamentos", to: relacionamentos_path(@conn, :index), class: "btn btn-warning" %>

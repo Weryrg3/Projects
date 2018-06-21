@@ -1,2 +1,4 @@
 <center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4> </center>
-<h1>Index</h1>
+<%= Enum.map(@relacionamentos, fn rel -> %>
+<h3> <%= inspect rel %> </h3>
+<% end) %>

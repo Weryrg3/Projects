@@ -1,0 +1,40 @@
+<center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </center>
+<center>
+    <h1>
+    <%= Enum.map(1..13, fn i -> %>
+    <%= Enum.map(1..13, fn a -> %>    
+    <%= cond do %>
+    <% i == @x and a == @y  -> %>
+        <%= link "bo", to: testes_path(@conn, :buttons, pos: %{x: i, y: a}), class: "btn btn-primary"%>
+    <% @x == i or @y == a or (abs(@x - i) == abs(@y - a))  -> %>
+        <%= link "bo", to: testes_path(@conn, :buttons, pos: %{x: i, y: a}), class: random_colors()%>
+    <% true -> %>
+        <%= link "bo", to: testes_path(@conn, :buttons, pos: %{x: i, y: a}), class: "btn btn-default"%>
+    <% end %>
+    <% end) %> 
+    <% end) %>
+   </h1>
+</center>
+
+<center>
+    <h1>
+    <% {color1, color2} = {random_colors(), random_colors()} %>
+    <%= Enum.map(13..1, fn i -> %>
+    <%= Enum.map(1..13, fn a -> %>    
+    <%= cond do %>
+    <% i == @x and a == @y -> %>
+        <%= link "bo", to: testes_path(@conn, :buttons, pos: %{x: i, y: a}), class: "btn btn-primary"%>
+    <% @x == i or @y == a  -> %>
+        <%= link "bo", to: testes_path(@conn, :buttons, pos: %{x: i, y: a}), class: color1%>
+     <% (abs(@x - i) == abs(@y - a)) -> %>
+        <%= link "bo", to: testes_path(@conn, :buttons, pos: %{x: i, y: a}), class: color2%>
+    <% true -> %>
+        <%= link "bo", to: testes_path(@conn, :buttons, pos: %{x: i, y: a}), class: "btn btn-default"%>
+    <% end %>
+    <% end) %> 
+    <% end) %>
+   </h1>
+</center>
+
+
+

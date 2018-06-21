@@ -14,10 +14,10 @@ defmodule Learn.FormController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  # form_path GET /form/teste1 :teste1
-  def teste1(conn, _params) do
+  # form_path GET /form/testes :testes
+  def testes(conn, _params) do
     changeset = Thing.changeset(%Thing{})
-    render(conn, "teste1.html", changeset: changeset)
+    render(conn, "testes.html", changeset: changeset)
   end
 
   # form_path POST /form :create
@@ -35,6 +35,7 @@ defmodule Learn.FormController do
     end
   end
 
+  # form_path GET /form/:id :show
   def show(conn, %{"id" => id}) do
     thing = Repo.get!(Thing, id)
     render(conn, "show.html", thing: thing)
@@ -46,6 +47,7 @@ defmodule Learn.FormController do
     render(conn, "edit.html", thing: thing, changeset: changeset)
   end
 
+  # form_path PUT /form/:id :update
   def update(conn, %{"id" => id, "thing" => params}) do
     thing = Repo.get!(Thing, id)
     changeset = Thing.changeset(thing, params)
@@ -72,6 +74,7 @@ defmodule Learn.FormController do
     |> put_flash(:info, inspect(params))
   end
 
+  # form_path DELETE /form/:id :delete
   def delete(conn, %{"id" => id}) do
     thing = Repo.get!(Thing, id)
     Repo.delete!(thing)
@@ -80,4 +83,12 @@ defmodule Learn.FormController do
     |> put_flash(:info, "#{thing.name} foi excluída com sucesso!!")
     |> redirect(to: form_path(conn, :index))
   end
+
+  # form_path GET /form/submit :submit
+  def submit(conn, _) do
+    thing = Repo.get!(Thing, 8)
+    changeset = Thing.changeset(thing)
+    render(conn, "submit.html", thing: thing, changeset: changeset)
+  end
 end
+

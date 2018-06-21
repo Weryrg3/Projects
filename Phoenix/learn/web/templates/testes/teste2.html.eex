@@ -1,12 +1,3 @@
 <center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4> </center>
 <h1>Its Working</h1>
-<h4> <%= link "Teste1", to: testes_path(@conn, :teste1), class: "btn btn-warning"%> </h4>
-
-<%= form_for @conn, testes_path(@conn, :create), [as: :testes], fn f -> %>
- 
- <div class="form-group">
-    <%= text_input f, :name, placeholder: "1+2", class: "form-control" %>
- </div>
- 
- <%= submit "Enviar", class: "btn btn-primary" %>
-<% end %>
+<%= render "form.html", action: testes_path(@conn, :create), conn: @conn %>
