@@ -30,7 +30,7 @@
     <%= link "Novos Testes", to: novos_testes_path(@conn, :index), class: "btn btn-success"%>
     <%= link "Criar teste", to: novos_testes_path(@conn, :new), class: "btn btn-success"%>
     <%= link "Links", to: "/novostestes/testes/links", class: "btn btn-success"%>
-    <%= link "Buttons 2", to: novos_testes_path(@conn, :buttons2, %{}), class: "btn btn-success"%>
+    <%= link "Buttons 2", to: novos_testes_path(@conn, :buttons2, %{}), automatico: false, class: "btn btn-success"%>
   </h1>
   <h1>
     <%= link "Relacionamentos", to: relacionamentos_path(@conn, :index), class: "btn btn-warning" %>

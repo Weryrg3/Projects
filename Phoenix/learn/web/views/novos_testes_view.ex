@@ -43,12 +43,4 @@ defmodule Learn.NovosTestesView do
     lista
     |> Enum.sort_by(& &1.texto)
   end
-
-  def relacionamentos([]) do
-    ""
-  end
-
-  def relacionamentos([param]) do
-    "Relacionamentos: #{param.campo}"
-  end
 end

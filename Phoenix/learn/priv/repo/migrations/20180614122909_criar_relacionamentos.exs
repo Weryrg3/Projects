@@ -7,9 +7,6 @@ defmodule Learn.Repo.Migrations.CriarRelacionamentos do
       add(:novos_testes_id, references(:novostestes, on_delete: :nothing))
       timestamps()
     end
-
-    create(unique_index(:relacionamentos, [:campo]))
-    create(unique_index(:relacionamentos, [:novos_testes_id]))
   end
 end
 

@@ -1,4 +1,7 @@
-Plug -> Atom -> o que são? funções? argumentos?
+mix phoenix.new teste
+cd teste
+mix ecto.create
+mix phoenix.server
 
 user_path()
 static_path()
@@ -23,9 +26,7 @@ Cap 3 - pg 37
 Cap 4 - pg 53
 Cap 5 - pg 69
 Cap 6 - pg 91
-	Relacionamentos p. 99
-	voltar aqui depois com cinema para relacionamento
-	revisar aqui depois
+	Estou terminado de implementar o relacionamento em learn
 Cap 7 - pg 107
 	120
 	Revisar aqui depois com cinema
@@ -43,8 +44,8 @@ Cap 13 - pg 239
 	
 Cap 14 - pg 259
 
-** Verificar como quando request funciona update, edit, new ... -> Erro update52
-** Verificar como o Plug do router funciona
+
+
 
 
   

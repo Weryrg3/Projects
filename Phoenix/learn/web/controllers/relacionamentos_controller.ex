@@ -1,6 +1,6 @@
 defmodule Learn.RelacionamentosController do
   use Learn.Web, :controller
-  alias Learn.Relacionamentos
+  alias Learn.{Relacionamentos, NovosTestes}
 
   # relacionamentos_path GET /relacionamentos :index
   def index(conn, _) do
@@ -9,18 +9,25 @@ defmodule Learn.RelacionamentosController do
   end
 
   # relacionamentos_path GET /relacionamentos/new :new
-  def new(conn, params) do
+  def new(conn, %{"id" => id}) do
+    user = Repo.get(NovosTestes, id)
+
     changeset =
-      params
+      user
       |> build_assoc(:relacionamentos)
       |> Relacionamentos.changeset()
 
-    render(conn, "new.html", changeset: changeset)
+    render(conn, "new.html", changeset: changeset, id_user: id)
   end
 
   # relacionamentos_path POST /relacionamentos :create
-  def create(conn, %{"relacionamentos" => changeset}) do
-    changeset = Relacionamentos.changeset(%Relacionamentos{}, changeset)
+  def create(conn, %{"relacionamentos" => changeset, "id_user" => id}) do
+    # changeset = Relacionamentos.changeset(%Relacionamentos{}, changeset)
+    changeset =
+      Repo.get(NovosTestes, id)
+      |> build_assoc(:relacionamentos)
+      |> Relacionamentos.changeset(changeset)
+
     # sem segurança
     case Repo.insert(changeset) do
       {:ok, _relacionamento} ->
@@ -29,7 +36,7 @@ defmodule Learn.RelacionamentosController do
         |> redirect(to: novos_testes_path(conn, :index))
 
       {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        render(conn, "new.html", changeset: changeset, id_user: id)
     end
   end
 
@@ -71,6 +78,22 @@ defmodule Learn.RelacionamentosController do
     |> put_flash(:info, "Relacionamento excluid com sucesso!")
     |> redirect(to: novos_testes_path(conn, :index))
   end
+
+  # defp button(%{"campo" => string}) do
+  #   string
+  #   |> String.split(["x", "X", "*"])
+  #   |> (fn [n1, n2] ->
+  #         String.to_integer(n1) * String.to_integer(n2)
+  #       end).()
+  #   |> (fn n ->
+  #         Enum.map(1..n, fn n -> "#{n}=default" end)
+  #       end).()
+  #   |> (fn string ->
+  #         string ++ ["cor=default"]
+  #       end).()
+  #   |> Enum.join("\n")
+  #   |> (fn string -> %{"campo" => string} end).()
+  # end
 end
 
 # relacionamentos_path GET /relacionamentos/:id :show

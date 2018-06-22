@@ -1,0 +1,2 @@
+<center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4> </center>
+<%= render "form.html", conn: @conn, changeset: @changeset, acao: "Criar novo button", action: relacionamentos_path(@conn, :create, %{"id_user" => @id_user}) %>

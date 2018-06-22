@@ -2,8 +2,7 @@
 <h3> ID: <%= @teste.id %> </h3>
 <h3> Texto: <%= @teste.texto %> </h3>
 <h3> Número: <%= @teste.num %> </h3>
-<h3> <%= relacionamentos Learn.Repo.preload(@teste, :relacionamentos).relacionamentos %> </h3>
 <h3> Inserido em <%= data(@teste.inserted_at) %> </h3>
 <h3> Atualizado em <%= data(@teste.updated_at) %> </h3>
-<%= link "Voltar", to: novos_testes_path(@conn, :index), class: "btn btn-default"%>
-
+<h3> <%= link "Criar novo button", to: relacionamentos_path(@conn, :new, %{"id" => @teste.id}), class: "btn btn-success" %>
+<%= link "Voltar", to: novos_testes_path(@conn, :index), class: "btn btn-default" %> </h3>

@@ -1,4 +1,4 @@
-111=primary
+111=default
 61=default
 58=default
 145=default
@@ -12,7 +12,7 @@
 115=default
 78=default
 79=default
-116=primary
+116=default
 93=default
 113=default
 87=default
@@ -26,7 +26,7 @@
 160=default
 71=default
 149=default
-12=primary
+12=default
 42=default
 36=default
 16=default
@@ -40,7 +40,7 @@
 105=default
 64=default
 34=default
-77=primary
+77=default
 32=default
 82=default
 46=default
@@ -54,7 +54,7 @@
 102=default
 90=default
 9=default
-103=primary
+103=default
 129=default
 162=default
 7=default
@@ -68,7 +68,7 @@
 120=default
 52=default
 74=default
-68=primary
+68=default
 89=default
 57=default
 2=default
@@ -82,7 +82,7 @@
 29=default
 17=default
 85=default
-100=primary
+100=default
 63=default
 25=default
 126=default
@@ -96,7 +96,7 @@
 67=default
 80=default
 122=default
-18=primary
+18=default
 27=default
 109=default
 35=default
@@ -110,7 +110,7 @@
 159=default
 136=default
 99=default
-88=primary
+88=default
 125=default
 84=default
 147=default
@@ -121,7 +121,7 @@
 72=default
 114=default
 133=default
-cor=primary
+cor=info
 31=default
 43=default
 128=default

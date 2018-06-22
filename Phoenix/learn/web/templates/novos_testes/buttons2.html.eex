@@ -1,14 +1,23 @@
 <center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-primary"%> </h4></center>
 <center> <h4> 
+    <% param = inspect @conn.params %>
+    <% default = inspect @buttons%>
+
     <% cor = random Map.get(@buttons, "cor")%>
-    <%= link "Preencher", to: novos_testes_path(@conn, :buttons2, %{"all" => "all"}), class: "btn btn-#{cor}" %> 
-    <%= link "Limpar", to: novos_testes_path(@conn, :buttons2, %{"clear" => "clear"}), class: "btn btn-default" %> 
-    <%= link "Trocar cor", to: novos_testes_path(@conn, :buttons2, %{"cor" => trocar_cor(cor)}), class: "btn btn-#{cor}" %>
-    <%= if Map.get(@buttons, "cor") == "random" do %>
-        <%= link "Random ativado", to: novos_testes_path(@conn, :buttons2, %{"cor" => "random"}), class: "btn btn-#{cor}" %>
+        <%= render "menu.html", conn: @conn, cor: cor, buttons: @buttons %>
+    
+    <%= if String.contains?(param, "automatico") and String.contains?(default, "default") do %>
+        
+        <%= link "Automático ativado", to: novos_testes_path(@conn, :buttons2, %{"automatico" => "automatico"}), class: "btn btn-#{cor}" %> 
+        <script type="text/javascript">
+            setTimeout(function(){
+                window.location.reload()
+            }, 1000)
+        </script>
     <% else %>
-        <%= link "Random desativado", to: novos_testes_path(@conn, :buttons2, %{"cor" => "random"}), class: "btn btn-#{cor}" %>
-    <% end %>
+        <%= link "Automático desativado", to: novos_testes_path(@conn, :buttons2, %{"automatico" => "automatico"}), class: "btn btn-#{cor}" %> 
+    <% end %>    
+    
 </h4></center>
 <center>
     <h1>
@@ -17,4 +26,7 @@
     <% end) %>
     </h1>
 </center>
+
+
+
 

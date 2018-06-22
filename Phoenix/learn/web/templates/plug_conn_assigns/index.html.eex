@@ -1,7 +1,5 @@
 <center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4> </center>
 
-
-
 <%= render("params.html", param: @param) %>
 <h2> Conn</h2>
 <%= render("conn.html", conn: @conn) %>

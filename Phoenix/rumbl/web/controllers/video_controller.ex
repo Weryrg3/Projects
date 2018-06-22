@@ -22,7 +22,6 @@ defmodule Rumbl.VideoController do
   end
 
   def create(conn, %{"video" => video_params}, user) do
-    IO.inspect(video_params)
     changeset =
       user
       |> build_assoc(:videos)
