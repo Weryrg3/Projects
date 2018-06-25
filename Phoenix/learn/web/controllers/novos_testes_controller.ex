@@ -1,7 +1,9 @@
 defmodule Learn.NovosTestesController do
   use Learn.Web, :controller
+  import Learn.Buttons
   alias Learn.NovosTestes, as: NovosT
 
+  @random ["primary", "danger", "success", "info", "warning"]
   # plug :teste1_plug when action in [:index, :new]
 
   # novos_testes_path GET /novostestes :index
@@ -88,119 +90,33 @@ defmodule Learn.NovosTestesController do
     end
   end
 
-  def file_read do
-    "#{File.cwd!()}/lib/learn/pos.txt"
-    |> File.read!()
-    |> String.split("\n")
-    |> Enum.map(fn str ->
-      String.split(str, "=") |> List.to_tuple()
-    end)
-    |> Map.new()
-  end
-
-  def file_write(map) do
-    str =
-      Map.to_list(map)
-      |> Enum.map(fn {pos, cor} -> "#{pos}=#{cor}" end)
-      |> Enum.join("\n")
-
-    File.write!("#{File.cwd!()}/lib/learn/pos.txt", str)
-  end
-
-  defp pos("random") do
-    file = file_read()
-
-    Map.merge(file, file, fn m, p1, _ ->
-      if m == "cor" do
-        p1
-      else
-        Enum.random(["primary", "danger", "success", "info", "warning"])
-      end
-    end)
-  end
-
-  defp pos(cor) do
-    file = file_read()
-
-    Map.merge(file, file, fn m, p1, _ ->
-      if m == "cor" do
-        p1
-      else
-        cor
-      end
-    end)
-  end
-
-  def delete_keys_map(map) do
-    keys =
-      Enum.map(map, fn {pos, cor} ->
-        if cor != "default" or pos == "cor", do: pos
-      end)
-
-    map = Map.drop(map, keys)
-    {length(Map.to_list(map)), map}
-  end
+  ################################
+  # Implementação de buttons     #
+  ################################
 
   def buttons2(conn, %{"automatico" => "automatico"}) do
-    {tamanho, map} = delete_keys_map(file_read())
-    cor = file_read()["cor"]
+    {arg, tamanho, map, cor} = main_button("automatico", conn.request_path)
 
     if tamanho > 0 do
       {pos, _cor} = Enum.random(map)
       buttons2(conn, %{pos => cor})
     else
-      render(conn, "buttons2.html", buttons: file_read())
+      render(conn, "buttons2.html", buttons: read_file(arg))
     end
   end
 
   def buttons2(conn, %{"clear" => "clear"}) do
-    pos = pos("default")
-    file_write(pos)
-
-    render(conn, "buttons2.html", buttons: pos)
+    map = main_button("clear", conn.request_path)
+    render(conn, "buttons2.html", buttons: map)
   end
 
   def buttons2(conn, %{"all" => "all"}) do
-    pos = pos(file_read()["cor"])
-    file_write(pos)
-
-    render(conn, "buttons2.html", buttons: pos)
+    map = main_button("all", conn.request_path)
+    render(conn, "buttons2.html", buttons: map)
   end
 
   def buttons2(conn, params) do
-    file = file_read()
-    cor_automatica = Enum.random(["primary", "danger", "success", "info", "warning"])
-
-    map =
-      Map.merge(file, params, fn m, p1, p2 ->
-        case p1 do
-          "default" ->
-            if p2 == "random" do
-              cor_automatica
-            else
-              p2
-            end
-
-          _ ->
-            cond do
-              m == "cor" and p1 == "random" ->
-                "primary"
-
-              m == "cor" and p1 != "random" ->
-                p2
-
-              true ->
-                "default"
-            end
-        end
-      end)
-
-    new_map =
-      if conn.params == %{"automatico" => "automatico"} do
-        Map.update!(map, "cor", fn _ -> cor_automatica end)
-      end
-
-    file_write(new_map || map)
+    map = main_button("default", conn.request_path, params, conn.params)
 
     render(conn, "buttons2.html", buttons: map)
   end

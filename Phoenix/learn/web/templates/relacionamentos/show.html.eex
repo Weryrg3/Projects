@@ -1,0 +1,6 @@
+<center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4> </center>
+<h3> Nome_button: <%= @rel.nome %> </h3>
+<h3> Tamanho: <%= @rel.campo %> </h3>
+<h3> ID_TESTE: <%= @rel.novos_testes_id %> </h3>
+<h3> ID_REL: <%= @rel.id %> </h3> </h3>
+<h3> <%= link "Voltar", to: relacionamentos_path(@conn, :index), class: "btn btn-default"%>

@@ -5,7 +5,7 @@
 <%= link "Trocar cor", to: novos_testes_path(@conn, :buttons2, %{"cor" => trocar_cor(@cor)}), class: "btn btn-#{@cor}" %>
 
 <%= if Map.get(@buttons, "cor") == "random" do %>
-<%= link "Random ativado", to: novos_testes_path(@conn, :buttons2, %{"cor" => "random"}), class: "btn btn-#{@cor}" %>
+    <%= link "Random ativado", to: novos_testes_path(@conn, :buttons2, %{"cor" => "random"}), class: "btn btn-#{@cor}" %>
 <% else %>
     <%= link "Random desativado", to: novos_testes_path(@conn, :buttons2, %{"cor" => "random"}), class: "btn btn-#{@cor}" %>
 <% end %>

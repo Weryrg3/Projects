@@ -1,7 +1,8 @@
 <center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4> 
 <h2>Relacionamentos:</h2>
-<%= Enum.map(@relacionamentos, fn rel -> %>
-<h3> <%= link rel.nome, to: relacionamentos_path(@conn, :show, rel.id), class: "btn btn-info" %> </h3>
+<%= Enum.map(@rel, fn rel -> %>
+<h3> <%= link rel.nome, to: relacionamentos_path(@conn, :show, rel.id), class: "btn btn-info" %>
+     <%= link rel.campo, to: relacionamentos_path(@conn, :show, rel.id), class: "btn btn-info" %>
 <% end) %>
 <h4> <%= link "Voltar", to: page_path(@conn, :index), class: "btn btn-default"%> </h4>
 </center>

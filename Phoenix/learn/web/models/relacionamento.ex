@@ -4,13 +4,14 @@ defmodule Learn.Relacionamentos do
 
   schema "relacionamentos" do
     field(:campo, :string)
+    field(:nome, :string)
     belongs_to(:novos_testes, NovosTestes)
     timestamps()
   end
 
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:campo])
-    |> validate_required([:campo])
+    |> cast(params, [:campo, :nome])
+    |> validate_required([:campo, :nome])
   end
 end

@@ -4,18 +4,18 @@
     <% default = inspect @buttons%>
 
     <% cor = random Map.get(@buttons, "cor")%>
-        <%= render "menu.html", conn: @conn, cor: cor, buttons: @buttons %>
+    <%= render "menu.html", conn: @conn, cor: cor, buttons: @buttons %>
     
     <%= if String.contains?(param, "automatico") and String.contains?(default, "default") do %>
         
-        <%= link "Automático ativado", to: novos_testes_path(@conn, :buttons2, %{"automatico" => "automatico"}), class: "btn btn-#{cor}" %> 
+        <%= link "Random automático ativado", to: novos_testes_path(@conn, :buttons2, %{"automatico" => "automatico"}), class: "btn btn-#{cor}" %> 
         <script type="text/javascript">
             setTimeout(function(){
                 window.location.reload()
             }, 1000)
         </script>
     <% else %>
-        <%= link "Automático desativado", to: novos_testes_path(@conn, :buttons2, %{"automatico" => "automatico"}), class: "btn btn-#{cor}" %> 
+        <%= link "Random automático desativado", to: novos_testes_path(@conn, :buttons2, %{"automatico" => "automatico"}), class: "btn btn-#{cor}" %> 
     <% end %>    
     
 </h4></center>
@@ -26,7 +26,3 @@
     <% end) %>
     </h1>
 </center>
-
-
-
-

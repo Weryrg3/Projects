@@ -30,7 +30,8 @@ defmodule Learn.RelacionamentosController do
 
     # sem segurança
     case Repo.insert(changeset) do
-      {:ok, _relacionamento} ->
+      {:ok, relacionamento} ->
+        button(relacionamento.campo)
         conn
         |> put_flash(:info, "O relacionamento foi criado com sucesso!!")
         |> redirect(to: novos_testes_path(conn, :index))
@@ -79,21 +80,36 @@ defmodule Learn.RelacionamentosController do
     |> redirect(to: novos_testes_path(conn, :index))
   end
 
-  # defp button(%{"campo" => string}) do
-  #   string
-  #   |> String.split(["x", "X", "*"])
-  #   |> (fn [n1, n2] ->
-  #         String.to_integer(n1) * String.to_integer(n2)
-  #       end).()
-  #   |> (fn n ->
-  #         Enum.map(1..n, fn n -> "#{n}=default" end)
-  #       end).()
-  #   |> (fn string ->
-  #         string ++ ["cor=default"]
-  #       end).()
-  #   |> Enum.join("\n")
-  #   |> (fn string -> %{"campo" => string} end).()
-  # end
+  defp button(string) do
+    str =
+      string
+      |> String.split(["x", "X", "*"])
+      |> (fn [n1, n2] ->
+            String.to_integer(n1) * String.to_integer(n2)
+          end).()
+      |> (fn n ->
+            Enum.map(1..n, fn n -> "#{n}=default" end)
+          end).()
+      |> (fn string ->
+            string ++ ["cor=default"]
+          end).()
+      |> Enum.join("\n")
+
+    File.write!("#{File.cwd!()}/lib/learn/user.txt", str)
+  end
+
+  def show(conn, %{"id" => id}) do
+    rel = Repo.get!(Relacionamentos, id)
+    render(conn, "show.html", rel: rel)
+  end
+
+
+  # %{"id" => id}
+  def buttons3(conn, _params) do
+    user = Repo.get!(NovosTestes, 1)
+    rel = Repo.preload(user, :relacionamentos)
+    render(conn, "buttons3.html", rel: rel.relacionamentos)
+  end
 end
 
 # relacionamentos_path GET /relacionamentos/:id :show

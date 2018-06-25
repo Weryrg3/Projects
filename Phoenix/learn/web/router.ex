@@ -26,6 +26,7 @@ defmodule Learn.Router do
     get "/novostestes/testes/links", NovosTestesController, :links
     get "/novostestes/buttons2", NovosTestesController, :buttons2
     resources "/novostestes", NovosTestesController
+    get "/relacionamentos/buttons3", RelacionamentosController, :buttons3
     resources "/relacionamentos", RelacionamentosController
     resources "/testes", TestesController, only: [:index, :create]
 
