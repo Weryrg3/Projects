@@ -1,8 +1,12 @@
 defmodule Learn.Buttons do
   @random ["primary", "danger", "success", "info", "warning"]
 
-  def main_button("automatico", name_request) do
-    [_, arg, _] = String.split(name_request, "/")
+  def name_request(request) do
+    [_, arg, _] = String.split(request, "/")
+    arg
+  end
+
+  def main_button("automatico", arg) do
 
     {tamanho, map} = delete_keys_map(file_read(arg))
 
@@ -11,22 +15,19 @@ defmodule Learn.Buttons do
     {arg, tamanho, map, cor}
   end
 
-  def main_button("clear", name_request) do
-    [_, arg, _] = String.split(name_request, "/")
+  def main_button("clear", arg) do
     pos = pos("default", arg)
     file_write(pos, arg)
     pos
   end
 
-  def main_button("all", name_request) do
-    [_, arg, _] = String.split(name_request, "/")
+  def main_button("all", arg) do
     pos = pos(file_read(arg)["cor"], arg)
     file_write(pos, arg)
     pos
   end
 
-  def main_button("default", name_request, params, cparams) do
-    [_, arg, _] = String.split(name_request, "/")
+  def main_button("default", arg, params, cparams) do
 
     file = file_read(arg)
     cor_automatica = Enum.random(@random)
@@ -70,7 +71,7 @@ defmodule Learn.Buttons do
   end
 
   defp file_read(arg) do
-    "#{File.cwd!()}/lib/learn/#{arg}.txt"
+    "#{File.cwd!()}/lib/learn/buttons_txt/#{arg}.txt"
     |> File.read!()
     |> String.split("\n")
     |> Enum.map(fn str ->
@@ -85,7 +86,7 @@ defmodule Learn.Buttons do
       |> Enum.map(fn {pos, cor} -> "#{pos}=#{cor}" end)
       |> Enum.join("\n")
 
-    File.write!("#{File.cwd!()}/lib/learn/#{arg}.txt", str)
+    File.write!("#{File.cwd!()}/lib/learn/buttons_txt/#{arg}.txt", str)
   end
 
   defp pos("random", arg) do

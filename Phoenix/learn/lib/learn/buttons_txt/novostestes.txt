@@ -121,7 +121,7 @@
 72=default
 114=default
 133=default
-cor=random
+cor=success
 31=default
 43=default
 128=default

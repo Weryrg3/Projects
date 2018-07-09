@@ -35,3 +35,6 @@
   <h1>
     <%= link "Relacionamentos", to: relacionamentos_path(@conn, :index), class: "btn btn-warning" %>
   </h1>
+  <h1>
+    <%= link "JavaScript", to: java_script_path(@conn, :index), class: "btn btn-info" %>
+  </h1>

@@ -26,15 +26,12 @@ Cap 3 - pg 37
 Cap 4 - pg 53
 Cap 5 - pg 69
 Cap 6 - pg 91
-	Estou terminado de implementar o relacionamento em learn
 Cap 7 - pg 107
-	120
-	Revisar aqui depois com cinema
 Cap 8 - pg 129
-	Revisar tudo
+	Revisar tudo quando tiver autheticate or test in bd 
 Cap 9 - pg 157
 	
-Cap 10 - pg 173
+Cap 10 - pg 173 -> Para continuar aqui aprender JavaScript
 
 Cap 11 - pg 199
 	
@@ -44,8 +41,17 @@ Cap 13 - pg 239
 	
 Cap 14 - pg 259
 
-
-
-
-
-  
+Cap 1 -> History
+Cap 2 - pg 15 - The lay of the land install e etc
+Cap 3 - pg 37 - Controllers, Views and Templates
+Cap 4 - pg 53 - Ecto and Changesets 
+Cap 5 - pg 69 - Authenticating Users
+Cap 6 - pg 91 - Generators and Relationships
+Cap 7 - pg 107 - Ecto Queries and Constraints
+Cap 8 - pg 129 - Testing MVC
+Cap 9 - pg 157 - Watching Videos
+Cap 10 - pg 173 - Using Channels
+Cap 11 - pg 199 - OTP
+Cap 12 - pg 229 - Observer and Umbrellas
+Cap 13 - pg 239 - Testing Channels and OTP
+Cap 14 - pg 259 - What's Next?

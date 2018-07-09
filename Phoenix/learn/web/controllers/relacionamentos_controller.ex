@@ -72,12 +72,17 @@ defmodule Learn.RelacionamentosController do
 
   # relacionamentos_path DELETE /relacionamentos/:id :delete
   def delete(conn, %{"id" => id}) do
-    relacionamento = Repo.get!(Relacionamentos, id)
-    Repo.delete!(relacionamento)
+
+    if id == "todos" do
+      Repo.delete_all(Relacionamentos)
+    else
+      relacionamento = Repo.get!(Relacionamentos, id)
+      Repo.delete!(relacionamento)
+    end
 
     conn
-    |> put_flash(:info, "Relacionamento excluid com sucesso!")
-    |> redirect(to: novos_testes_path(conn, :index))
+    |> put_flash(:info, "Relacionamento excluído com sucesso!")
+    |> redirect(to: relacionamentos_path(conn, :index))
   end
 
   defp button(string) do
@@ -103,12 +108,16 @@ defmodule Learn.RelacionamentosController do
     render(conn, "show.html", rel: rel)
   end
 
-
   # %{"id" => id}
-  def buttons3(conn, _params) do
+  def main_buttons3(conn, _params) do
     user = Repo.get!(NovosTestes, 1)
     rel = Repo.preload(user, :relacionamentos)
-    render(conn, "buttons3.html", rel: rel.relacionamentos)
+    render(conn, "main_buttons3.html", rel: rel.relacionamentos)
+  end
+
+  def buttons3(conn, %{"id" => _id}) do
+
+    render(conn, "buttons3.html")
   end
 end
 

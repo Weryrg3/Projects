@@ -4,7 +4,7 @@ defmodule Learn.Repo.Migrations.CriarRelacionamentos do
   def change do
     create table(:relacionamentos) do
       add(:campo, :string)
-      add(:novos_testes_id, references(:novostestes, on_delete: :nothing))
+      add(:novos_testes_id, references(:novostestes, on_delete: :delete_all))
       timestamps()
     end
   end

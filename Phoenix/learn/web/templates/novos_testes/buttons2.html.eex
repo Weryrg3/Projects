@@ -1,11 +1,11 @@
 <center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-primary"%> </h4></center>
 <center> <h4> 
     <% param = inspect @conn.params %>
-    <% default = inspect @buttons%>
+    <% values = Map.values(@buttons) %>
+    <% default = inspect(values, limit: length(values)) %>
 
     <% cor = random Map.get(@buttons, "cor")%>
     <%= render "menu.html", conn: @conn, cor: cor, buttons: @buttons %>
-    
     <%= if String.contains?(param, "automatico") and String.contains?(default, "default") do %>
         
         <%= link "Random automático ativado", to: novos_testes_path(@conn, :buttons2, %{"automatico" => "automatico"}), class: "btn btn-#{cor}" %> 

@@ -1,7 +1,14 @@
 <center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%> </h4> 
 <h2>Relacionamentos:</h2>
 <%= Enum.map(@relacionamentos, fn rel -> %>
-<h3> <%= link rel.nome, to: relacionamentos_path(@conn, :show, rel.id), class: "btn btn-info" %> </h3>
+<h3> 
+    <%= link rel.nome, to: relacionamentos_path(@conn, :show, rel.id), class: "btn btn-info" %>
+    <%= link "Excluir", to: relacionamentos_path(@conn, :delete, rel.id), method: :delete, data: [confirm: "Você tem certeza?"], class: "btn btn-danger" %>
+</h3>
 <% end) %>
-<h4> <%= link "Voltar", to: page_path(@conn, :index), class: "btn btn-default"%> </h4>
+<%= if @relacionamentos != [] do %>
+    <h4>
+    <%= link "Excluir todos", to: relacionamentos_path(@conn, :delete, "todos"), method: :delete, data: [confirm: "Você tem certeza?"], class: "btn btn-danger" %>
+    <%= link "Voltar", to: page_path(@conn, :index), class: "btn btn-default"%> </h4>
+<% end %>
 </center>

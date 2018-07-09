@@ -3,14 +3,16 @@
 <%= render "titulo.html", titulo: "Testes:"%>
 <%= for teste <- alfabeto(@testes) do %>
 <h4>
-    <%= link teste.texto, to: novos_testes_path(@conn, :show, teste), class: "btn btn-info" %> 
+    <%= link teste.texto, to: novos_testes_path(@conn, :show, "#{teste.id}-#{teste.slug}"), class: "btn btn-info" %> 
     <%= link "Editar", to: novos_testes_path(@conn, :edit, teste), class: "btn btn-warning" %>
     <%= link "Excluir", to: novos_testes_path(@conn, :delete, teste), method: :delete, data: [confirm: "Você tem certeza?"], class: "btn btn-danger" %>
 </h4>
 <% end %>
-<%= link "Criar novo teste", to: novos_testes_path(@conn, :new), class: "btn btn-primary"%>
-<%= link "Excluir todos", to: novos_testes_path(@conn, :delete, :todos), method: :delete, data: [confirm: "Você tem certeza que deseja excluir todos testes?"], class: "btn btn-danger" %>
 
+<%= link "Criar novo teste", to: novos_testes_path(@conn, :new), class: "btn btn-primary"%>
+<%= if @testes != [] do %>
+<%= link "Excluir todos", to: novos_testes_path(@conn, :delete, :todos), method: :delete, data: [confirm: "Você tem certeza que deseja excluir todos testes?"], class: "btn btn-danger" %>
+<% end %>
 <%= link "Voltar", to: page_path(@conn, :index), class: "btn btn-default"%>
 </center>
 

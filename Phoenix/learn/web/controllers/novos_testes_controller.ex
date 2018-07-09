@@ -3,7 +3,7 @@ defmodule Learn.NovosTestesController do
   import Learn.Buttons
   alias Learn.NovosTestes, as: NovosT
 
-  @random ["primary", "danger", "success", "info", "warning"]
+  # @random ["primary", "danger", "success", "info", "warning"]
   # plug :teste1_plug when action in [:index, :new]
 
   # novos_testes_path GET /novostestes :index
@@ -95,7 +95,7 @@ defmodule Learn.NovosTestesController do
   ################################
 
   def buttons2(conn, %{"automatico" => "automatico"}) do
-    {arg, tamanho, map, cor} = main_button("automatico", conn.request_path)
+    {arg, tamanho, map, cor} = main_button("automatico", name_request(conn.request_path))
 
     if tamanho > 0 do
       {pos, _cor} = Enum.random(map)
@@ -106,17 +106,17 @@ defmodule Learn.NovosTestesController do
   end
 
   def buttons2(conn, %{"clear" => "clear"}) do
-    map = main_button("clear", conn.request_path)
+    map = main_button("clear", name_request(conn.request_path))
     render(conn, "buttons2.html", buttons: map)
   end
 
   def buttons2(conn, %{"all" => "all"}) do
-    map = main_button("all", conn.request_path)
+    map = main_button("all", name_request(conn.request_path))
     render(conn, "buttons2.html", buttons: map)
   end
 
   def buttons2(conn, params) do
-    map = main_button("default", conn.request_path, params, conn.params)
+    map = main_button("default", name_request(conn.request_path), params, conn.params)
 
     render(conn, "buttons2.html", buttons: map)
   end
