@@ -91,4 +91,3 @@ defmodule Learn.FormController do
     render(conn, "submit.html", thing: thing, changeset: changeset)
   end
 end
-

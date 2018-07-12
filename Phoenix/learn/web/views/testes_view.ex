@@ -19,8 +19,6 @@ defmodule Learn.TestesView do
     "btn btn-warning"
   ]
 
-
-
   @string1 [
     "cima",
     "baixo",

@@ -1,4 +1,7 @@
 defmodule Learn.Buttons do
+  @moduledoc """
+  Controle dos buttons que aparecem no site
+  """
   @random ["primary", "danger", "success", "info", "warning"]
 
   def name_request(request) do
@@ -7,7 +10,6 @@ defmodule Learn.Buttons do
   end
 
   def main_button("automatico", arg) do
-
     {tamanho, map} = delete_keys_map(file_read(arg))
 
     cor = file_read(arg)["cor"]
@@ -28,33 +30,10 @@ defmodule Learn.Buttons do
   end
 
   def main_button("default", arg, params, cparams) do
-
     file = file_read(arg)
     cor_automatica = Enum.random(@random)
 
-    map =
-      Map.merge(file, params, fn m, p1, p2 ->
-        case p1 do
-          "default" ->
-            if p2 == "random" do
-              cor_automatica
-            else
-              p2
-            end
-
-          _ ->
-            cond do
-              m == "cor" and p1 == "random" ->
-                "primary"
-
-              m == "cor" and p1 != "random" ->
-                p2
-
-              true ->
-                "default"
-            end
-        end
-      end)
+    map = map_main_button(file, params, cor_automatica)
 
     new_map =
       if cparams == %{"automatico" => "automatico"} do
@@ -66,6 +45,39 @@ defmodule Learn.Buttons do
     map
   end
 
+  defp map_main_button(file, params, cor_automatica) do
+    Map.merge(file, params, fn m, p1, p2 ->
+      case p1 do
+        "default" ->
+          map_main_button_default(p2, cor_automatica)
+
+        _ ->
+          map_main_button_not_default(m, p1, p2)
+      end
+    end)
+  end
+
+  defp map_main_button_default(p2, cor_automatica) do
+    if p2 == "random" do
+      cor_automatica
+    else
+      p2
+    end
+  end
+
+  defp map_main_button_not_default(m, p1, p2) do
+    cond do
+      m == "cor" and p1 == "random" ->
+        "primary"
+
+      m == "cor" and p1 != "random" ->
+        p2
+
+      true ->
+        "default"
+    end
+  end
+
   def read_file(arg) do
     file_read(arg)
   end
@@ -75,14 +87,15 @@ defmodule Learn.Buttons do
     |> File.read!()
     |> String.split("\n")
     |> Enum.map(fn str ->
-      String.split(str, "=") |> List.to_tuple()
+      str |> String.split("=") |> List.to_tuple()
     end)
     |> Map.new()
   end
 
   defp file_write(map, arg) do
     str =
-      Map.to_list(map)
+      map
+      |> Map.to_list()
       |> Enum.map(fn {pos, cor} -> "#{pos}=#{cor}" end)
       |> Enum.join("\n")
 

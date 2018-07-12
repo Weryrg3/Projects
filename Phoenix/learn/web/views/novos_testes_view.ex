@@ -33,7 +33,8 @@ defmodule Learn.NovosTestesView do
   end
 
   def data(data_time) do
-    inspect(data_time)
+    data_time
+    |> inspect()
     |> String.replace("~N[", "")
     |> String.split(".")
     |> List.first()

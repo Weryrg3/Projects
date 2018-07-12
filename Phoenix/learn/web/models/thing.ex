@@ -1,4 +1,7 @@
 defmodule Learn.Thing do
+  @moduledoc """
+  Schema dos Things (coisas)
+  """
   use Learn.Web, :model
 
   schema "things" do

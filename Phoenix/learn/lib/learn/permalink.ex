@@ -1,4 +1,5 @@
 defmodule Learn.Permalink do
+  @moduledoc false
   @behaviour Ecto.Type
 
   def type, do: :id

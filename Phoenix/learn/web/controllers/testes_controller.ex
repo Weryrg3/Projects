@@ -23,7 +23,8 @@ defmodule Learn.TestesController do
 
   # testes_path POST /testes :create
   def create(conn, %{"testes" => %{"name" => name}}) do
-    if String.length(name) >= 3 and String.contains?(name, ["+", "-", "*", "/", "x"]) do
+    if String.length(name) >= 3 and
+    String.contains?(name, ["+", "-", "*", "/", "x"]) do
       redirect(conn, to: calculadora_path(conn, :index, name))
     else
       conn

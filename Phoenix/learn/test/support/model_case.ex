@@ -14,6 +14,13 @@ defmodule Learn.ModelCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Changeset
+  alias Learn.{
+    ErrorHelpers,
+    Repo
+  }
+  alias Ecto.Adapters.SQL.Sandbox
+
   using do
     quote do
       alias Learn.Repo
@@ -26,10 +33,10 @@ defmodule Learn.ModelCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Learn.Repo)
+    :ok = Sandbox.checkout(Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(Learn.Repo, {:shared, self()})
+      Sandbox.mode(Repo, {:shared, self()})
     end
 
     :ok
@@ -58,8 +65,9 @@ defmodule Learn.ModelCase do
       true
   """
   def errors_on(struct, data) do
-    struct.__struct__.changeset(struct, data)
-    |> Ecto.Changeset.traverse_errors(&Learn.ErrorHelpers.translate_error/1)
+    struct
+    |> struct.__struct__.changeset(data)
+    |> Changeset.traverse_errors(&ErrorHelpers.translate_error/1)
     |> Enum.flat_map(fn {key, errors} -> for msg <- errors, do: {key, msg} end)
   end
 end

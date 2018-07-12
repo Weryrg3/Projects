@@ -1,6 +1,10 @@
 defmodule Learn.RelacionamentosController do
   use Learn.Web, :controller
-  alias Learn.{Relacionamentos, NovosTestes}
+
+  alias Learn.{
+    NovosTestes,
+    Relacionamentos
+  }
 
   # relacionamentos_path GET /relacionamentos :index
   def index(conn, _) do
@@ -24,7 +28,8 @@ defmodule Learn.RelacionamentosController do
   def create(conn, %{"relacionamentos" => changeset, "id_user" => id}) do
     # changeset = Relacionamentos.changeset(%Relacionamentos{}, changeset)
     changeset =
-      Repo.get(NovosTestes, id)
+      NovosTestes
+      |> Repo.get(id)
       |> build_assoc(:relacionamentos)
       |> Relacionamentos.changeset(changeset)
 
@@ -32,6 +37,7 @@ defmodule Learn.RelacionamentosController do
     case Repo.insert(changeset) do
       {:ok, relacionamento} ->
         button(relacionamento.campo)
+
         conn
         |> put_flash(:info, "O relacionamento foi criado com sucesso!!")
         |> redirect(to: novos_testes_path(conn, :index))
@@ -72,7 +78,6 @@ defmodule Learn.RelacionamentosController do
 
   # relacionamentos_path DELETE /relacionamentos/:id :delete
   def delete(conn, %{"id" => id}) do
-
     if id == "todos" do
       Repo.delete_all(Relacionamentos)
     else
@@ -116,7 +121,6 @@ defmodule Learn.RelacionamentosController do
   end
 
   def buttons3(conn, %{"id" => _id}) do
-
     render(conn, "buttons3.html")
   end
 end

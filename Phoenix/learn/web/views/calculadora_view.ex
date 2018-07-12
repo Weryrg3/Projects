@@ -5,7 +5,10 @@ defmodule Learn.CalculadoraView do
     if String.length(string) >= 3 do
       nums = String.split(string, ["+", "-", "*", "/", "x"])
       eq = Enum.join(nums)
-      %{del: op} = String.myers_difference(string, eq) |> Map.new()
+      %{del: op} =
+      string
+      |> String.myers_difference(eq)
+      |> Map.new()
 
       case Enum.map(nums, &Float.parse(&1)) do
         [{n1, _}, {n2, _}] ->

@@ -1,0 +1,128 @@
+digraph "xref graph" {
+  "lib/learn.ex"
+  "lib/learn.ex" -> "lib/learn/endpoint.ex"
+  "lib/learn/endpoint.ex" -> "lib/learn.ex" [label="(compile)"]
+  "lib/learn/endpoint.ex" -> "web/router.ex" [label="(compile)"]
+  "web/router.ex" -> "lib/learn.ex" [label="(compile)"]
+  "web/router.ex" -> "lib/learn/teste_plug.ex" [label="(compile)"]
+  "web/router.ex" -> "web/web.ex" [label="(compile)"]
+  "lib/learn.ex" -> "lib/learn/repo.ex"
+  "lib/learn/buttons.ex"
+  "lib/learn/endpoint.ex"
+  "lib/learn/permalink.ex"
+  "lib/learn/repo.ex"
+  "lib/learn/teste_plug.ex"
+  "web/channels/user_socket.ex"
+  "web/controllers/calculadora_controller.ex"
+  "web/controllers/calculadora_controller.ex" -> "lib/learn/teste_plug.ex" [label="(compile)"]
+  "web/controllers/calculadora_controller.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/controllers/calculadora_controller.ex" -> "web/router.ex" [label="(compile)"]
+  "web/controllers/calculadora_controller.ex" -> "web/web.ex" [label="(compile)"]
+  "web/controllers/form_controller.ex"
+  "web/controllers/form_controller.ex" -> "lib/learn/repo.ex"
+  "web/controllers/form_controller.ex" -> "lib/learn/teste_plug.ex" [label="(compile)"]
+  "web/controllers/form_controller.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/controllers/form_controller.ex" -> "web/models/thing.ex" [label="(struct)"]
+  "web/models/thing.ex" -> "web/web.ex" [label="(compile)"]
+  "web/controllers/form_controller.ex" -> "web/router.ex" [label="(compile)"]
+  "web/controllers/form_controller.ex" -> "web/web.ex" [label="(compile)"]
+  "web/controllers/javascript_controller.ex"
+  "web/controllers/javascript_controller.ex" -> "lib/learn/teste_plug.ex" [label="(compile)"]
+  "web/controllers/javascript_controller.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/controllers/javascript_controller.ex" -> "web/router.ex" [label="(compile)"]
+  "web/controllers/javascript_controller.ex" -> "web/web.ex" [label="(compile)"]
+  "web/controllers/novos_testes_controller.ex"
+  "web/controllers/novos_testes_controller.ex" -> "lib/learn/buttons.ex" [label="(compile)"]
+  "web/controllers/novos_testes_controller.ex" -> "lib/learn/repo.ex"
+  "web/controllers/novos_testes_controller.ex" -> "lib/learn/teste_plug.ex" [label="(compile)"]
+  "web/controllers/novos_testes_controller.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/controllers/novos_testes_controller.ex" -> "web/models/novostestes.ex" [label="(struct)"]
+  "web/models/novostestes.ex" -> "lib/learn/permalink.ex" [label="(compile)"]
+  "web/models/novostestes.ex" -> "web/models/relacionamento.ex"
+  "web/models/relacionamento.ex" -> "web/models/novostestes.ex"
+  "web/models/relacionamento.ex" -> "web/web.ex" [label="(compile)"]
+  "web/models/novostestes.ex" -> "web/web.ex" [label="(compile)"]
+  "web/controllers/novos_testes_controller.ex" -> "web/router.ex" [label="(compile)"]
+  "web/controllers/novos_testes_controller.ex" -> "web/web.ex" [label="(compile)"]
+  "web/controllers/page_controller.ex"
+  "web/controllers/page_controller.ex" -> "lib/learn/teste_plug.ex" [label="(compile)"]
+  "web/controllers/page_controller.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/controllers/page_controller.ex" -> "web/router.ex" [label="(compile)"]
+  "web/controllers/page_controller.ex" -> "web/web.ex" [label="(compile)"]
+  "web/controllers/plug_conn_assigns_controller.ex"
+  "web/controllers/plug_conn_assigns_controller.ex" -> "lib/learn/teste_plug.ex" [label="(compile)"]
+  "web/controllers/plug_conn_assigns_controller.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/controllers/plug_conn_assigns_controller.ex" -> "web/router.ex" [label="(compile)"]
+  "web/controllers/plug_conn_assigns_controller.ex" -> "web/web.ex" [label="(compile)"]
+  "web/controllers/relacionamentos_controller.ex"
+  "web/controllers/relacionamentos_controller.ex" -> "lib/learn/repo.ex"
+  "web/controllers/relacionamentos_controller.ex" -> "lib/learn/teste_plug.ex" [label="(compile)"]
+  "web/controllers/relacionamentos_controller.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/controllers/relacionamentos_controller.ex" -> "web/models/novostestes.ex"
+  "web/controllers/relacionamentos_controller.ex" -> "web/models/relacionamento.ex"
+  "web/controllers/relacionamentos_controller.ex" -> "web/router.ex" [label="(compile)"]
+  "web/controllers/relacionamentos_controller.ex" -> "web/web.ex" [label="(compile)"]
+  "web/controllers/testes_controller.ex"
+  "web/controllers/testes_controller.ex" -> "lib/learn/teste_plug.ex" [label="(compile)"]
+  "web/controllers/testes_controller.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/controllers/testes_controller.ex" -> "web/router.ex" [label="(compile)"]
+  "web/controllers/testes_controller.ex" -> "web/web.ex" [label="(compile)"]
+  "web/gettext.ex"
+  "web/models/novostestes.ex"
+  "web/models/relacionamento.ex"
+  "web/models/thing.ex"
+  "web/router.ex"
+  "web/views/calculadora_view.ex"
+  "web/views/calculadora_view.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/views/calculadora_view.ex" -> "web/router.ex" [label="(compile)"]
+  "web/views/calculadora_view.ex" -> "web/views/error_helpers.ex" [label="(compile)"]
+  "web/views/error_helpers.ex" -> "web/gettext.ex"
+  "web/views/calculadora_view.ex" -> "web/web.ex" [label="(compile)"]
+  "web/views/error_helpers.ex"
+  "web/views/error_view.ex"
+  "web/views/error_view.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/views/error_view.ex" -> "web/router.ex" [label="(compile)"]
+  "web/views/error_view.ex" -> "web/views/error_helpers.ex" [label="(compile)"]
+  "web/views/error_view.ex" -> "web/web.ex" [label="(compile)"]
+  "web/views/form_view.ex"
+  "web/views/form_view.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/views/form_view.ex" -> "web/router.ex" [label="(compile)"]
+  "web/views/form_view.ex" -> "web/views/error_helpers.ex" [label="(compile)"]
+  "web/views/form_view.ex" -> "web/web.ex" [label="(compile)"]
+  "web/views/javascript_view.ex"
+  "web/views/javascript_view.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/views/javascript_view.ex" -> "web/router.ex" [label="(compile)"]
+  "web/views/javascript_view.ex" -> "web/views/error_helpers.ex" [label="(compile)"]
+  "web/views/javascript_view.ex" -> "web/web.ex" [label="(compile)"]
+  "web/views/layout_view.ex"
+  "web/views/layout_view.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/views/layout_view.ex" -> "web/router.ex" [label="(compile)"]
+  "web/views/layout_view.ex" -> "web/views/error_helpers.ex" [label="(compile)"]
+  "web/views/layout_view.ex" -> "web/web.ex" [label="(compile)"]
+  "web/views/novos_testes_view.ex"
+  "web/views/novos_testes_view.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/views/novos_testes_view.ex" -> "web/router.ex" [label="(compile)"]
+  "web/views/novos_testes_view.ex" -> "web/views/error_helpers.ex" [label="(compile)"]
+  "web/views/novos_testes_view.ex" -> "web/web.ex" [label="(compile)"]
+  "web/views/page_view.ex"
+  "web/views/page_view.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/views/page_view.ex" -> "web/router.ex" [label="(compile)"]
+  "web/views/page_view.ex" -> "web/views/error_helpers.ex" [label="(compile)"]
+  "web/views/page_view.ex" -> "web/web.ex" [label="(compile)"]
+  "web/views/plug_conn_assigns_view.ex"
+  "web/views/plug_conn_assigns_view.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/views/plug_conn_assigns_view.ex" -> "web/router.ex" [label="(compile)"]
+  "web/views/plug_conn_assigns_view.ex" -> "web/views/error_helpers.ex" [label="(compile)"]
+  "web/views/plug_conn_assigns_view.ex" -> "web/web.ex" [label="(compile)"]
+  "web/views/relacionamentos_view.ex"
+  "web/views/relacionamentos_view.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/views/relacionamentos_view.ex" -> "web/router.ex" [label="(compile)"]
+  "web/views/relacionamentos_view.ex" -> "web/views/error_helpers.ex" [label="(compile)"]
+  "web/views/relacionamentos_view.ex" -> "web/web.ex" [label="(compile)"]
+  "web/views/testes_view.ex"
+  "web/views/testes_view.ex" -> "web/gettext.ex" [label="(compile)"]
+  "web/views/testes_view.ex" -> "web/router.ex" [label="(compile)"]
+  "web/views/testes_view.ex" -> "web/views/error_helpers.ex" [label="(compile)"]
+  "web/views/testes_view.ex" -> "web/web.ex" [label="(compile)"]
+  "web/web.ex"
+}

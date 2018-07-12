@@ -1,4 +1,7 @@
 defmodule Learn.NovosTestes do
+  @moduledoc """
+  Schema dos novos testes
+  """
   use Learn.Web, :model
   alias Learn.Relacionamentos
 

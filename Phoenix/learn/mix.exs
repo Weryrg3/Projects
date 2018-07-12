@@ -10,7 +10,9 @@ defmodule Learn.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      aliases: aliases(),
-     deps: deps()]
+     deps: deps(),
+     test_coverage: [tool: ExCoveralls],
+    ]
   end
 
   # Configuration for the OTP application.
@@ -37,7 +39,10 @@ defmodule Learn.Mixfile do
      {:phoenix_html, "~> 2.6"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.11"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:excoveralls, "~> 0.8", only: :test},
+     {:credo, "~> 0.9.1", only: [:dev, :test], runtime: false}
+    ]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.

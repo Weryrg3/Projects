@@ -1,10 +1,11 @@
 <center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-default"%>
 <%= link "reload", to: java_script_path(@conn, :index), class: "btn btn-warning"%> </h4> 
-<h1> JavaScript </h1>
+<h1 id="teste1"> JavaScript </h1>
 
 <script src="<%= static_path(@conn, "/js/testes/teste1.js") %>"></script>
 
 <script type="text/javascript">
     var a = prompt("Digite algo", "algo");
     confirm("Você digitou " + a)
+    console.log("Que legal Man")
 </script>

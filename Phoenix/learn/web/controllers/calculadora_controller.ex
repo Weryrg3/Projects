@@ -6,4 +6,3 @@ defmodule Learn.CalculadoraController do
     render(conn, "index.html", operation: op)
   end
 end
-
