@@ -1,10 +1,10 @@
 defmodule Learn.FormController do
   use Learn.Web, :controller
-  alias Learn.Thing
+  alias Learn.{BD, Thing}
 
   # form_path GET /form :index
   def index(conn, _params) do
-    all = Repo.all(Thing)
+    all = BD.get_all_files(Thing)
     render(conn, "index.html", all: all)
   end
 
@@ -24,7 +24,7 @@ defmodule Learn.FormController do
   def create(conn, %{"thing" => user_params}) do
     changeset = Thing.changeset(%Thing{}, user_params)
 
-    case Repo.insert(changeset) do
+    case BD.insert_data(changeset) do
       {:ok, thing} ->
         conn
         |> put_flash(:info, "#{thing.name} foi criado")
@@ -37,19 +37,19 @@ defmodule Learn.FormController do
 
   # form_path GET /form/:id :show
   def show(conn, %{"id" => id}) do
-    thing = Repo.get!(Thing, id)
+    thing = BD.get_file_by_id(Thing, id)
     render(conn, "show.html", thing: thing)
   end
 
   def edit(conn, %{"id" => id}) do
-    thing = Repo.get!(Thing, id)
+    thing = BD.get_file_by_id(Thing, id)
     changeset = Thing.changeset(thing)
     render(conn, "edit.html", thing: thing, changeset: changeset)
   end
 
   # form_path PUT /form/:id :update
   def update(conn, %{"id" => id, "thing" => params}) do
-    thing = Repo.get!(Thing, id)
+    thing = BD.get_file_by_id(Thing, id)
     changeset = Thing.changeset(thing, params)
 
     if changeset.changes == %{} do
@@ -58,7 +58,7 @@ defmodule Learn.FormController do
       |> render("edit.html", thing: thing, changeset: changeset)
     end
 
-    case Repo.update(changeset) do
+    case BD.update_file(changeset) do
       {:ok, thing} ->
         conn
         |> put_flash(:info, "Novo thing atualizado com sucesso!!")
@@ -76,8 +76,8 @@ defmodule Learn.FormController do
 
   # form_path DELETE /form/:id :delete
   def delete(conn, %{"id" => id}) do
-    thing = Repo.get!(Thing, id)
-    Repo.delete!(thing)
+    thing = BD.get_file_by_id(Thing, id)
+    BD.delete_file(thing)
 
     conn
     |> put_flash(:info, "#{thing.name} foi excluída com sucesso!!")
@@ -86,7 +86,7 @@ defmodule Learn.FormController do
 
   # form_path GET /form/submit :submit
   def submit(conn, _) do
-    thing = Repo.get!(Thing, 8)
+    thing = BD.get_file_by_id(Thing, 8)
     changeset = Thing.changeset(thing)
     render(conn, "submit.html", thing: thing, changeset: changeset)
   end

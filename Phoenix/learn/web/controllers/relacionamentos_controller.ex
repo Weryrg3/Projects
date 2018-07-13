@@ -2,19 +2,20 @@ defmodule Learn.RelacionamentosController do
   use Learn.Web, :controller
 
   alias Learn.{
+    BD,
     NovosTestes,
     Relacionamentos
   }
 
   # relacionamentos_path GET /relacionamentos :index
   def index(conn, _) do
-    relacionamentos = Repo.all(Relacionamentos)
+    relacionamentos = BD.get_all_files(Relacionamentos)
     render(conn, "index.html", relacionamentos: relacionamentos)
   end
 
   # relacionamentos_path GET /relacionamentos/new :new
   def new(conn, %{"id" => id}) do
-    user = Repo.get(NovosTestes, id)
+    user = BD.get_file_by_id(NovosTestes, id)
 
     changeset =
       user
@@ -29,12 +30,11 @@ defmodule Learn.RelacionamentosController do
     # changeset = Relacionamentos.changeset(%Relacionamentos{}, changeset)
     changeset =
       NovosTestes
-      |> Repo.get(id)
+      |> BD.get_file_by_id(id)
       |> build_assoc(:relacionamentos)
       |> Relacionamentos.changeset(changeset)
 
-    # sem segurança
-    case Repo.insert(changeset) do
+    case BD.insert_data(changeset) do
       {:ok, relacionamento} ->
         button(relacionamento.campo)
 
@@ -49,14 +49,14 @@ defmodule Learn.RelacionamentosController do
 
   # relacionamentos_path GET /relacionamentos/:id/edit :edit
   def edit(conn, %{"id" => id}) do
-    relacionamento = Repo.get!(Relacionamentos, id)
+    relacionamento = BD.get_file_by_id(Relacionamentos, id)
     changeset = Relacionamentos.changeset(relacionamento)
     render(conn, "edit.html", relacionamento: relacionamento, changeset: changeset)
   end
 
   # relacionamentos_path PUT /relacionamentos/:id :update
   def update(conn, %{"id" => id, "relacionamentos" => params}) do
-    relacionamento = Repo.get!(Relacionamentos, id)
+    relacionamento = BD.get_file_by_id(Relacionamentos, id)
     changeset = Relacionamentos.changeset(relacionamento, params)
 
     if changeset.changes == %{} do
@@ -65,7 +65,7 @@ defmodule Learn.RelacionamentosController do
       |> render("edit.html", relacionamento: relacionamento, changeset: changeset)
     end
 
-    case Repo.update(changeset) do
+    case BD.update_file(changeset) do
       {:ok, _} ->
         conn
         |> put_flash(:info, "Relacionamento alterado com sucesso!")
@@ -79,10 +79,10 @@ defmodule Learn.RelacionamentosController do
   # relacionamentos_path DELETE /relacionamentos/:id :delete
   def delete(conn, %{"id" => id}) do
     if id == "todos" do
-      Repo.delete_all(Relacionamentos)
+      BD.delete_all(Relacionamentos)
     else
-      relacionamento = Repo.get!(Relacionamentos, id)
-      Repo.delete!(relacionamento)
+      relacionamento = BD.get_file_by_id(Relacionamentos, id)
+      BD.delete_file(relacionamento)
     end
 
     conn
@@ -109,14 +109,14 @@ defmodule Learn.RelacionamentosController do
   end
 
   def show(conn, %{"id" => id}) do
-    rel = Repo.get!(Relacionamentos, id)
+    rel = BD.get_file_by_id(Relacionamentos, id)
     render(conn, "show.html", rel: rel)
   end
 
   # %{"id" => id}
   def main_buttons3(conn, _params) do
-    user = Repo.get!(NovosTestes, 1)
-    rel = Repo.preload(user, :relacionamentos)
+    user = BD.get_file_by_id(NovosTestes, 1)
+    rel = BD.preload(user, :relacionamentos)
     render(conn, "main_buttons3.html", rel: rel.relacionamentos)
   end
 

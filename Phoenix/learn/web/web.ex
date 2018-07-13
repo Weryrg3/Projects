@@ -30,7 +30,6 @@ defmodule Learn.Web do
     quote do
       use Phoenix.Controller
 
-      alias Learn.Repo
       import Ecto
       import Ecto.Query
 

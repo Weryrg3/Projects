@@ -1,6 +1,7 @@
 {application,learn,
              [{description,"learn"},
-              {modules,['Elixir.Learn','Elixir.Learn.Buttons',
+              {modules,['Elixir.Learn','Elixir.Learn.BD',
+                        'Elixir.Learn.Buttons',
                         'Elixir.Learn.CalculadoraController',
                         'Elixir.Learn.CalculadoraView',
                         'Elixir.Learn.ChannelCase','Elixir.Learn.ConnCase',

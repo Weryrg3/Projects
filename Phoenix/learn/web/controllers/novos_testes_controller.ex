@@ -1,6 +1,9 @@
 defmodule Learn.NovosTestesController do
   use Learn.Web, :controller
+
   import Learn.Buttons
+
+  alias Learn.BD
   alias Learn.NovosTestes, as: NovosT
 
   # @random ["primary", "danger", "success", "info", "warning"]
@@ -8,7 +11,7 @@ defmodule Learn.NovosTestesController do
 
   # novos_testes_path GET /novostestes :index
   def index(conn, _) do
-    testes = Repo.all(NovosT)
+    testes = BD.get_all_files(NovosT)
     render(conn, "index.html", testes: testes)
   end
 
@@ -22,7 +25,7 @@ defmodule Learn.NovosTestesController do
   def create(conn, %{"novos_testes" => changeset}) do
     changeset = NovosT.changeset(%NovosT{}, changeset)
     # sem segurança
-    case Repo.insert(changeset) do
+    case BD.insert_data(changeset) do
       {:ok, teste} ->
         conn
         |> put_flash(:info, "O #{teste.texto} foi feito com Sucesso!!!")
@@ -35,14 +38,14 @@ defmodule Learn.NovosTestesController do
 
   # novos_testes_path GET /novostestes/:id/edit :edit
   def edit(conn, %{"id" => id}) do
-    teste = Repo.get!(NovosT, id)
+    teste = BD.get_file_by_id(NovosT, id)
     changeset = NovosT.changeset(teste)
     render(conn, "edit.html", teste: teste, changeset: changeset)
   end
 
   # novos_testes_path PUT /novostestes/:id :update
   def update(conn, %{"id" => id, "novos_testes" => params}) do
-    teste = Repo.get!(NovosT, id)
+    teste = BD.get_file_by_id(NovosT, id)
     changeset = NovosT.changeset(teste, params)
 
     if changeset.changes == %{} do
@@ -51,7 +54,7 @@ defmodule Learn.NovosTestesController do
       |> render("edit.html", teste: teste, changeset: changeset)
     end
 
-    case Repo.update(changeset) do
+    case BD.update_file(changeset) do
       {:ok, teste} ->
         conn
         |> put_flash(:info, "Novo teste atualizado com sucesso!!")
@@ -68,21 +71,21 @@ defmodule Learn.NovosTestesController do
 
   # novos_testes_path GET /novostestes/:id :show
   def show(conn, %{"id" => id}) do
-    teste = Repo.get!(NovosT, id)
+    teste = BD.get_file_by_id(NovosT, id)
     render(conn, "show.html", teste: teste)
   end
 
   # novos_testes_path DELETE /novostestes/:id :delete
   def delete(conn, %{"id" => id}) do
     if id == "todos" do
-      Repo.delete_all(NovosT)
+      BD.delete_all(NovosT)
 
       conn
       |> put_flash(:info, "testes excluídos com sucesso")
       |> redirect(to: novos_testes_path(conn, :index))
     else
-      teste = Repo.get!(NovosT, id)
-      Repo.delete!(teste)
+      teste = BD.get_file_by_id(NovosT, id)
+      BD.delete_file(teste)
 
       conn
       |> put_flash(:info, "teste excluído com sucesso")
