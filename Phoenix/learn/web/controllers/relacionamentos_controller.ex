@@ -15,6 +15,7 @@ defmodule Learn.RelacionamentosController do
 
   # relacionamentos_path GET /relacionamentos/new :new
   def new(conn, %{"id" => id}) do
+
     user = BD.get_file_by_id(NovosTestes, id)
 
     changeset =
@@ -26,7 +27,7 @@ defmodule Learn.RelacionamentosController do
   end
 
   # relacionamentos_path POST /relacionamentos :create
-  def create(conn, %{"relacionamentos" => changeset, "id_user" => id}) do
+  def create(conn, %{"id_user" => id, "relacionamentos" => changeset}) do
     # changeset = Relacionamentos.changeset(%Relacionamentos{}, changeset)
     changeset =
       NovosTestes
@@ -61,7 +62,7 @@ defmodule Learn.RelacionamentosController do
 
     if changeset.changes == %{} do
       conn
-      |> put_flash(:error, "Sem alterações!!")
+      # |> put_flash(:error, "Sem alterações!!")
       |> render("edit.html", relacionamento: relacionamento, changeset: changeset)
     end
 
@@ -108,22 +109,21 @@ defmodule Learn.RelacionamentosController do
     File.write!("#{File.cwd!()}/lib/learn/user.txt", str)
   end
 
+  # relacionamentos_path GET /relacionamentos/:id :show
   def show(conn, %{"id" => id}) do
     rel = BD.get_file_by_id(Relacionamentos, id)
     render(conn, "show.html", rel: rel)
   end
 
-  # %{"id" => id}
-  def main_buttons3(conn, _params) do
-    user = BD.get_file_by_id(NovosTestes, 1)
+  # relacionamentos_path GET /relacionamentos/main_buttons3 :main_buttons3
+  def main_buttons3(conn, %{"id_novos_testes" => id}) do
+    user = BD.get_file_by_id(NovosTestes, id)
     rel = BD.preload(user, :relacionamentos)
     render(conn, "main_buttons3.html", rel: rel.relacionamentos)
   end
 
-  def buttons3(conn, %{"id" => _id}) do
+  # relacionamentos_path GET /relacionamentos/buttons3 :buttons3
+  def buttons3(conn, _) do
     render(conn, "buttons3.html")
   end
 end
-
-# relacionamentos_path GET /relacionamentos/:id :show
-# relacionamentos_path PATCH /relacionamentos/:id :update

@@ -29,6 +29,7 @@ defmodule Learn.ConnCase do
       import Ecto.Changeset
       import Ecto.Query
 
+      import Learn.TestHelpers
       import Learn.Router.Helpers
 
       # The default endpoint for testing

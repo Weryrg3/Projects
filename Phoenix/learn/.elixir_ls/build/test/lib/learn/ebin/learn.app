@@ -24,7 +24,7 @@
                         'Elixir.Learn.RelacionamentosView',
                         'Elixir.Learn.Repo','Elixir.Learn.Router',
                         'Elixir.Learn.Router.Helpers',
-                        'Elixir.Learn.TestePlug',
+                        'Elixir.Learn.TestHelpers','Elixir.Learn.TestePlug',
                         'Elixir.Learn.TestesController',
                         'Elixir.Learn.TestesView','Elixir.Learn.Thing',
                         'Elixir.Learn.UserSocket','Elixir.Learn.Web',

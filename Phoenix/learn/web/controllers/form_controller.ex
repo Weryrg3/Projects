@@ -41,6 +41,7 @@ defmodule Learn.FormController do
     render(conn, "show.html", thing: thing)
   end
 
+  # form_path  GET /form/:id/edit :edit
   def edit(conn, %{"id" => id}) do
     thing = BD.get_file_by_id(Thing, id)
     changeset = Thing.changeset(thing)
@@ -69,10 +70,10 @@ defmodule Learn.FormController do
     end
   end
 
-  def teste(conn, params) do
-    conn
-    |> put_flash(:info, inspect(params))
-  end
+  # def teste(conn, params) do
+  #   conn
+  #   |> put_flash(:info, inspect(params))
+  # end
 
   # form_path DELETE /form/:id :delete
   def delete(conn, %{"id" => id}) do
@@ -86,8 +87,13 @@ defmodule Learn.FormController do
 
   # form_path GET /form/submit :submit
   def submit(conn, _) do
-    thing = BD.get_file_by_id(Thing, 8)
-    changeset = Thing.changeset(thing)
-    render(conn, "submit.html", thing: thing, changeset: changeset)
+    if length(BD.get_all_files(Thing)) > 0 do
+      %{id: id} = Enum.random(BD.get_all_files(Thing))
+      thing = BD.get_file_by_id(Thing, id)
+      changeset = Thing.changeset(thing)
+      render(conn, "submit.html", thing: thing, changeset: changeset)
+    else
+      redirect(conn, to: form_path(conn, :new))
+    end
   end
 end

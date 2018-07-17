@@ -27,10 +27,10 @@ defmodule Learn.NovosTestesView do
     end
   end
 
-  def nomes(lista) do
-    Enum.map(lista, & &1.texto)
-    # |> Enum.join(" - ")
-  end
+  # def nomes(lista) do
+  #   Enum.map(lista, & &1.texto)
+  #   # |> Enum.join(" - ")
+  # end
 
   def data(data_time) do
     data_time

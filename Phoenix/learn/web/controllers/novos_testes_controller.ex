@@ -24,7 +24,7 @@ defmodule Learn.NovosTestesController do
   # novos_testes_path POST /novostestes :create
   def create(conn, %{"novos_testes" => changeset}) do
     changeset = NovosT.changeset(%NovosT{}, changeset)
-    # sem segurança
+
     case BD.insert_data(changeset) do
       {:ok, teste} ->
         conn
@@ -65,6 +65,7 @@ defmodule Learn.NovosTestesController do
     end
   end
 
+  # novos_testes_path GET /novostestes/testes/links :links
   def links(conn, _) do
     render(conn, "links.html")
   end
@@ -97,6 +98,7 @@ defmodule Learn.NovosTestesController do
   # Implementação de buttons     #
   ################################
 
+  # novos_testes_path GET /novostestes/buttons2 :buttons2
   def buttons2(conn, %{"automatico" => "automatico"}) do
     {arg, tamanho, map, cor} = main_button("automatico", name_request(conn.request_path))
 
@@ -108,16 +110,19 @@ defmodule Learn.NovosTestesController do
     end
   end
 
+  # novos_testes_path GET /novostestes/buttons2 :buttons2
   def buttons2(conn, %{"clear" => "clear"}) do
     map = main_button("clear", name_request(conn.request_path))
     render(conn, "buttons2.html", buttons: map)
   end
 
+  # novos_testes_path GET /novostestes/buttons2 :buttons2
   def buttons2(conn, %{"all" => "all"}) do
     map = main_button("all", name_request(conn.request_path))
     render(conn, "buttons2.html", buttons: map)
   end
 
+  # novos_testes_path GET /novostestes/buttons2 :buttons2
   def buttons2(conn, params) do
     map = main_button("default", name_request(conn.request_path), params, conn.params)
 

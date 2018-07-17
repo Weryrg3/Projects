@@ -33,6 +33,7 @@ defmodule Learn.TestesController do
     end
   end
 
+  # testes_path GET /testes/buttons :buttons
   def buttons(conn, %{"pos" => %{"x" => x, "y" => y}}) do
     x = String.to_integer(x)
     y = String.to_integer(y)
