@@ -18,7 +18,3 @@ defmodule Learn.Relacionamentos do
     |> validate_required([:campo, :nome])
   end
 end
-
-
-
-

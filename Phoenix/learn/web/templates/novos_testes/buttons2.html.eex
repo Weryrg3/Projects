@@ -1,28 +1,31 @@
 <center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-primary"%> </h4></center>
-<center> <h4> 
-    <% param = inspect @conn.params %>
-    <% values = Map.values(@buttons) %>
-    <% default = inspect(values, limit: length(values)) %>
+<center> <h4>
+    <div>
+        <% param = inspect @conn.params %>
+        <% values = Map.values(@buttons) %>
+        <% default = inspect(values, limit: length(values)) %>
 
-    <% cor = random Map.get(@buttons, "cor")%>
-    <%= render "menu.html", conn: @conn, cor: cor, buttons: @buttons %>
-    <%= if String.contains?(param, "automatico") and String.contains?(default, "default") do %>
-        
-        <%= link "Random automático ativado", to: novos_testes_path(@conn, :buttons2, %{"automatico" => "automatico"}), class: "btn btn-#{cor}" %> 
-        <script type="text/javascript">
-            setTimeout(function(){
-                window.location.reload()
-            }, 1000)
-        </script>
-    <% else %>
-        <%= link "Random automático desativado", to: novos_testes_path(@conn, :buttons2, %{"automatico" => "automatico"}), class: "btn btn-#{cor}" %> 
-    <% end %>    
-    
+        <% cor = random Map.get(@buttons, "cor")%>
+        <%= render "menu.html", conn: @conn, cor: cor, buttons: @buttons %>
+        <%= if String.contains?(param, "automatico") and String.contains?(default, "default") do %>
+
+            <%= link "Random automático ativado", to: novos_testes_path(@conn, :buttons2, %{"automatico" => "automatico"}), class: "btn btn-#{cor}" %> 
+            <script type="text/javascript">
+                setTimeout(function(){
+                    window.location.reload()
+                }, 1000)
+            </script>
+        <% else %>
+            <%= link "Random automático desativado", to: novos_testes_path(@conn, :buttons2, %{"automatico" => "automatico"}), class: "btn btn-#{cor}" %> 
+        <% end %>
+    </div>
 </h4></center>
 <center>
-    <h1>
-    <%= Enum.map(Map.delete(@buttons, "cor"), fn {v1, v2} -> %>
-        <%= link "bo", to: novos_testes_path(@conn, :buttons2, %{v1 => cor}), class: "btn btn-#{v2}" %>
-    <% end) %>
-    </h1>
+    <div>
+        <h1>
+        <%= Enum.map(Map.delete(@buttons, "cor"), fn {v1, v2} -> %>
+            <%= link "bo", to: novos_testes_path(@conn, :buttons2, %{v1 => cor}), class: "btn btn-#{v2}" %>
+        <% end) %>
+        </h1>
+    </div>
 </center>

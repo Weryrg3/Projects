@@ -50,7 +50,7 @@ defmodule Learn.NovosTestesControllerTest do
     end
 
     test "GET /novostestes/buttons2 default", %{conn: conn} do
-      num = Integer.to_string(Enum.random(1..13*13))
+      num = Integer.to_string(Enum.random(1..(13 * 13)))
       params = %{num => "primary"}
       conn = get(conn, "/novostestes/buttons2", params)
       assert html_response(conn, 200)
@@ -118,7 +118,7 @@ defmodule Learn.NovosTestesControllerTest do
       insert_novos_testes()
       insert_novos_testes(%{texto: "test 1"})
       conn = delete(conn, "/novostestes/#{"todos"}", %{"id" => "todos"})
-      refute has_in_bd?(NovosTestes)
+      assert bd_is_empty?(NovosTestes)
       assert html_response(conn, 302)
     end
   end

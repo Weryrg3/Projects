@@ -13,7 +13,7 @@ defmodule Learn.RelacionamentosControllerTest do
     test "GET /relacionamentos/id show", %{conn: conn} do
       %{id: id_rel} = insert_relacionamentos(%{nome: "Test show"})
       conn = get(conn, "/relacionamentos/#{id_rel}", %{"id" => id_rel})
-      assert has_in_bd?(Relacionamentos)
+      refute bd_is_empty?(Relacionamentos)
       assert html_response(conn, 200) =~ "Nome_button: Test show"
     end
 
@@ -96,7 +96,7 @@ defmodule Learn.RelacionamentosControllerTest do
       %{id: id_rel} = insert_relacionamentos(%{nome: "Teste update"})
       conn = delete(conn, "/relacionamentos/#{id_rel}", %{"id" => id_rel})
       refute get_bd(Relacionamentos, id_rel)
-      refute has_in_bd?(Relacionamentos)
+      assert bd_is_empty?(Relacionamentos)
       assert html_response(conn, 302)
     end
 
@@ -105,7 +105,7 @@ defmodule Learn.RelacionamentosControllerTest do
       insert_relacionamentos(%{nome: "Teste update1"})
       insert_relacionamentos(%{nome: "Teste update2"})
       conn = delete(conn, "/relacionamentos/todos", %{"id" => "todos"})
-      refute has_in_bd?(Relacionamentos)
+      assert bd_is_empty?(Relacionamentos)
       assert html_response(conn, 302)
     end
   end

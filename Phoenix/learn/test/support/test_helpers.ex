@@ -79,7 +79,8 @@ defmodule Learn.TestHelpers do
   end
 
   defp insert_bd(schema, params) do
-    struct!(schema)
+    schema
+    |> struct!()
     |> schema.changeset(params)
     |> Repo.insert!()
   end
@@ -92,12 +93,8 @@ defmodule Learn.TestHelpers do
     Repo.get_by(schema, arg)
   end
 
-  def has_in_bd?(schema) do
-    if length(Repo.all(schema)) == 0 do
-      false
-    else
-      true
-    end
+  def bd_is_empty?(schema) do
+    Enum.empty?(Repo.all(schema))
   end
 
   def preload_in_bd(struct, atom) do

@@ -2,8 +2,8 @@
 
 <center>
 <h1>
-<%= Enum.map(1..2, fn i -> %>
-<%= Enum.map(1..1, fn a -> %>
+<%= Enum.map(1..2, fn _i -> %>
+<%= Enum.map(1..1, fn _a -> %>
     <%= form_for @changeset, form_path(@conn, :update, @thing), fn f -> %>
     <div class="form-group">
         <%= checkbox f, :name2, placeholder: "Name2", class: "btn btn-default" %>
