@@ -27,6 +27,7 @@ defmodule Learn.NovosTestesControllerTest do
       params = %{"automatico" => "automatico"}
       conn = get(conn, "/novostestes/buttons2", %{"clear" => "clear"})
       conn = get(conn, "/novostestes/buttons2", params)
+      refute inspect(conn.assigns.buttons, limit: :infinity) =~ "nil"
       assert html_response(conn, 200) =~ "Random automático ativado"
     end
 
@@ -50,8 +51,7 @@ defmodule Learn.NovosTestesControllerTest do
     end
 
     test "GET /novostestes/buttons2 default", %{conn: conn} do
-      num = Integer.to_string(Enum.random(1..(13 * 13)))
-      params = %{num => "primary"}
+      params = %{"1-1" => "primary"}
       conn = get(conn, "/novostestes/buttons2", params)
       assert html_response(conn, 200)
     end

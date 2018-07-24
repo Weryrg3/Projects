@@ -4,7 +4,8 @@ defmodule Learn.RelacionamentosController do
   alias Learn.{
     BD,
     NovosTestes,
-    Relacionamentos
+    Relacionamentos,
+    Buttons
   }
 
   # relacionamentos_path GET /relacionamentos :index
@@ -15,7 +16,6 @@ defmodule Learn.RelacionamentosController do
 
   # relacionamentos_path GET /relacionamentos/new :new
   def new(conn, %{"id" => id}) do
-
     user = BD.get_file_by_id(NovosTestes, id)
 
     changeset =
@@ -37,7 +37,8 @@ defmodule Learn.RelacionamentosController do
 
     case BD.insert_data(changeset) do
       {:ok, relacionamento} ->
-        button(relacionamento.campo)
+        # editar aqui depois se for mexer com buttons em relacionamento
+        Buttons.make_button(relacionamento.campo)
 
         conn
         |> put_flash(:info, "O relacionamento foi criado com sucesso!!")
@@ -61,8 +62,8 @@ defmodule Learn.RelacionamentosController do
     changeset = Relacionamentos.changeset(relacionamento, params)
 
     if changeset.changes == %{} do
-      conn
       # |> put_flash(:error, "Sem alterações!!")
+      conn
       |> render("edit.html", relacionamento: relacionamento, changeset: changeset)
     end
 
@@ -89,24 +90,6 @@ defmodule Learn.RelacionamentosController do
     conn
     |> put_flash(:info, "Relacionamento excluído com sucesso!")
     |> redirect(to: relacionamentos_path(conn, :index))
-  end
-
-  defp button(string) do
-    str =
-      string
-      |> String.split(["x", "X", "*"])
-      |> (fn [n1, n2] ->
-            String.to_integer(n1) * String.to_integer(n2)
-          end).()
-      |> (fn n ->
-            Enum.map(1..n, fn n -> "#{n}=default" end)
-          end).()
-      |> (fn string ->
-            string ++ ["cor=default"]
-          end).()
-      |> Enum.join("\n")
-
-    File.write!("#{File.cwd!()}/lib/learn/user.txt", str)
   end
 
   # relacionamentos_path GET /relacionamentos/:id :show

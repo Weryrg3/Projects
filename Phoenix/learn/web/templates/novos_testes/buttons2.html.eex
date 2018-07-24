@@ -8,7 +8,6 @@
         <% cor = random Map.get(@buttons, "cor")%>
         <%= render "menu.html", conn: @conn, cor: cor, buttons: @buttons %>
         <%= if String.contains?(param, "automatico") and String.contains?(default, "default") do %>
-
             <%= link "Random automático ativado", to: novos_testes_path(@conn, :buttons2, %{"automatico" => "automatico"}), class: "btn btn-#{cor}" %> 
             <script type="text/javascript">
                 setTimeout(function(){
@@ -23,7 +22,7 @@
 <center>
     <div>
         <h1>
-        <%= Enum.map(Map.delete(@buttons, "cor"), fn {v1, v2} -> %>
+        <%= Enum.map(ordenar(@buttons), fn {v1, v2} -> %>
             <%= link "bo", to: novos_testes_path(@conn, :buttons2, %{v1 => cor}), class: "btn btn-#{v2}" %>
         <% end) %>
         </h1>

@@ -20,6 +20,11 @@ defmodule Learn.BD do
     Repo.get!(struct, id)
   end
 
+  @doc "pega um arquivo para parâmetros passados"
+  def get_file_by(struct, param) do
+    Repo.get_by(struct, param)
+  end
+
   @doc "atualiza um arquivo."
   def update_file(changeset) do
     Repo.update(changeset)

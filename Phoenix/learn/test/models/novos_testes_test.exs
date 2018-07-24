@@ -3,10 +3,10 @@ defmodule Learn.NovosTestesTest do
 
   alias Learn.NovosTestes
 
-  @params_valido1 %{texto: "teste model 1", num: 1}
-  @params_valido2 %{texto: "teste model 2", num: "2"}
-  @params_invalido1 %{texto: "t", num: "1"}
-  @params_invalido2 %{texto: "tes", num: "a"}
+  @params_valido1 %{texto: "teste model 1", num: 1, buttons2: "Texto teste 2"}
+  @params_valido2 %{texto: "teste model 2", num: "2", buttons2: "Texto teste 2"}
+  @params_invalido1 %{texto: "t", num: "1", buttons2: "Texto"}
+  @params_invalido2 %{texto: "tes", num: "a", buttons2: "Texto"}
 
   describe "testes que passam com sucesso" do
     test "Test com params válidos" do
@@ -44,12 +44,12 @@ defmodule Learn.NovosTestesTest do
 
       errors = changeset.errors
       assert %{} = changeset.changes
-      assert [texto: _, num: _] = errors
+      assert [texto: _, num: _, buttons2: _] = errors
       assert String.contains?(inspect(errors), ["can't be blank"])
       refute changeset.valid?
     end
 
-    test "test com todos params inválidos" do
+    test "test com primeiro param inválido" do
       changeset =
         NovosTestes.changeset(
           %NovosTestes{},

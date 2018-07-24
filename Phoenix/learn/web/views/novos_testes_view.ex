@@ -44,4 +44,35 @@ defmodule Learn.NovosTestesView do
     lista
     |> Enum.sort_by(& &1.texto)
   end
+
+  # def ordenar(map) do
+  #   map
+  #   |> Map.delete("cor")
+  #   |> Enum.map(fn {v1, v2} -> {String.to_integer(v1), v2} end)
+  #   |> Enum.sort()
+  #   |> Enum.map(fn {v1, v2} -> {Integer.to_string(v1), v2} end)
+  # end
+
+  @doc "recebe um mapa e o ordena retornando uma lista"
+  def ordenar(map) do
+    map
+    |> Map.delete("cor")
+    |> Enum.map(fn {v1, v2} ->
+      {
+        v1
+        |> String.split("-")
+        |> Enum.join(".")
+        |> String.to_float(),
+        v2
+      }
+    end)
+    |> Enum.sort() # 123 Arrumar função sort e verificar erros
+    # |> IO.inspect(limit: :infinity)
+    |> Enum.map(fn {v1, v2} -> {
+      v1
+      |> Float.to_string()
+      |> String.replace(".", "-"),
+      v2}
+    end)
+  end
 end

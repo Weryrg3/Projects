@@ -19,3 +19,8 @@ import "phoenix_html"
 // paths "./socket" or full ones "web/static/js/socket".
 
 // import socket from "./socket"
+
+import socket from "./socket"
+import Button from "./button2"
+
+Button.init(socket, "buttons2")

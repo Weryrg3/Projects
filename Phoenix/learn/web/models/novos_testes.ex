@@ -9,6 +9,7 @@ defmodule Learn.NovosTestes do
   schema "novostestes" do
     field(:texto, :string)
     field(:num, :integer)
+    field(:buttons2, :string)
     field(:slug, :string)
     has_many(:relacionamentos, Relacionamentos)
 
@@ -17,9 +18,9 @@ defmodule Learn.NovosTestes do
 
   def changeset(model, params \\ %{}) do
     model
-    |> cast(params, [:texto, :num])
+    |> cast(params, [:texto, :num, :buttons2])
     |> slug()
-    |> validate_required([:texto, :num])
+    |> validate_required([:texto, :num, :buttons2])
     |> validate_number(
       :num,
       greater_than_or_equal_to: 1,
