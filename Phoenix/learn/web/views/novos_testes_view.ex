@@ -55,24 +55,30 @@ defmodule Learn.NovosTestesView do
 
   @doc "recebe um mapa e o ordena retornando uma lista"
   def ordenar(map) do
+    # 123 Arrumar função sort e verificar erros
+    # |> IO.inspect(limit: :infinity)
+    # IO.inspect(Enum.count(map), limit: :infinity)
     map
     |> Map.delete("cor")
     |> Enum.map(fn {v1, v2} ->
       {
         v1
-        |> String.split("-")
-        |> Enum.join(".")
         |> String.to_float(),
         v2
       }
     end)
-    |> Enum.sort() # 123 Arrumar função sort e verificar erros
-    # |> IO.inspect(limit: :infinity)
-    |> Enum.map(fn {v1, v2} -> {
-      v1
-      |> Float.to_string()
-      |> String.replace(".", "-"),
-      v2}
+    |> Enum.sort()
+    |> Enum.map(fn {v1, v2} ->
+      {
+        v1
+        |> Float.to_string()
+        |> String.split(".")
+        |> (fn [f, l] ->
+              [f, String.pad_trailing(l, 2, "0")]
+            end).()
+        |> Enum.join("."),
+        v2
+      }
     end)
   end
 end

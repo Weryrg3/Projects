@@ -37,7 +37,6 @@ defmodule Learn.Buttons do
     button_str = retorna_default_button("Button_Default")
     # Button em formato de mapa
     map = str_to_map(button_str)
-
     cor_automatica = Enum.random(@random)
 
     map_tratado = map_main_button(map, params, cor_automatica)
@@ -194,13 +193,18 @@ defmodule Learn.Buttons do
       |> Enum.map(&String.to_integer/1)
       |> List.to_tuple()
 
-    string =
-      for n1 <- 1..tam1,
-          n2 <- 1..tam2,
-          do: "#{n1}-#{n2}=default"
+    length_tam = String.length("#{max(tam1, tam2)}")
 
-    (["cor=primary"] ++ string)
+    list_string =
+      for n1 <- 1..tam1,
+          n2 <- 1..tam2 do
+        pad = String.pad_leading("#{n2}", length_tam, "0")
+        "#{n1}.#{pad}=default"
+      end
+
+    (["cor=primary"] ++ list_string)
     |> Enum.join("\n")
+
     # |> IO.inspect(limit: :infinity)
   end
 end

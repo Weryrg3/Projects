@@ -27,7 +27,11 @@ defmodule Learn.NovosTestesControllerTest do
       params = %{"automatico" => "automatico"}
       conn = get(conn, "/novostestes/buttons2", %{"clear" => "clear"})
       conn = get(conn, "/novostestes/buttons2", params)
-      refute inspect(conn.assigns.buttons, limit: :infinity) =~ "nil"
+
+      buttons = conn.assigns.buttons
+      assert Enum.count(buttons) == 170
+
+      refute inspect(buttons, limit: :infinity) =~ "nil"
       assert html_response(conn, 200) =~ "Random automático ativado"
     end
 
@@ -35,29 +39,34 @@ defmodule Learn.NovosTestesControllerTest do
       params = %{"automatico" => "automatico"}
       conn = get(conn, "/novostestes/buttons2", %{"all" => "all"})
       conn = get(conn, "/novostestes/buttons2", params)
+      assert Enum.count(conn.assigns.buttons) == 170
       assert html_response(conn, 200) =~ "Random automático desativado"
     end
 
     test "GET /novostestes/buttons2 clear", %{conn: conn} do
       params = %{"clear" => "clear"}
       conn = get(conn, "/novostestes/buttons2", params)
+      assert Enum.count(conn.assigns.buttons) == 170
       assert html_response(conn, 200) =~ "default"
     end
 
     test "GET /novostestes/buttons2 all", %{conn: conn} do
       params = %{"all" => "all"}
       conn = get(conn, "/novostestes/buttons2", params)
+      assert Enum.count(conn.assigns.buttons) == 170
       assert html_response(conn, 200)
     end
 
     test "GET /novostestes/buttons2 default", %{conn: conn} do
-      params = %{"1-1" => "primary"}
+      params = %{"1.01" => "primary"}
       conn = get(conn, "/novostestes/buttons2", params)
+      assert Enum.count(conn.assigns.buttons) == 170
       assert html_response(conn, 200)
     end
 
     test "GET /novostestes/buttons2 random", %{conn: conn} do
       conn = get(conn, "/novostestes/buttons2", %{"cor" => "random"})
+      assert Enum.count(conn.assigns.buttons) == 170
       assert html_response(conn, 200)
     end
   end
