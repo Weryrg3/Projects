@@ -28,7 +28,6 @@ Cap 5 - pg 69
 Cap 6 - pg 91
 Cap 7 - pg 107
 Cap 8 - pg 129
-	Revisar tudo quando tiver autheticate or test in bd 
 Cap 9 - pg 157
 	
 Cap 10 - pg 173 -> Para continuar aqui aprender JavaScript
@@ -40,6 +39,7 @@ Cap 12 - pg 229
 Cap 13 - pg 239
 	
 Cap 14 - pg 259
+
 
 Cap 1 -> History
 Cap 2 - pg 15 - The lay of the land install e etc
