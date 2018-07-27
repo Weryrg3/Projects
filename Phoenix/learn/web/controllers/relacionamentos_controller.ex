@@ -3,9 +3,9 @@ defmodule Learn.RelacionamentosController do
 
   alias Learn.{
     BD,
+    Buttons,
     NovosTestes,
-    Relacionamentos,
-    Buttons
+    Relacionamentos
   }
 
   # relacionamentos_path GET /relacionamentos :index

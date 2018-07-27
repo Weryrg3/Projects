@@ -9,7 +9,7 @@ defmodule Learn.NovosTestesController do
 
   # @random ["primary", "danger", "success", "info", "warning"]
   # plug :teste1_plug when action in [:index, :new]
-
+  
   # novos_testes_path GET /novostestes :index
   def index(conn, _) do
     testes = BD.get_all_files(NovosT)

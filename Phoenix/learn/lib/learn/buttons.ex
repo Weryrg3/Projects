@@ -171,21 +171,6 @@ defmodule Learn.Buttons do
     button
   end
 
-  # def make_button(tamanho) do
-  #   tamanho
-  #   |> String.split(["x", "X", "*"])
-  #   |> (fn [n1, n2] ->
-  #         String.to_integer(n1) * String.to_integer(n2)
-  #       end).()
-  #   |> (fn n ->
-  #         Enum.map(1..n, fn n -> "#{n}=default" end)
-  #       end).()
-  #   |> (fn string ->
-  #         string ++ ["cor=primary"]
-  #       end).()
-  #   |> Enum.join("\n")
-  # end
-
   def make_button(tamanho) do
     {tam1, tam2} =
       tamanho
