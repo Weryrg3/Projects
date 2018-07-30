@@ -3,7 +3,7 @@ defmodule Learn.UserSocket do
 
   ## Channels
   # channel "room:*", Learn.RoomChannel
-  channel("buttons2:*", Learn.Buttons2Channel)
+  # channel("buttons2:*", Learn.Buttons2Channel)
 
   ## Transports
   transport(:websocket, Phoenix.Transports.WebSocket)
