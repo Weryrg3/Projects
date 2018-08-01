@@ -20,7 +20,7 @@
     </div>
 </h4></center>
 <center>
-    <div>
+    <div id="div_buttons2">
         <h1>
         <%= Enum.map(ordenar(@buttons), fn {v1, v2} -> %>
             <%= link "bo", to: novos_testes_path(@conn, :buttons2, %{v1 => cor}), class: "btn btn-#{v2}" %>
@@ -28,3 +28,16 @@
         </h1>
     </div>
 </center>
+
+<center>
+    <div id="div_vazia">
+        teste0
+    </div>
+</center>
+
+<%# <script type="text/javascript">
+    var buttons = document.getElementById("div_buttons2");
+    var div_vazia = document.getElementById("div_vazia");
+
+    div_vazia.appendChild(buttons)
+</script> %>
