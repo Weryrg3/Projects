@@ -1,6 +1,6 @@
 <center> <h4> <%= link "Inicio", to: page_path(@conn, :index), class: "btn btn-primary"%> </h4></center>
 <center> <h4>
-    <div>
+    <div id="div_menu">
         <% param = inspect @conn.params %>
         <% values = Map.values(@buttons) %>
         <% default = inspect(values, limit: length(values)) %>
@@ -28,16 +28,3 @@
         </h1>
     </div>
 </center>
-
-<center>
-    <div id="div_vazia">
-        teste0
-    </div>
-</center>
-
-<%# <script type="text/javascript">
-    var buttons = document.getElementById("div_buttons2");
-    var div_vazia = document.getElementById("div_vazia");
-
-    div_vazia.appendChild(buttons)
-</script> %>

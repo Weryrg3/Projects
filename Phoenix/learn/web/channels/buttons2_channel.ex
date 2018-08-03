@@ -1,14 +1,18 @@
-# defmodule Learn.Buttons2Channel do
-#   use Learn.Web, :channel
+defmodule Learn.Buttons2Channel do
+  use Learn.Web, :channel
+  @moduledoc """
+  Channel buttons2, atualização de bootstrap.
+  """
+  def join("buttons2:" <> _buttons, _params, socket) do
+    {:ok, socket}
+  end
 
-#   def join("buttons2:" <> _buttons, _params, socket) do
-#     :timer.send_interval(5_000, :ping)
-#     {:ok, socket}
-#   end
+  def handle_in("new_click", params, socket) do
+    broadcast!(socket, "new_click", %{
+      div_str_button: params["div_button"],
+      div_str_menu: params["div_menu"],
+    })
 
-#   def handle_info(:ping, socket) do
-#     count = socket.assigns[:count] || 1
-#     push(socket, "ping", %{count: count})
-#     {:noreply, assign(socket, :count, count + 1)}
-#   end
-# end
+    {:reply, :ok, socket}
+  end
+end

@@ -50,3 +50,4 @@ defmodule Rumbl.VideoChannel do
     end
   end
 end
+
