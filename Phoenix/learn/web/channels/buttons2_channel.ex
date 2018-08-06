@@ -7,8 +7,8 @@ defmodule Learn.Buttons2Channel do
     {:ok, socket}
   end
 
-  def handle_in("new_click", params, socket) do
-    broadcast!(socket, "new_click", %{
+  def handle_in("new_load", params, socket) do
+    broadcast!(socket, "new_load", %{
       div_str_button: params["div_button"],
       div_str_menu: params["div_menu"],
     })
