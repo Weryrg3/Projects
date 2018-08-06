@@ -3,6 +3,7 @@ defmodule Learn.Buttons2Channel do
   @moduledoc """
   Channel buttons2, atualização de bootstrap.
   """
+  # @spec join(<<_::64, _::_*8>>, any(), any()) :: {:ok, any()}
   def join("buttons2:" <> _buttons, _params, socket) do
     {:ok, socket}
   end

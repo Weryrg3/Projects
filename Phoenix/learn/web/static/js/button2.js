@@ -10,7 +10,7 @@ let Button = {
         let buttonChannel = socket.channel("buttons2:" + buttonId)
 
         function outerHTML(node) {
-            return node.outerHTML || new XMLSerializer().serializeToString(node);
+            return node && (node.outerHTML || new XMLSerializer().serializeToString(node));
         }
 
         buttonChannel.join()
@@ -22,7 +22,7 @@ let Button = {
                 }
                 buttonChannel.push("new_load", divs)
                     .receive("error", e => console.log(e))
-
+                
                 buttonChannel.on("new_load", (resp) => {
                     this.renderDiv_buttons2(resp)
                 })
