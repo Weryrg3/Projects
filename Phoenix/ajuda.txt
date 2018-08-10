@@ -29,8 +29,7 @@ Cap 6 - pg 91
 Cap 7 - pg 107
 Cap 8 - pg 129
 Cap 9 - pg 157
-	
-Cap 10 - pg 173 -> Para continuar aqui aprender JavaScript
+Cap 10 - pg 173 -> Revisar depois and learn JavaScript 
 
 Cap 11 - pg 199
 	

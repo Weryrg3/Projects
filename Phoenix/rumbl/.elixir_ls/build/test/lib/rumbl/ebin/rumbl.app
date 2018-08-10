@@ -7,6 +7,7 @@
                         'Elixir.Rumbl.ConnCase','Elixir.Rumbl.Counter',
                         'Elixir.Rumbl.Endpoint','Elixir.Rumbl.ErrorHelpers',
                         'Elixir.Rumbl.ErrorView','Elixir.Rumbl.Gettext',
+                        'Elixir.Rumbl.InfoSys.Supervisor',
                         'Elixir.Rumbl.LayoutView','Elixir.Rumbl.ModelCase',
                         'Elixir.Rumbl.PageController','Elixir.Rumbl.PageView',
                         'Elixir.Rumbl.Permalink','Elixir.Rumbl.Repo',
